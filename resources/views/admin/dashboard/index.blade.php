@@ -246,7 +246,7 @@
                         <div class="card flex-fill">
                             <div class="card-header">
                                 <span class="badge badge-info float-right">{{App\Models\Deposit::PerfectMoney()->count()}}</span>
-                                <h5 class="card-title mb-0">By Perfect Money</h5>
+                                <h5 class="card-title mb-0">By Binance</h5>
                             </div>
                             <div class="card-body my-2">
                                 <div class="row d-flex align-items-center mb-4">
@@ -314,7 +314,7 @@
                         <div class="card flex-fill">
                             <div class="card-header">
                                 <span class="badge badge-info float-right">{{App\Models\Deposit::TodayPerfectMoney()->count()}}</span>
-                                <h5 class="card-title mb-0">Today Deposit By Perfect Money</h5>
+                                <h5 class="card-title mb-0">Today Deposit By Binance</h5>
                             </div>
                             <div class="card-body my-2">
                                 <div class="row d-flex align-items-center mb-4">

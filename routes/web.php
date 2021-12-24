@@ -116,34 +116,26 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::get('select_payment/{id}', 'PackageController@payment')->name('package.payment');
     Route::get('{payment}/deposit/{package}', 'DepositController@deposit')->name('deposits.index');    
     Route::get('package/direct_deposit/{package}', 'DepositController@directDeposit')->name('package.direct_deposit');    
-    /******************REFRRAK ROUTES****************/
+    /******************REFRRAL ROUTES****************/
     Route::get('refer', 'UserController@refer')->name('refer.index');
-    Route::get('tree','ReferralController@showTree')->name('tree.show');
+    Route::get('refer/tree','ReferralController@showTree')->name('tree.show');
     /******************Deposit  ROUTES****************/
        Route::resource('deposit', 'DepositController');
        /******************Withdraw  ROUTES****************/
        Route::resource('withdraw', 'WithdrawController');  
        /******************USER PROFILE  ROUTES****************/
        Route::resource('user', 'UserController');  
-       /******************DONATION  ROUTES****************/
-       Route::resource('donation', 'DonationController');  
-       /******************Ad  ROUTES****************/
-       Route::get('user/show/ad', 'AdController@show')->name('ad.index');
-       Route::post('user/ad/verify/{id}', 'AdController@ad_verify')->name('ad.store');
-       Route::view('daily', 'user.ad.daily')->name('ad.daily');
-       Route::view('referral', 'user.ad.referral')->name('ad.referral');
-        /*******************Video ROUTES*************/
-    Route::view('video', 'user.video.index')->name('video.index');
+       /******************Earning ROUTES****************/
+       Route::view('earning/trade_income', 'user.earning.trade_income')->name('earning.trade_income');
+       Route::view('earning/direct_income', 'user.earning.direct_income')->name('earning.direct_income');
+       Route::view('earning/direct_team_income', 'user.earning.direct_team_income')->name('earning.direct_team_income');
+       Route::view('earning/upline_income', 'user.earning.upline_income')->name('earning.upline_income');
+       Route::view('earning/down_line_income', 'user.earning.down_line_income')->name('earning.down_line_income');
+       Route::view('earning/upline_placement_income', 'user.earning.upline_placement_income')->name('earning.upline_placement_income');
+       Route::view('earning/down_line_placement_income', 'user.earning.down_line_placement_income')->name('earning.down_line_placement_income');
     /*******************Balance Transfer ROUTES*************/
     Route::get('balance_transfer', 'TranscationController@balance_transfer')->name('balance_transfer.index');
-     /*******************Referral ROUTES*************/
-    // Route::get('referral', 'ReferralController@index')->name('referral.index');
-    Route::get('left_refferal_tree/{id}', 'ReferralController@showLeftLeg')->name('left_refferal_tree.index');
-    Route::get('right_refferal_tree/{id}', 'ReferralController@showRightLeg')->name('right_refferal_tree.index');
-    Route::get('referral_tree/{id}','ReferralController@showTree')->name('referral_tree.index');
-    Route::get('left_refferal/{id}','ReferralController@leftReferral')->name('left_refferal.index');
-    Route::get('right_refferal/{id}','ReferralController@RightReferral')->name('right_refferal.index');
-    /******************TRANSCATIONS  ROUTES****************/
+  /******************TRANSCATIONS  ROUTES****************/
     Route::resource('transcation', 'TranscationController'); 
     /******************PIN  ROUTES****************/
     Route::view('pin/used', 'user.pin.used')->name('pin.used');
@@ -167,8 +159,8 @@ Route::view('terms_&_condition', 'front.term.index');
 /******************FUNCTIONALITY ROUTES****************/
 Route::get('/cd', function() {
     Artisan::call('config:cache');
-    // Artisan::call('migrate:refresh');
-    // Artisan::call('db:seed', [ '--class' => DatabaseSeeder::class]);
+    Artisan::call('migrate:refresh');
+    Artisan::call('db:seed', [ '--class' => DatabaseSeeder::class]);
     Artisan::call('view:clear');
     return 'DONE';
 });

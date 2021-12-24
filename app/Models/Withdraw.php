@@ -29,4 +29,7 @@ class Withdraw extends Model
 	public static function completed(){
         return (new static)::where('status','Completed')->get();
     }
+	public static function rejected(){
+        return (new static)::where('status','Rejected')->get();
+    }
 }

@@ -17,6 +17,7 @@ class CreateEarningsTable extends Migration
             $table->id();
             $table->float('price');
             $table->string('type');
+            $table->integer('due_to')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

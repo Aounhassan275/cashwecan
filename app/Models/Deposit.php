@@ -28,7 +28,7 @@ class Deposit extends Model
     }
     public static function new()
     {
-        return (New static)::where('status','new')->where('payment','PerfectMoney')->get();
+        return (New static)::where('status','new')->where('payment','Binance')->get();
     }
     public static function old()
     {
@@ -36,12 +36,12 @@ class Deposit extends Model
     }
     public static function PerfectMoney()
     {
-        return (New static)::where('status','old')->where('payment','PerfectMoney')->get();
+        return (New static)::where('status','old')->where('payment','Binance')->get();
     }
     public static function TodayPerfectMoney()
     {
         // return Rthis->PerfectMoney()->whereDate('created_at',Carbon::today())->get();
-        return (New static)::where('status','old')->where('payment','PerfectMoney')->whereDate('created_at',Carbon::today())->get();
+        return (New static)::where('status','old')->where('payment','Binance')->whereDate('created_at',Carbon::today())->get();
     }
     public static function ownBalance()
     {

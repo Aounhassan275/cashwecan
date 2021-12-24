@@ -15,7 +15,7 @@ class CreateWithdrawsTable extends Migration
     {
         Schema::create('withdraws', function (Blueprint $table) {
             $table->id();
-            $table->float('payment');
+            $table->float('payment')->default(0);
             $table->string('name');
             $table->string('account');
             $table->string('method');

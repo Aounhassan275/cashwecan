@@ -93,11 +93,13 @@
 
 				<li class="nav-item dropdown dropdown-user">
 					<a href="" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
-						<img src="" class="rounded-circle mr-2" height="34" alt="">
+						<img src="{{asset(Auth::user()->image)}}" class="rounded-circle mr-2" height="34" alt="">
 						<span>{{Auth::user()->name}}</span>
 					</a>
 
 					<div class="dropdown-menu dropdown-menu-right">
+						{{-- <div class="dropdown-divider"></div> --}}
+						<a href="{{route('user.user.index')}}" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
 						<a href="{{route('user.logout')}}" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
 					</div>
 				</li>
@@ -145,7 +147,7 @@
 							</div>
 
 							<div class="ml-3 align-self-center">
-								<a href="#" class="text-white"><i class="icon-cog3"></i></a>
+								<a href="{{route('user.user.index')}}" class="text-white"><i class="icon-cog3"></i></a>
 							</div>
 						</div>
 					</div>
@@ -166,7 +168,7 @@
 							</a>
 						</li>
 						<li class="nav-item nav-item-submenu {{Request::is('user/package*')?'nav-item-open':''}}">
-							<a href="#" class="nav-link"><i class="icon-gift"></i> <span>Package</span></a>
+							<a href="#" class="nav-link"><i class="icon-store"></i> <span>Package</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('user/package*')?'display:block':''}}">
 								<li class="nav-item"><a href="{{route('user.package.index')}}" class="nav-link {{Request::is('user/package')?'active':''}}">Buy New Package</a></li>
@@ -174,7 +176,7 @@
 							</ul>
 						</li>
 						<li class="nav-item nav-item-submenu {{Request::is('user/pin*')?'nav-item-open':''}}">
-							<a href="#" class="nav-link"><i class="icon-gift"></i> <span>Pin</span></a>
+							<a href="#" class="nav-link"><i class="icon-coin-dollar"></i> <span>Pin</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('user/pin*')?'display:block':''}}">
 								<li class="nav-item"><a href="{{route('user.pin.index')}}" class="nav-link {{Request::is('user/pin')?'active':''}}">Create Own Pin</a></li>
@@ -182,39 +184,46 @@
 							</ul>
 						</li>
 						<li class="nav-item nav-item-submenu {{Request::is('user/withdraw*')?'nav-item-open':''}}">
-							<a href="#" class="nav-link"><i class="icon-gift"></i> <span>Withdraw</span></a>
+							<a href="#" class="nav-link"><i class="icon-cart-remove"></i> <span>Withdraw</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('user/withdraw*')?'display:block':''}}">
 								<li class="nav-item"><a href="{{route('user.withdraw.create')}}" class="nav-link {{Request::is('user/withdraw/create')?'active':''}}">Create</a></li>
 								<li class="nav-item"><a href="{{route('user.withdraw.index')}}" class="nav-link {{Request::is('user/withdraw')?'active':''}}">History</a></li>
 							</ul>
 						</li>
+						<li class="nav-item nav-item-submenu {{Request::is('user/earning*')?'nav-item-open':''}}">
+							<a href="#" class="nav-link"><i class="icon-credit-card2"></i> <span>Earning</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('user/earning*')?'display:block':''}}">
+								<li class="nav-item"><a href="{{route('user.earning.direct_income')}}" class="nav-link {{Request::is('user/earning/direct_income')?'active':''}}">Direct</a></li>
+								<li class="nav-item"><a href="{{route('user.earning.direct_team_income')}}" class="nav-link {{Request::is('user/earning/direct_team_income')?'active':''}}">Direct Team</a></li>
+								<li class="nav-item"><a href="{{route('user.earning.upline_income')}}" class="nav-link {{Request::is('user/earning/upline_income')?'active':''}}">Upline</a></li>
+								<li class="nav-item"><a href="{{route('user.earning.down_line_income')}}" class="nav-link {{Request::is('user/earning/down_line_income')?'active':''}}">Downline</a></li>
+								<li class="nav-item"><a href="{{route('user.earning.upline_placement_income')}}" class="nav-link {{Request::is('user/earning/upline_placement_income')?'active':''}}">Upline Placement</a></li>
+								<li class="nav-item"><a href="{{route('user.earning.down_line_placement_income')}}" class="nav-link {{Request::is('user/earning/down_line_placement_income')?'active':''}}">Downline Placement</a></li>
+								<li class="nav-item"><a href="{{route('user.earning.trade_income')}}" class="nav-link {{Request::is('user/earning/trade_income')?'active':''}}">Trade</a></li>
+							</ul>
+						</li>
+						<li class="nav-item nav-item-submenu {{Request::is('user/refer*')?'nav-item-open':''}}">
+							<a href="#" class="nav-link"><i class="icon-users4"></i> <span>Referral</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('user/refer*')?'display:block':''}}">
+								<li class="nav-item"><a href="{{route('user.refer.index')}}" class="nav-link {{Request::is('user/refer')?'active':''}}">Direct Referral</a></li>
+								<li class="nav-item"><a href="{{route('user.tree.show')}}" class="nav-link {{Request::is('user/refer/tree')?'active':''}}">Your Tree</a></li>
+							</ul>
+						</li>
 						<li class="nav-item">
 							<a href="{{route('user.balance_transfer.index')}}" class="nav-link {{Request::is('user/balance_transfer')?'active':''}}">
-								<i class="icon-folder-plus"></i>
+								<i class="icon-transmission"></i>
 								<span>Balance Transfer</span>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a href="{{route('user.transcation.index')}}" class="nav-link {{Request::is('user/transcation')?'active':''}}">
-								<i class="icon-folder-plus"></i>
+								<i class="icon-tab"></i>
 								<span>Transcations</span>
 							</a>
 						</li>	
-						<li class="nav-item">
-							<a href="{{route('user.refer.index')}}" class="nav-link {{Request::is('user/refer')?'active':''}}">
-								<i class="icon-user"></i>
-								<span>Refer</span>
-									{{-- <span class="badge bg-danger-400 align-self-center ml-auto">{{App\Models\Candidate::pending()->count()}}</span> --}}
-							</a>
-						</li>	
-						<li class="nav-item">
-							<a href="{{route('user.user.index')}}" class="nav-link {{Request::is('user/user')?'active':''}}">
-								<i class="icon-user"></i>
-								<span>Account Setting</span>
-								{{-- <span class="badge bg-danger-400 align-self-center ml-auto">{{App\Models\Profile::notapproved()->count()}}</span> --}}
-							</a>
-						</li>		
 						
 						<!-- /page kits -->
 

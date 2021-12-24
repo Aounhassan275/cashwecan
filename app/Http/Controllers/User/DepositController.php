@@ -100,11 +100,6 @@ class DepositController extends Controller
             'cash_wallet' => $user->cash_wallet -= $package->price,    
         ]);
         ReferralIncome::referral($deposit);
-        PackageHistory::create([
-            'package_id ' => $deposit->package_id,
-            'user_id ' => $user->id,
-            'deposit_id ' => $deposit->id
-        ]);
         toastr()->success('Your Package Active Successfully.');
         return redirect(route('user.dashboard.index'));
     }

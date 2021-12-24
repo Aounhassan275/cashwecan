@@ -61,17 +61,17 @@ class TranscationController extends Controller
             toastr()->error('Must Fill All Fields');
             return redirect()->back();
         }
-        if($user->balance < $request->amount)
+        if($user->cash_wallet < $request->amount)
         {
             toastr()->error('Insufficient Balance.');
             return redirect()->back();
         }
         $user->update([
-            'balance' => $user->balance - $request->amount
+            'cash_wallet' => $user->cash_wallet - $request->amount
         ]);
         $receiver = User::find($request->receiver_id);
         $receiver->update([
-            'balance' => $receiver->balance += $request->amount
+            'cash_wallet' => $receiver->cash_wallet += $request->amount
         ]);
         Transcation::create([
             'detail' => 'Amount Transfer from '.$user->name.' to '.$receiver->name.' account.'

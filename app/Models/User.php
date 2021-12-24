@@ -102,10 +102,54 @@ class User extends Authenticatable
     {
         return $this->hasMany(Earning::class)->sum('price');
     }
+    public function tradeIncome()
+    {
+        return $this->hasMany(Earning::class)->where('type','trade_income');
+    }
+    public function directIncome()
+    {
+        return $this->hasMany(Earning::class)->where('type','direct_income');
+    }
+    public function directTeamIncome()
+    {
+        return $this->hasMany(Earning::class)->where('type','direct_team_income');
+    }
+    public function uplineIncome()
+    {
+        return $this->hasMany(Earning::class)->where('type','upline_income');
+    }
+    public function downlineIncome()
+    {
+        return $this->hasMany(Earning::class)->where('type','down_line_income');
+    }
+    public function uplinePlacementIncome()
+    {
+        return $this->hasMany(Earning::class)->where('type','upline_placement_income');
+    }
+    public function downlinePlacementIncome()
+    {
+        return $this->hasMany(Earning::class)->where('type','down_line_placement_income');
+    }
     
     public function totalWithdraw()
     {
         return $this->hasMany(Withdraw::class)->sum('payment');
+    }
+    public function completedWithdraw()
+    {
+        return $this->hasMany(Withdraw::class)->where('status','Completed')->sum('payment');
+    }
+    public function onHoldWithdraw()
+    {
+        return $this->hasMany(Withdraw::class)->where('status','On Hold')->sum('payment');
+    }
+    public function inProcessWithdraw()
+    {
+        return $this->hasMany(Withdraw::class)->where('status','in process')->sum('payment');
+    }
+    public function rejectedWithdraw()
+    {
+        return $this->hasMany(Withdraw::class)->where('status','Rejected')->sum('payment');
     }
     public function checkStatus(){
         if($this->a_date){

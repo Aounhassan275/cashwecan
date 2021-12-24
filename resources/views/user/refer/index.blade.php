@@ -11,7 +11,7 @@ REFERRALS
                 <h5 class="card-title">Share Your Referral Link</h5>
                 <div class="header-elements">
                     <div class="list-icons">
-                        <a href="{{route('user.tree.show')}}" class="btn btn-dark" >See Your Tree</a>
+                        {{-- <a href="{{route('user.tree.show')}}" class="btn btn-dark" >See Your Tree</a> --}}
                         <a class="list-icons-item" data-action="collapse"></a>
                         <a class="list-icons-item" data-action="remove"></a>
                     </div>
@@ -23,8 +23,11 @@ REFERRALS
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-6">
-                        <label class="form-label">Copy Link For Referral</label>
-                        <input type="text" class="form-control" id="{{url('user/register',$user->code)}}"  value="{{url('user/register',$user->code)}}"  readonly>    
+                        <label class="form-label">Copy Link For Referral </label>
+                        <input type="text" class="form-control" id="link_area"  value="{{url('user/register',$user->code)}}"  readonly>    
+                        <br>
+                        <button type="button" class="copy-button btn btn-dark  btn-sm" data-clipboard-action="copy" data-clipboard-target="#link_area">Copy to clipboard</button>
+
                     </div> 
                 </div>
             </div>
@@ -54,7 +57,9 @@ REFERRALS
                 <th>User Refer By</th>
                 <th>User Placement</th>
                 <th>User Status</th>
-                <th>User Earning</th>
+                <th>User Cash Wallet</th>
+                <th>User Community Pool</th>
+                <th>User Total Earning</th>
             </tr> 
         </thead>
         <tbody>
@@ -76,7 +81,9 @@ REFERRALS
                         @else
                         <span class="badge badge-danger">Pending</span>                                                      
                         @endif</td>
-                    <td>{{$user->balance}}</td>
+                    <td>{{$user->cash_wallet}}</td>
+                    <td>{{$user->community_pool}}</td>
+                    <td>{{$user->totalEarning()}}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -85,4 +92,19 @@ REFERRALS
 @endsection
 
 @section('scripts')
+<script type="text/javascript" src="{{asset('clipboard.js')}}"></script>
+<script type="text/javascript">
+	var clipboard = new Clipboard('.copy-button');
+        clipboard.on('success', function(e) {
+            copyText.select();
+            var $div2 = $("#coppied");
+            console.log($div2);
+            console.log($div2.is(":visible"));
+            if ($div2.is(":visible")) { return; }
+            $div2.show();
+            setTimeout(function() {
+                $div2.fadeOut();
+            }, 800);
+        });
+</script>
 @endsection

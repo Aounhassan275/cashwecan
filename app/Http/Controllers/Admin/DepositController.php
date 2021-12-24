@@ -31,11 +31,6 @@ class DepositController extends Controller
         $deposit->update([
             'status' => 'old'
         ]);
-        PackageHistory::create([
-            'package_id ' => $deposit->package_id,
-            'user_id ' => $user->id,
-            'deposit_id ' => $deposit->id
-        ]);
         toastr()->success('User is Active Successfully');
         return redirect()->back();
     }

@@ -18,7 +18,10 @@
                         <th style="width:auto;">#</th>
                         <th style="width:auto;">Name</th>
                         <th style="width:auto;">Email </th>
-                        <th style="width:auto;">Balance </th>
+                        <th style="width:auto;">Cash Wallet </th>
+                        <th style="width:auto;">Temp Income </th>
+                        <th style="width:auto;">Community Pool </th>
+                        <th style="width:auto;">Total Earning </th>
                         <th style="width:auto;">Refer By </th>
                         <th style="width:auto;">Placement </th>
                         <th style="width:auto;">Package </th>
@@ -33,7 +36,10 @@
                         <td>{{$key+1}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->balance}}</td>
+                        <td>$ {{$user->cash_wallet}}</td>
+                        <td>$ {{$user->total_income}}</td>
+                        <td>$ {{$user->community_pool}}</td>
+                        <td>$ {{$user->totalEarning()}}</td>
                         <td>{{$user->refer_by_name($user->refer_by)}}</td>
                         <td>{{$user->refer_by_name($user->referral)}}</td>
                         @if ($user->package)

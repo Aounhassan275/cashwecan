@@ -22,8 +22,12 @@ SELECT PACKAGE PAYMENT
 
                 <div class="list-icons list-icons-extended mt-3">
                     <button type="button" class="copy-button btn btn-info  btn-xs" data-clipboard-action="copy" data-clipboard-target="#link_area">Copy to clipboard</button>
-                    <textarea id="link_area" hidden class="form-control">{{$payment->number}}</textarea>
-                    <p hidden="" class="text-success" id="coppied">Copied!</p>
+                    {{-- <input id="link_area"  class="form-control" value="{{$payment->number}}" >
+                    <p hidden="" class="text-success" id="coppied">Copied!</p> --}}
+                 </div>
+                  <div class="list-icons list-icons-extended mt-3" >
+                    <input id="link_area"  class="form-control" value="{{$payment->number}}" >
+                    <p hidden="" style="color:black;" id="coppied">Copied!</p>
                  </div>
             </div>
         </div>
@@ -62,7 +66,7 @@ SELECT PACKAGE PAYMENT
                         <div class="form-group col-md-6">
                             <label >Payment Gateway: <span>*</span></label>
                             <select name="payment" class="form-control" required>
-                                <option selected disabled>Select</option>
+                                <option disabled>Select</option>
                                 @foreach (App\Models\Payment::all() as $payment)
                                 <option value="{{$payment->method}}">{{$payment->method}}</option>
                                 @endforeach

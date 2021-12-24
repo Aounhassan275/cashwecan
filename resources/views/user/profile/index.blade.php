@@ -22,8 +22,8 @@ UPDATE YOUR OWN PROFILE
                             <input type="text" name="name" class="form-control" value="{{Auth::user()->name}}" readonly>
                         </div>
                         <div class="form-group col-6">
-                            <label class="form-label">Father Name</label>
-                            <input type="text" name="fname" class="form-control" value="{{Auth::user()->fname}}">
+                            <label class="form-label">Image</label>
+                            <input type="file" name="image" class="form-control" >
                         </div>
                    </div>
                    <div class="row">
@@ -35,12 +35,6 @@ UPDATE YOUR OWN PROFILE
                             <label class="form-label">Password</label>
                             <input type="password" name="password" class="form-control" >
 
-                        </div>
-                   </div>
-                   <div class="row">
-                        <div class="form-group col-6">
-                            <label class="form-label">Address</label>
-                            <input type="address" name="text" class="form-control" value="{{Auth::user()->address}}">
                         </div>
                    </div>
                     

@@ -53,11 +53,62 @@
                     <div class="card-body py-4">
                         <div class="media">
                             <div class="d-inline-block mt-2 mr-3">
+                                <i class="feather-lg text-success" data-feather="dollar-sign"></i>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="mb-2">$ {{$user->totalEarning()}}</h3>
+                                <div class="mb-0">User Total Earning</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-xl d-flex">
+                <div class="card flex-fill">
+                    <div class="card-body py-4">
+                        <div class="media">
+                            <div class="d-inline-block mt-2 mr-3">
+                                <i class="feather-lg text-warning" data-feather="dollar-sign"></i>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="mb-2">$ {{$user->total_income}}</h3>
+                                <div class="mb-0">User Temp Income</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-xl d-flex">
+                <div class="card flex-fill">
+                    <div class="card-body py-4">
+                        <div class="media">
+                            <div class="d-inline-block mt-2 mr-3">
                                 <i class="feather-lg text-danger" data-feather="dollar-sign"></i>
                             </div>
                             <div class="media-body">
                                 <h3 class="mb-2">$ {{$user->cash_wallet}}</h3>
                                 <div class="mb-0">User Cash Wallet</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-xl d-flex">
+                <div class="card flex-fill">
+                    <div class="card-body py-4">
+                        <div class="media">
+                            <div class="d-inline-block mt-2 mr-3">
+                                <i class="feather-lg text-primary" data-feather="dollar-sign"></i>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="mb-2">$ {{$user->community_pool}}</h3>
+                                <div class="mb-0">User Community Pool</div>
                             </div>
                         </div>
                     </div>
@@ -218,8 +269,8 @@
                             </div> 
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="inputEmail4">Change Refer By</label>
-                                    <input type="number" class="form-control" name="refer_by"  value="{{$user->refer_by}}" >
+                                    <label for="inputEmail4">Community Pool</label>
+                                    <input type="number" class="form-control" name="community_pool"  value="{{$user->community_pool}}" >
                                 </div> 
                             </div>
                             <div class="text-right">

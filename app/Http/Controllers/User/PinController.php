@@ -45,13 +45,13 @@ class PinController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        if($user->balance < $request->amount)
+        if($user->cash_wallet < $request->amount)
         {
             toastr()->error('Insufficient Balance.');
             return redirect()->back();
         }
         $user->update([
-            'balance' => $user->balance - $request->amount
+            'cash_wallet' => $user->cash_wallet - $request->amount
         ]);
         Pin::create([
             'user_id' => $user->id,

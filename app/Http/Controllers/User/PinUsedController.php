@@ -52,7 +52,7 @@ class PinUsedController extends Controller
             return redirect()->back();
         }
         $user->update([
-            'balance' => $user->balance + $pin->amount
+            'cash_wallet' => $user->cash_wallet + $pin->amount
         ]);
         PinUsed::create([
             'user_id' => $user->id,

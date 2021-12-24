@@ -15,10 +15,12 @@ class WithdrawController extends Controller
         $withdraw =  Withdraw::find($id);
         $user = User::find($withdraw->user_id);
         $user->update([
-            'balance' => $user->balance + $withdraw->payment 
+            'cash_wallet' => $user->cash_wallet + $withdraw->payment 
         ]);
-        $withdraw->forceDelete();
-        toastr()->success('Withdraw Request is Deleted Successfully');
+        $withdraw->update([
+            'status' => 'Rejected'
+        ]);
+        toastr()->success('Withdraw Request is Rejected Successfully');
         return redirect()->back();
     }
     

@@ -6,7 +6,18 @@
 DASHBOARD
 
 @endsection
-
+@section('styles')
+<style>
+    blink {
+        animation: blinker 2s linear infinite;
+    }
+    @keyframes blinker {
+        50% {
+          opacity: 0;
+        }
+      }
+  </style>   
+@endsection
 
 
 @section('contents')
@@ -72,7 +83,7 @@ DASHBOARD
         </div>
     </div>
 
-    <div class="col-sm-6 col-xl-3">
+    {{-- <div class="col-sm-6 col-xl-3">
         <div class="card card-body">
             <div class="media mb-3">
                 <div class="mr-3 align-self-center">
@@ -85,6 +96,26 @@ DASHBOARD
                 </div>
             </div>
         </div>
+    </div> --}}
+    <div class="col-sm-6 col-xl-3">
+        <a href="#transfer_modal" data-toggle="modal" data-target="#transfer_modal">
+            <div class="card card-body bg-teal-400 has-bg-image">
+                <div class="media">
+                    
+                        <div class="mr-3 align-self-center">
+                            <blink> <i class="icon-nbsp icon-3x opacity-75"></i></blink>
+                        </div>
+
+                        <div class="media-body">
+                            <blink>
+                                <h3 class="mb-0">$ {{Auth::user()->total_income}}</h3>
+                                <span class="text-uppercase font-size-xs">Amount to Transfer</span>
+                            </blink>
+                        </div>
+                    
+                </div>
+            </div>
+        </a>
     </div>
 </div>
 <div class="row">
@@ -157,8 +188,12 @@ DASHBOARD
                 </div>
 
                 <div class="media-body text-right">
-                    <h3 class="font-weight-semibold mb-0">{{Auth::user()->name}}</h3>
-                    <span class="text-uppercase font-size-sm text-muted">Username</span>
+                    <h3 class="font-weight-semibold mb-0">
+                        @if(Auth::user()->package)
+                        $ {{Auth::user()->package->price}}
+                        @endif
+                    </h3>
+                    <span class="text-uppercase font-size-sm text-muted">Package Price</span>
                 </div>
             </div>
         </div>
@@ -215,6 +250,34 @@ DASHBOARD
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div id="transfer_modal" class="modal fade">
+    <div class="modal-dialog">
+        <form id="tansferForm" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title mt-0" id="myModalLabel">Transfer Balance</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="title">For Cash Wallet</label>
+                        <input class="form-control" type="number" name="cash_wallet" value="{{Auth::user()->total_income/2}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">For Community Pool</label>
+                        <input class="form-control" type="number"name="community_pool" value="{{Auth::user()->total_income/2}}">
+                    </div>
+                    <p id="errors" style="color:red;"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light">Update</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 @endsection
@@ -330,6 +393,36 @@ DASHBOARD
                     }
                 }
             }
+        });
+    </script>
+    <script>
+        $(document).on('submit', '#tansferForm', function (event) {
+            $('#errors').html("Please Wait!!");
+            $('.btn').attr("disabled",true);
+            event.preventDefault();
+            $.ajax({
+                url: '{{url("user/transfer_funds")}}',
+                type: 'POST',
+                data: $('#tansferForm').serialize(),
+            })
+                .done(function (response) {
+                    $('.btn').attr("disabled",false);
+                    if(response.status == true)
+                    {
+                        setTimeout(function() {
+                            $('#errors').html(response.message);
+                            $('#transfer_modal').modal("hide");
+                        }, 3000);
+                        location.reload();
+                    }else{
+                        $('#errors').html(response.message);
+                    }
+                })
+                .fail(function (response) {
+                })
+                .always(function () {
+                    console.log("complete");
+                });
         });
     </script>
 @endsection

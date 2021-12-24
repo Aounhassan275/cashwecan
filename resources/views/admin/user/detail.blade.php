@@ -293,7 +293,7 @@
                                 <th style="width:auto;">Deposit Amount</th>
                                 <th style="width:auto;">Deposit Tranc. ID# </th>
                                 <th style="width:auto;">Payment Method </th>
-                                <th style="width:auto;">Package</th>
+                                <th style="width:auto;">For</th>
                                 <th style="width:auto;">Deposit Date </th>
                             </tr>
                         </thead>
@@ -303,7 +303,11 @@
                                 <td>{{$deposit->amount}}</td>
                                 <td>{{$deposit->t_id}}</td>
                                 <td>{{$deposit->payment}}</td>
+                                @if($deposit->package)
                                 <td>{{$deposit->package->name}}</td>
+                                @else 
+                                <td>Balance</td>
+                                @endif
                                 <td>{{Carbon\Carbon::parse($deposit->created_at)->format('d/m/Y')}}</td>
                             </tr>
                             @endforeach

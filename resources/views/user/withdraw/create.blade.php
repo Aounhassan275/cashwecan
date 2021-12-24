@@ -23,7 +23,7 @@ Withdraw
                     <div class="row">
                         <div class="form-group col-6">
                             <label class="form-label">Withdraw Payment</label>
-                            <input type="number" miname="payment" class="form-control" value="" required>                        
+                            <input type="number" name="payment" class="form-control" value="" required>                        
                         </div>
                         <div class="form-group col-6">
                             <label class="form-label">Account Holder Name</label>
@@ -41,7 +41,9 @@ Withdraw
                             <label class="form-label">Payment Method</label>
                             <select name="method" class="form-control" required>
                                 <option value="opt1">Select</option>
-                                <option value="Perfect Money">Perfect Money</option>
+                                @foreach(App\Models\Source::all() as $source)
+                                <option value="{{$source->name}}">{{$source->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

@@ -22,7 +22,8 @@ PACKAGE SUBSRIPTION
                     @if(Auth::user()->cash_wallet >= $package->price)
                         <a href="{{route('user.package.direct_deposit',$package->id)}}" onclick="$('.btn').text('Please Wait!!!').attr('disabled',true)" class="btn bg-teal-400 btn-lg text-uppercase font-size-sm font-weight-semibold">Active</a>  
                     @else 
-                        <a href="{{route('user.package.payment',$package->id)}}" class="btn bg-teal-400 btn-lg text-uppercase font-size-sm font-weight-semibold">Purchase</a>  
+                        <a href="{{route('user.deposit.index')}}" class="btn bg-teal-400 btn-lg text-uppercase font-size-sm font-weight-semibold">Charge Account</a>  
+                        {{-- <a href="{{route('user.package.payment',$package->id)}}" class="btn bg-teal-400 btn-lg text-uppercase font-size-sm font-weight-semibold">Purchase</a>   --}}
                     @endif
                 </div>
             </div>

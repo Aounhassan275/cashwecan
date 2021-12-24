@@ -20,7 +20,7 @@ class CreateDepositsTable extends Migration
             $table->integer('amount');
             $table->string('image')->nullable();
             $table->string('status')->default('new');
-            $table->unsignedBigInteger('package_id');
+            $table->unsignedBigInteger('package_id')->nullable();
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

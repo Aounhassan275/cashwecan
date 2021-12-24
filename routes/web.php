@@ -119,6 +119,7 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     /******************REFRRAL ROUTES****************/
     Route::get('refer', 'UserController@refer')->name('refer.index');
     Route::get('refer/tree','ReferralController@showTree')->name('tree.show');
+    Route::post('transfer_funds','UserController@transferFunds')->name('transfer_funds');
     /******************Deposit  ROUTES****************/
        Route::resource('deposit', 'DepositController');
        /******************Withdraw  ROUTES****************/
@@ -126,13 +127,14 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
        /******************USER PROFILE  ROUTES****************/
        Route::resource('user', 'UserController');  
        /******************Earning ROUTES****************/
-       Route::view('earning/trade_income', 'user.earning.trade_income')->name('earning.trade_income');
-       Route::view('earning/direct_income', 'user.earning.direct_income')->name('earning.direct_income');
-       Route::view('earning/direct_team_income', 'user.earning.direct_team_income')->name('earning.direct_team_income');
-       Route::view('earning/upline_income', 'user.earning.upline_income')->name('earning.upline_income');
-       Route::view('earning/down_line_income', 'user.earning.down_line_income')->name('earning.down_line_income');
-       Route::view('earning/upline_placement_income', 'user.earning.upline_placement_income')->name('earning.upline_placement_income');
-       Route::view('earning/down_line_placement_income', 'user.earning.down_line_placement_income')->name('earning.down_line_placement_income');
+       Route::get('earning/trade_income', 'EarningController@trade_income')->name('earning.trade_income');
+       Route::get('earning/direct_income', 'EarningController@direct_income')->name('earning.direct_income');
+       Route::get('earning/direct_team_income', 'EarningController@direct_team_income')->name('earning.direct_team_income');
+       Route::get('earning/upline_income', 'EarningController@upline_income')->name('earning.upline_income');
+       Route::get('earning/down_line_income', 'EarningController@down_line_income')->name('earning.down_line_income');
+       Route::get('earning/upline_placement_income', 'EarningController@upline_placement_income')->name('earning.upline_placement_income');
+       Route::get('earning/down_line_placement_income', 'EarningController@down_line_placement_income')->name('earning.down_line_placement_income');
+       Route::get('report/overall_earning', 'EarningController@overall_earning')->name('report.overall_earning');
     /*******************Balance Transfer ROUTES*************/
     Route::get('balance_transfer', 'TranscationController@balance_transfer')->name('balance_transfer.index');
   /******************TRANSCATIONS  ROUTES****************/

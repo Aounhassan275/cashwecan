@@ -25,9 +25,9 @@ class DepositController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($payment, $package)
+    public function index()
     {
-     //
+        return view('user.deposit.index');
     }
     public function deposit($payment, $package)
     {

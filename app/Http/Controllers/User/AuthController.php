@@ -59,38 +59,10 @@ class AuthController extends Controller
                     toastr()->error('Username  already exists');
                     return redirect()->back();
                 }
-                if($user->main_owner == null)
-                {
-                    $request->merge([
-                        'main_owner' => $user->id
-                    ]);
-                }
-                else{
-                    $request->merge([
-                        'main_owner' => $user->main_owner
-                    ]);
-                }
-                if($user->left == $request->code)
-                {
-                
-                    User::create([
-                        'left' => uniqid(),
-                        'right' => uniqid(),
-                        'refer_by' => $user->id,
-                        'refer_type' => 'Left',
-                        'main_owner' => $request->main_owner,
-                        'balance' => 0,
-                    ]+$request->all());
-                }else{
-                    User::create([
-                        'left' => uniqid(),
-                        'right' => uniqid(),
-                        'refer_by' => $user->id,
-                        'refer_type' => 'Right',
-                        'main_owner' => $request->main_owner,
-                        'balance' => 0,
-                    ]+$request->all());
-                }
+                User::create([
+                    'code' => uniqid(),
+                    'refer_by' => $user->id,
+                ]+$request->all());
                 
             }
         }else{
@@ -111,15 +83,6 @@ class AuthController extends Controller
             // ]+$request->all());
             
         }
-        //   Message::send($request->phone,'Dear ' 
-        //   .$request->fname. 
-        //     'Thanks for registering at Advertfox. We are glad that 
-        //     you have choosen to ba a part of our.
-        //     Advertfox is a worldwide investment company who is committied 
-        //     to the principle of revenew maximization and reduction of financial risk.
-        //     For further details: 03442200408
-        //     Visit: https://advertfoxx.com/
-        //     ');
         toastr()->success('Your Account Has Been successfully Created, Please Login and See Next Step Guides.');
         return redirect(route('user.login'));
     }

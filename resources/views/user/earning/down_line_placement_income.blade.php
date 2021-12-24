@@ -2,6 +2,9 @@
 @section('title')
 VIEW DOWNLINE PLACEMENT INCOME 
 @endsection
+@section('styles')
+<script src="{{asset('user_asset/global_assets/js/demo_pages/picker_date.js')}}"></script>
+@endsection
 @section('contents')
 
 <div class="card">
@@ -42,6 +45,107 @@ VIEW DOWNLINE PLACEMENT INCOME
         </tbody>
     </table>
 </div>
+<div class="row" >
+    <div class="col-md-12">
+        <!-- Basic layout-->
+        <div class="card">
+ 
+            <div class="card-body">
+                <form action="{{ route('user.earning.down_line_placement_income') }}" method="get">
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <label>
+                                From
+                                <input type="text" name="from" class="daterange-single form-control pull-right" style="height: 35px; "
+                                       value="{{ request()->get('from',date('m/d/Y', strtotime(@$data['default_from'])))}}">
+                            </label>   
+                        </div>
+                        <div class="form-group col-4">
+                            <label>
+                                To
+                                <input type="text" name="to" class="daterange-single form-control pull-right" style="height: 35px; "
+                                       value="{{ request()->get('to',date('m/d/Y', strtotime(@$data['default_to'])))}}">
+                            </label>
+              
+                        </div>   
+                        <div class="form-group col-4">
+                            <label for="">&nbsp;</label>
+                            <p style="margin-top: -5px; ">
+                                <button type="submit" class="btn btn-success" >
+                                Apply
+                            </button>
+                            </p>
+              
+                        </div>    
+                    </div>
+                </form>
+                <div class="table-responsive">
+                    <canvas id="report"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- /basic layout -->
+
+    </div>
+</div>
 @endsection
 @section('scripts')
+<script src="{{ url('chart/Chart.min.js') }}"></script>
+<script>
+    var ctx = document.getElementById("report").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [{!! @$data['labels'] !!}],
+            datasets: [
+                {
+                    label: 'Revenue in USD',
+                    data: [{!! @$data['payments'] !!}],
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(255, 30, 20, 1)',
+                }
+            ]
+        },
+        options: {
+            title:{
+                display:true,
+                text:"Daily Downline Placement Income Report"
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false
+            },
+            responsive: true,
+            scales: {
+                xAxes: [{
+                }],
+                yAxes: [{
+                    display: true,
+                    type: 'linear',
+                    beginAtZero:true,
+                    ticks: {
+                        min: 0,
+                    }
+                }]
+            }
+        }
+    });
+    $(function() {
+        $('.dates').datepicker({
+            changeYear: true,
+            changeMonth: true,
+            showButtonPanel: true,
+            dateFormat: 'm/d/Y',
+            autoclose: true,
+        });
+    });
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>
 @endsection

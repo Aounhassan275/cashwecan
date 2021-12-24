@@ -204,6 +204,18 @@
 								<li class="nav-item"><a href="{{route('user.earning.trade_income')}}" class="nav-link {{Request::is('user/earning/trade_income')?'active':''}}">Trade</a></li>
 							</ul>
 						</li>
+						<li class="nav-item">
+							<a href="{{route('user.report.overall_earning')}}" class="nav-link {{Request::is('user/report/overall_earning')?'active':''}}">
+								<i class="icon-reading"></i>
+								<span>Overall Earning Report</span>
+							</a>
+						</li>	
+						<li class="nav-item">
+							<a href="{{route('user.deposit.index')}}" class="nav-link {{Request::is('user/deposit')?'active':''}}">
+								<i class="icon-cart2"></i>
+								<span>Deposit</span>
+							</a>
+						</li>	
 						<li class="nav-item nav-item-submenu {{Request::is('user/refer*')?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="icon-users4"></i> <span>Referral</span></a>
 

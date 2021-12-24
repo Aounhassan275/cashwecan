@@ -17,7 +17,7 @@
                     <th style="width:auto;">Sr No.</th>
                     <th style="width:auto;">User Name</th>
                     <th style="width:auto;">User Email</th>
-                    <th style="width:auto;">User Package</th>
+                    <th style="width:auto;">For</th>
                     <th style="width:auto;">Deposit Amount</th>
                     <th style="width:auto;">Transction Id</th>
                     <th style="width:auto;">Method</th>
@@ -34,7 +34,11 @@
                     <td>{{$key+1}}</td>
                 <td>{{$deposit->user->name}}</td>
                 <td>{{$deposit->user->email}}</td>
+                @if($deposit->package)
                 <td>{{$deposit->package->name}}</td>
+                @else 
+                <td>Balance</td>
+                @endif
                 <td>{{$deposit->amount}}</td>
                 <td>{{$deposit->t_id}}</td>
                 <td>{{$deposit->payment}}</td>

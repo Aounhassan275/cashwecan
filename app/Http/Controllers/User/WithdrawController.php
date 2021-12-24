@@ -45,16 +45,15 @@ class WithdrawController extends Controller
               toastr()->error('Not enough balance');
               return redirect()->back();
         }
+        Withdraw::create([
+            'user_id' => $user->id
+        ]+$request->all());
         
-          Withdraw::create([
-              'user_id' => $user->id
-          ]+$request->all());
-          
-          $user->update([
-              'cash_wallet' => $user->cash_wallet -= $request->payment,    
-          ]);
-          toastr()->success('Withdraw Request is Submit Successfully');
-          return redirect()->back();
+        $user->update([
+            'cash_wallet' => $user->cash_wallet - $request->payment,    
+        ]);
+        toastr()->success('Withdraw Request is Submit Successfully');
+        return redirect()->back();
     }
 
     /**

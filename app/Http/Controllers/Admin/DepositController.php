@@ -22,12 +22,8 @@ class DepositController extends Controller
         $deposit = Deposit::find($id);
         $user = $deposit->user; 
         $user->update([
-            'status' => 'active',
-            'a_date' => Carbon::today(),
-            'package_id' => $deposit->package_id,
+            'cash_wallet' => $user->cash_wallet + $deposit->amount
         ]);
-       
-        ReferralIncome::referral($deposit);
         $deposit->update([
             'status' => 'old'
         ]);

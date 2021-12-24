@@ -105,5 +105,28 @@ class UserController extends Controller
         }
         return view('user.refer.index')->with('user',$user);
     }
+    public function transferFunds(Request $request)
+    {
+        $user = Auth::user();
+        $amount = $request->cash_wallet + $request->community_pool;
+        if($amount > $user->total_income)
+        {
+            return response()->json([
+                'status' => false,
+                'message' => 'Amount is greater than temp income'
+            ]);
+           
+        }
+        $user->update([
+            'cash_wallet' => $user->cash_wallet + $request->cash_wallet,
+            'community_pool' =>  $user->community_pool +$request->community_pool,
+            'total_income' => $user->total_income - $amount
+        ]);
+        toastr()->success('Amount Transferred Successfully');
+        return response()->json([
+            'status' => true,
+            'message' => 'Amount Transferred Successfully!!'
+        ]);
+    }
     
 }

@@ -17,7 +17,7 @@
                     <th style="width:auto;">Sr No.</th>
                     <th style="width:auto;">User Name</th>
                     <th style="width:auto;">User Email</th>
-                    <th style="width:auto;">User Package</th>
+                    <th style="width:auto;">For</th>
                     <th style="width:auto;">Deposit Amount</th>
                     <th style="width:auto;">Transction Id</th>
                     <th style="width:auto;">Method</th>
@@ -31,7 +31,7 @@
                 <td>{{$key+1}}</td>
                 <td>{{$deposit->user->name}}</td>
                 <td>{{$deposit->user->email}}</td>
-                <td>{{$deposit->package->name}}</td>
+                <td>Balance</td>
                 <td>{{$deposit->amount}}</td>
                 <td>{{$deposit->payment}}</td>
                 <td>{{$deposit->t_id}}</td>

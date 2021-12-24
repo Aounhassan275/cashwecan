@@ -52,7 +52,7 @@ class ReferralIncome
     } 
     public static  function FakeAccount($fake_account,$user)
     {
-        $transfer_amount = $fake_account->cash_wallet;
+        $transfer_amount = $fake_account->total_income;
         if($transfer_amount > $user->package->price)
         {
             $transfer_amount = $user->package->price;
@@ -328,6 +328,18 @@ class ReferralIncome
             info("Employee Income Amount : $employee_income added to  $employee->name");
             $company_income = $company_income - $employee_income;
         }
+        $gift= CompanyAccount::where('name','Gift')->first();
+        $gift->update([
+            'balance' => $gift->balance + $employee_income,
+        ]);
+        $company_income = $company_income - $employee_income;
+        info("Company Income Amount : $employee_income added to Gift Account");
+        $leader= CompanyAccount::where('name','Team Leader')->first();
+        $leader->update([
+            'balance' => $leader->balance + $employee_income,
+        ]);
+        $company_income = $company_income - $employee_income;
+        info("Company Income Amount : $employee_income added to Leader Account");
         $company_account->update([
             'balance' => $company_account->balance + $company_income,
         ]);

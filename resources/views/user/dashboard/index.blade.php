@@ -24,9 +24,9 @@ DASHBOARD
 <div class="row">
     <div class="col-md-6">
         <div class="card">
-            <div class="text-center" style="padding: 10px">
+            {{-- <div class="text-center" style="padding: 10px"> --}}
                 <canvas id="pie-chart"></canvas>
-            </div>
+            {{-- </div> --}}
         </div>
     </div>
     <div class="col-md-6">
@@ -77,7 +77,7 @@ DASHBOARD
 
                 <div class="media-body">
                     <h6 class="font-weight-semibold mb-0">Community Pool</h6>
-                    <span class="text-muted">$ {{Auth::user()->community_pool}}</span>
+                    <span class="text-muted">$ 0</span>
                 </div>
             </div>
         </div>
@@ -190,7 +190,7 @@ DASHBOARD
                 <div class="media-body text-right">
                     <h3 class="font-weight-semibold mb-0">
                         @if(Auth::user()->package)
-                        $ {{Auth::user()->package->price}}
+                        $ {{Auth::user()->package->price + Auth::user()->community_pool}}
                         @endif
                     </h3>
                     <span class="text-uppercase font-size-sm text-muted">Package Price</span>
@@ -264,11 +264,11 @@ DASHBOARD
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="title">For Cash Wallet</label>
-                        <input class="form-control" type="number" name="cash_wallet" value="{{Auth::user()->total_income/2}}">
+                        <input class="form-control" type="number" readonly name="cash_wallet" value="{{Auth::user()->total_income/2}}">
                     </div>
                     <div class="form-group">
                         <label for="title">For Community Pool</label>
-                        <input class="form-control" type="number"name="community_pool" value="{{Auth::user()->total_income/2}}">
+                        <input class="form-control" type="number" readonly name="community_pool" value="{{Auth::user()->total_income/2}}">
                     </div>
                     <p id="errors" style="color:red;"></p>
                 </div>
@@ -295,7 +295,7 @@ DASHBOARD
 
                 datasets: [{
 
-                    label: "Packages",
+                    label: "Earning",
 
                     backgroundColor: ["#990099","#109618","#ff9900", "#dc3912", "#3366cc","#33C4FF","#0C3343"],
 

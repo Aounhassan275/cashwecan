@@ -20,8 +20,12 @@ class AuthController extends Controller
             toastr()->error('You are Blocked,Kindly Contact Support');
             return redirect()->back();
              }
+             if($user->email_verified == false)
+            {
+                toastr()->error('Verify Your Account on Email Address');
+                return redirect()->back();
+             }
         }
-        $user = User::where('name',$request->name)->first();
         if(!$user){
             toastr()->error('Please register your account');
             return redirect()->back();
@@ -45,7 +49,10 @@ class AuthController extends Controller
     {
         if($request->code)
         { 
-         
+            if($request->password != $request->confirm_password){
+                toastr()->error('Password Dont Match');
+                return redirect()->back()->withInput();
+            }
             $user= User::where('code',$request->code)->first();
             if($user){
             //     $user->balance+= (($user->package->r_earning/100)*$user->package->price);
@@ -59,8 +66,9 @@ class AuthController extends Controller
                     toastr()->error('Username  already exists');
                     return redirect()->back();
                 }
-                User::create([
+                $new_user =  User::create([
                     'code' => uniqid(),
+                    'verification' => uniqid(),
                     'refer_by' => $user->id,
                 ]+$request->all());
                 
@@ -83,7 +91,8 @@ class AuthController extends Controller
             // ]+$request->all());
             
         }
-        toastr()->success('Your Account Has Been successfully Created, Please Login and See Next Step Guides.');
+        MailHelper::EmailVerified($new_user);
+        toastr()->success('Your Account Has Been successfully Created, Please Verify Your Email Account via Link.');
         return redirect(route('user.login'));
     }
     public function code($code)
@@ -108,6 +117,35 @@ class AuthController extends Controller
         $user->save();
         MailHelper::sendVerification($user);
         return redirect()->route('user.reset');
+    } 
+    public function resendEmail(Request $request){
+        $user = User::where('name',$request->name)->first();
+        if(!$user){
+            toastr()->error('User not found');
+            return redirect()->back();
+        }
+        if($user->email_verified == true){
+            toastr()->error('Your Account is already Verified');
+            return redirect()->back();
+        }
+        $user->verification = uniqid();
+        $user->save();
+        MailHelper::EmailVerified($user);
+        toastr()->success('Email Send Successfully!');
+        return redirect()->route('user.login');
+    }
+    public function VerifyAccount($code){
+        $user = User::where('verification',$code)->first();
+        if(!$user){
+            toastr()->error('Invalid Input');
+            return redirect()->back();
+        }
+        $user->update([
+            'verification' => uniqid(),
+            'email_verified' => true,
+        ]);
+        toastr()->success('Email Verify Successfully');
+        return redirect()->route('user.login');
     }
 
     public function resetPassword(Request $request){

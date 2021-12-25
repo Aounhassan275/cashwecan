@@ -50,15 +50,17 @@
 					<div class="card mb-0">
 						<div class="card-body">
 							<div class="text-center mb-3">
-								<i class="icon-people icon-2x text-warning-400 border-warning-400 border-3 rounded-round p-3 mb-3 mt-1"></i>
-								<h5 class="mb-0">Register Yourself</h5>
-                                @if(@$user)
-                                <span class="d-block text-muted">Refer By : {{$user->name}}</span>
+								{{-- <i class="icon-people icon-2x text-warning-400 border-warning-400 border-3 rounded-round p-3 mb-3 mt-1"></i> --}}
+								@if(@$user)
+								<h5 class="mb-0">Refer By</h5>
+								<a href="#"><img src="{{asset($user->image)}}" width="150" height="150" class="rounded-circle" alt=""></a>
+                                <span class="d-block text-muted">{{$user->name}}</span>
                                 @endif
+								<h5 class="mb-0">Register Yourself</h5>
 							</div>
 
 							<div class="form-group form-group-feedback form-group-feedback-left">
-                                <input type="text" id="name" class="form-control" placeholder="username" name="name" required>
+                                <input type="text" id="name" class="form-control" value="{{old('name')}}" placeholder="username" name="name" required>
                                 <input type="hidden" value="{{$code ?? ''}}" name="code">
                                 <div class="form-control-feedback">
 									<i class="icon-user text-muted"></i>
@@ -66,17 +68,24 @@
 							</div>
 
 							<div class="form-group form-group-feedback form-group-feedback-left">
-                                <input type="text" id="email" class="form-control" placeholder="Enter your email" name="email" required>
+                                <input type="text" id="email" class="form-control"  value="{{old('email')}}" placeholder="Enter your email" name="email" required>
 								<div class="form-control-feedback">
 									<i class="icon-mail5 text-muted"></i>
 								</div>
 							</div>
 							<div class="form-group form-group-feedback form-group-feedback-left">
-                                <input id="pwd" minlength="4" class="form-control" onkeyup="validatePassword(this.value);" type="password" name="password" placeholder="Enter password" required>
+                                <input id="pwd" minlength="4" class="form-control" value="{{old('password')}}" onkeyup="validatePassword(this.value);" type="password" name="password" placeholder="Enter password" required>
 								<div class="form-control-feedback">
 									<i class="icon-lock2 text-muted"></i>
 								</div>
                                 <span id="msg"></span>
+							</div>
+							<div class="form-group form-group-feedback form-group-feedback-left">
+                                <input id="confirmpwd" minlength="4" class="form-control" value="{{old('confirm_password')}}" onkeyup="confirmPassword(this.value);" type="password" name="confirm_password" placeholder="Enter confirm password" required>
+								<div class="form-control-feedback">
+									<i class="icon-lock2 text-muted"></i>
+								</div>
+                                <span id="confirmmsg"></span>
 							</div>
 							<div class="form-group form-group-feedback form-group-feedback-left">
                                 <input class="form-control" type="file" name="image" placeholder="Enter password" required>
@@ -84,10 +93,12 @@
 									<i class="icon-file-picture text-muted"></i>
 								</div>
 							</div>
-
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 ml-2"></i></button>
+								<button type="submit" onclick="$('.btn').text('Please Wait!!!').attr('disabled',true)" class="btn btn-primary btn-block">Sign Up <i class="icon-circle-right2 ml-2"></i></button>
 							</div>
+							<p  class="text-center">OR</p>
+							
+							<a href="{{route('user.login')}}"><button type="button" class="btn btn-primary btn-block">Sign In <i class="icon-circle-right2 ml-2"></i></button></a>
 						</div>
 					</div>
 				</form>
@@ -146,6 +157,27 @@
             }
             document.getElementById("msg").innerHTML = strength;
             document.getElementById("msg").style.color = color;
+        }
+		function confirmPassword(password) {
+            
+            // Do not show anything when the length of password is zero.
+            if (password.length === 0) {
+                document.getElementById("confirmmsg").innerHTML = "";
+                return;
+            }
+			// new_password = document.getElementById("pwd").val();
+			new_password =  $('#pwd').val();
+			if(new_password == password)
+			{
+				var strength = "Password Matched";
+				var color = "green";
+			}else{
+				var strength = "Password dont Matched";
+				var color = "red";
+			}
+
+            document.getElementById("confirmmsg").innerHTML = strength;
+            document.getElementById("confirmmsg").style.color = color;
         }
     </script>
 

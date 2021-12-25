@@ -68,10 +68,16 @@
 									<i class="icon-lock2 text-muted"></i>
 								</div>
 							</div>
-
+							<p> 
+								<a href="{{route('user.verification')}}" style="color:black;">Forget Password?</a>
+							</p>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 ml-2"></i></button>
 							</div>
+							<p  class="text-center">Dont Received Account Verification Email?</p>
+							
+							<a href="{{route('user.resend_email')}}"><button type="button" class="btn btn-primary btn-block">Resend Email <i class="icon-circle-right2 ml-2"></i></button></a>
+						
 						</div>
 					</div>
 				</form>

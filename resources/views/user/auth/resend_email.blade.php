@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>RESET PASSWORD | USER PANEL | CASH WE CAN </title>
+    <title>RESEND EMAIL | USER PANEL | CASH WE CAN </title>
 
 	<!-- Global stylesheets -->
     <link rel="shortcut icon" type="image/png" href="{{asset('front/image/favicon.png')}}">
@@ -45,29 +45,23 @@
 			<div class="content d-flex justify-content-center align-items-center">
 
 				<!-- Login card -->
-				<form class="login-form" method="POST" action="{{route('user.resetPassword')}}">
+				<form class="login-form" method="POST" action="{{route('user.resendEmail')}}">
                     @csrf
 					<div class="card mb-0">
 						<div class="card-body">
 							<div class="text-center mb-3">
 								<i class="icon-people icon-2x text-warning-400 border-warning-400 border-3 rounded-round p-3 mb-3 mt-1"></i>
-								<h5 class="mb-0">Reset Password, CASH WE CAN</h5>
+								<h5 class="mb-0">Resend Email, CASH WE CAN</h5>
 							</div>
 
 							<div class="form-group form-group-feedback form-group-feedback-left">
-								<input type="text" name="verfication" class="form-control" placeholder="Enter Verfication Code">
+								<input type="text" name="name" class="form-control" placeholder="Enter The Username">
 								<div class="form-control-feedback">
 									<i class="icon-user text-muted"></i>
 								</div>
 							</div>
-                            <div class="form-group form-group-feedback form-group-feedback-left">
-								<input type="password" name="password" class="form-control" placeholder="Password">
-								<div class="form-control-feedback">
-									<i class="icon-lock2 text-muted"></i>
-								</div>
-							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block">Rest Password <i class="icon-circle-right2 ml-2"></i></button>
+								<button type="submit" class="btn btn-primary btn-block">Resend Email <i class="icon-circle-right2 ml-2"></i></button>
 							</div>
 						</div>
 					</div>

@@ -10,10 +10,11 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use App\Models\PackageHistory;
+use Illuminate\Support\Facades\Auth;
 
 class ReferralIncome
 {
-    public static function  referral($deposit)
+    public static function referral($deposit)
     {
         $user = $deposit->user; 
         $refer_by = User::find($user->refer_by);
@@ -29,21 +30,21 @@ class ReferralIncome
             ReferralIncome::FakeAccount($fake_account,$user);
         }
         //Give it Main Refer By and add money in Total Income of Refer By User
-        ReferralIncome::directIncome($package,$refer_by,$user);
+        ReferralIncome::directIncome($package->price,$package,$refer_by,$user);
         //Give it to Parents of your Direct Referral Remaining goes to company Account named Flush Income
         //add money in Total Income
-        ReferralIncome::directTeamIncome($package,$refer_by,$user);
+        ReferralIncome::directTeamIncome($package->price,$package,$refer_by,$user);
         //Give it to Upline Tree Member and it in total income and remaining goes to flush Account 
-        ReferralIncome::UplineIncome($package,$user);
+        ReferralIncome::UplineIncome($package->price,$package,$user);
         //Give it to Downline Tree and remaining goes to flush Account 
-        ReferralIncome::DownlineIncome($package,$user);
+        ReferralIncome::DownlineIncome($package->price,$package,$user);
         //Give it to Upline Tree members refer by and remaining goes to flush Account 
-        ReferralIncome::UplinePlacementIncome($package,$user);
+        ReferralIncome::UplinePlacementIncome($package->price,$package,$user);
         //Give it to Downline Tree members refer by and remaining goes to flush Account 
-        ReferralIncome::DownLinePlacementIncome($package,$user);
+        ReferralIncome::DownLinePlacementIncome($package->price,$package,$user);
         //If the Refer By is leader then give him this also otherwise  goes to flush Account 
-        ReferralIncome::TradeIncome($package,$refer_by,$user);
-        ReferralIncome::CompanyIncome($package);
+        ReferralIncome::TradeIncome($package->price,$package,$refer_by,$user);
+        ReferralIncome::CompanyIncome($package->price,$package);
         PackageHistory::create([
             'package_id' => $package->id,
             'user_id' => $user->id,
@@ -92,9 +93,9 @@ class ReferralIncome
         ]);
         info("Create New Fake Account : $new_fake_account->name"); 
     } 
-    public static  function directIncome($package,$user,$due_to)
+    public static  function directIncome($price,$package,$user,$due_to)
     {
-        $direct_income = $package->price / 100 * $package->direct_income;
+        $direct_income = $price / 100 * $package->direct_income;
         info("Direct Income Amount To $user->name : $direct_income");
         Earning::create([
             'price' => $direct_income,
@@ -106,9 +107,9 @@ class ReferralIncome
             'total_income' => $user->total_income + $direct_income
         ]);
     } 
-    public static  function directTeamIncome($package,$user,$due_to)
+    public static  function directTeamIncome($price,$package,$user,$due_to)
     {
-        $direct_team_income = $package->price / 100 * $package->direct_team_income;
+        $direct_team_income = $price / 100 * $package->direct_team_income;
         info("Direct Team Income Amount : $direct_team_income"); 
         $per_person_amount = $direct_team_income/20;
         info("Direct Team Income Amount Per Person : $per_person_amount"); 
@@ -136,9 +137,9 @@ class ReferralIncome
             info("Direct Team Income Remaining Amount $direct_team_income Added to flush company Account"); 
         }
     } 
-    public static  function UplineIncome($package,$user)
+    public static  function UplineIncome($price,$package,$user)
     {
-        $upline_income = $package->price / 100 * $package->upline_income;
+        $upline_income = $price / 100 * $package->upline_income;
         info("Upline Income Amount : $upline_income"); 
         $per_person_amount = $upline_income/20;
         info("Upline Income Amount Per Person : $per_person_amount"); 
@@ -169,9 +170,9 @@ class ReferralIncome
           
         }
     } 
-    public static  function DownlineIncome($package,$user)
+    public static  function DownlineIncome($price,$package,$user)
     {
-        $down_line_income = $package->price / 100 * $package->down_line_income;
+        $down_line_income = $price / 100 * $package->down_line_income;
         info("Downline Income Amount : $down_line_income"); 
         $per_person_amount = $down_line_income/20;
         info("Downline Income Amount Per Person : $per_person_amount"); 
@@ -202,9 +203,9 @@ class ReferralIncome
             
         }
     } 
-    public static  function UplinePlacementIncome($package,$user)
+    public static  function UplinePlacementIncome($price,$package,$user)
     {
-        $upline_placement_income = $package->price / 100 * $package->upline_placement_income;
+        $upline_placement_income = $price / 100 * $package->upline_placement_income;
         info("Upline Placement Income Amount : $upline_placement_income"); 
         $per_person_amount = $upline_placement_income/20;
         info("Upline Placement Income Amount Per Person : $per_person_amount"); 
@@ -244,9 +245,9 @@ class ReferralIncome
             }
         }
     } 
-    public static  function DownLinePlacementIncome($package,$user)
+    public static  function DownLinePlacementIncome($price,$package,$user)
     {
-        $down_line_placement_income = $package->price / 100 * $package->down_line_placement_income;
+        $down_line_placement_income = $price / 100 * $package->down_line_placement_income;
         info("Downline Placement Income Amount : $down_line_placement_income"); 
         $per_person_amount = $down_line_placement_income/20;
         info("Downline Placement Income Amount Per Person : $per_person_amount"); 
@@ -288,9 +289,9 @@ class ReferralIncome
             
         }
     } 
-    public static function TradeIncome($package,$user,$due_to)
+    public static function TradeIncome($price,$package,$user,$due_to)
     {
-        $trade_income = $package->price / 100 * $package->trade_income;
+        $trade_income = $price / 100 * $package->trade_income;
         info("Trade Income Amount : $trade_income");
         if($user->type == 'leader')
         {
@@ -312,12 +313,12 @@ class ReferralIncome
             info("Trade Income Remaining Amount $trade_income Added to flush company Account"); 
         }
     } 
-    public static function CompanyIncome($package)
+    public static function CompanyIncome($price,$package)
     {
-        $company_income = $package->price / 100 * $package->company_income;
+        $company_income = $price / 100 * $package->company_income;
         info("Total Company Income Amount : $company_income");
         $company_account= CompanyAccount::where('name','Income')->first();
-        $employee_income = $package->price / 100 * 1;
+        $employee_income = $price / 100 * 1;
         info("Employee Income Amount : $employee_income");
         $employees = Admin::employee();
         foreach($employees as $employee)
@@ -345,6 +346,28 @@ class ReferralIncome
         ]);
         info("Company Income Amount : $company_income added to Company Account");
 
+    } 
+    public static function CommunityPoolIncome($price)
+    {
+        $user = Auth::user(); 
+        $refer_by = User::find($user->refer_by);
+        $package = $user->package;
+        //Give it Main Refer By and add money in Total Income of Refer By User
+        ReferralIncome::directIncome($price,$package,$refer_by,$user);
+        //Give it to Parents of your Direct Referral Remaining goes to company Account named Flush Income
+        //add money in Total Income
+        ReferralIncome::directTeamIncome($price,$package,$refer_by,$user);
+        //Give it to Upline Tree Member and it in total income and remaining goes to flush Account 
+        ReferralIncome::UplineIncome($price,$package,$user);
+        //Give it to Downline Tree and remaining goes to flush Account 
+        ReferralIncome::DownlineIncome($price,$package,$user);
+        //Give it to Upline Tree members refer by and remaining goes to flush Account 
+        ReferralIncome::UplinePlacementIncome($price,$package,$user);
+        //Give it to Downline Tree members refer by and remaining goes to flush Account 
+        ReferralIncome::DownLinePlacementIncome($price,$package,$user);
+        //If the Refer By is leader then give him this also otherwise  goes to flush Account 
+        ReferralIncome::TradeIncome($price,$package,$refer_by,$user);
+        ReferralIncome::CompanyIncome($price,$package);
     } 
     
 }

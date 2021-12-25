@@ -44,7 +44,7 @@
                                 <p class="header-left-text">
                                     <span class="header-left-icon">
                                         <i class="icofont-headphone-alt"></i>
-                                        <a href="tel:Support">Support</a>
+                                        <a href="mailto:info@cashwecan.com">Support</a>
                                     </span>
                                 </p>
                             </li>
@@ -52,7 +52,7 @@
                                 <p class="header-left-text">
                                     <span class="header-left-icon">
                                         <i class="icofont-email"></i>
-                                        <a href="tel:info@travula.com">info@travula.com</a>
+                                        <a href="mailto:info@cashwecan.com">info@cashwecan.com</a>
                                     </span>
                                 </p>
                             </li>
@@ -128,9 +128,9 @@
                 <div class="col-lg-6">
                     <div class="left-area">
                         <div class="banner-text">
-                            <h2>Travel HYip</h2>
-                            <h2 class="font-ex-bold">Investment</h2>
-                            <h3 class="font-regular">A Profitable Platform For High-Margin Travel Investment</h3>
+                            <h2>Cash We Can</h2>
+                            <h3 style="font-weight:bold;">FREEDOM OF SALE AND PURCHASE</h3>
+                            <h3 class="font-regular">A Profitable Platform For High-Margin</h3>
                         </div>
                         <div class="get-start">
                             <a class="global-btn" href="#">GET STARTED NOW!</a>

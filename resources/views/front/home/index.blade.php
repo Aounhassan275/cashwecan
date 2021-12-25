@@ -59,7 +59,7 @@
                             <h5 class="section-subtitle">Who we are</h5>
                             <h2 class="section-title">About Cash We Can</h2>
                             <h5 class="about-details">To meet <span>today's challenges</span>, we've created a unique fund management system</h5>
-                            <p class="section-description">Cash We Can - a private financial company specializing in travel investment. Our system is risk-free thanks to the development and improvement of semi-automatic system of rates. We upgraded our automatic system so that the last step before the rate is now done by our operators.</p>
+                            <p class="section-description">Cash We Can - a private financial company specializing in service providing. Our system is risk-free thanks to the development and improvement of semi-automatic system of rates. We upgraded our automatic system so that the last step before the rate is now done by seller.</p>
                         </div>
 
                         <div class="about-box">
@@ -167,9 +167,9 @@
             <div class="row mr-0 ml-0 d-flex justify-content-center">
                 <div class="col-xl-8 col-lg-12">
                     <div class="section-text">
-                        <h5 class="section-subtitle">Boost Your Mouney</h5>
+                        <h5 class="section-subtitle">Boost Your Money</h5>
                         <h2 class="section-title">Why Choose Us?</h2>
-                        <p class="section-description">You can manage your investments from anywhere either form home or work place, at any time.</p>
+                        <p class="section-description">You can manage your products from anywhere either form home or work place, at any time.</p>
                     </div>
                 </div>
             </div>

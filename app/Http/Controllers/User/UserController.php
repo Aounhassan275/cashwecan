@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Helpers\ReferralIncome;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyAccount;
 use App\Models\Earning;
@@ -122,6 +123,7 @@ class UserController extends Controller
             'community_pool' =>  $user->community_pool +$request->community_pool,
             'total_income' => $user->total_income - $amount
         ]);
+        ReferralIncome::CommunityPoolIncome($request->community_pool);
         toastr()->success('Amount Transferred Successfully');
         return response()->json([
             'status' => true,

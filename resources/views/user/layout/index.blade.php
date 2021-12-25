@@ -85,8 +85,14 @@
 				</li>
 			</ul>
 
-			<span class="badge bg-success ml-md-3 mr-md-auto">Online</span>
-
+			<span class="badge bg-success ml-md-3 mr-md-auto">Cash Wallet : $ {{Auth::user()->cash_wallet}}</span>
+			<span class="badge bg-teal ml-md-3 ">
+				@if(Auth::user()->type == 'leader')
+				Leader
+				@else
+				Member 
+				@endif
+			</span>
 			<ul class="navbar-nav">
 
 
@@ -175,14 +181,14 @@
 								<li class="nav-item"><a href="{{route('user.package.history')}}" class="nav-link {{Request::is('user/package/history')?'active':''}}">Package History</a></li>
 							</ul>
 						</li>
-						<li class="nav-item nav-item-submenu {{Request::is('user/pin*')?'nav-item-open':''}}">
+						{{-- <li class="nav-item nav-item-submenu {{Request::is('user/pin*')?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="icon-coin-dollar"></i> <span>Pin</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('user/pin*')?'display:block':''}}">
 								<li class="nav-item"><a href="{{route('user.pin.index')}}" class="nav-link {{Request::is('user/pin')?'active':''}}">Create Own Pin</a></li>
 								<li class="nav-item"><a href="{{route('user.pin.used')}}" class="nav-link {{Request::is('user/pin/used')?'active':''}}">Pin You Used</a></li>
 							</ul>
-						</li>
+						</li> --}}
 						<li class="nav-item nav-item-submenu {{Request::is('user/withdraw*')?'nav-item-open':''}}">
 							<a href="#" class="nav-link"><i class="icon-cart-remove"></i> <span>Withdraw</span></a>
 

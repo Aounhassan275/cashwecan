@@ -1,84 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="Bootlab">
+    <title>FORGET PASSWORD | USER PANEL | CASH WE CAN </title>
 
+	<!-- Global stylesheets -->
+    <link rel="shortcut icon" type="image/png" href="{{asset('front/image/favicon.png')}}">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="{{asset('user_asset/global_assets/css/icons/icomoon/styles.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('user_asset/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('user_asset/assets/css/bootstrap_limitless.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('user_asset/assets/css/layout.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('user_asset/assets/css/components.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('user_asset/assets/css/colors.min.css')}}" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+    <link href="{{asset('user_asset/assets/css/toastr.css')}}" rel="stylesheet" type="text/css">
 
-    <title>USER VERIFICATION | CASH WE CAN</title>  
-    <meta name="description" content="CASH WE CAN | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
- 
+	<!-- Core JS files -->
+	<script src="{{asset('user_asset/global_assets/js/main/jquery.min.js')}}"></script>
+	<script src="{{asset('user_asset/global_assets/js/main/bootstrap.bundle.min.js')}}"></script>
+	<script src="{{asset('user_asset/global_assets/js/plugins/loaders/blockui.min.js')}}"></script>
+	<!-- /core JS files -->
 
-	<link rel="preconnect" href="{{asset('//fonts.gstatic.com/')}}'" crossorigin="">
+	<!-- Theme JS files -->
+	<script src="{{asset('user_asset/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
 
-	<!-- PICK ONE OF THE STYLES BELOW -->
-    <link href="{{asset('css/classic.css')}}" rel="stylesheet">	
-    <link href="{{asset('css/toastr.css')}}" rel="stylesheet">	
-    <!-- <link href="css/corporate.css" rel="stylesheet"> -->
-	<!-- <link href="css/modern.css" rel="stylesheet"> -->
+	<script src="{{asset('user_asset/assets/js/app.js')}}"></script>
+	<script src="{{asset('user_asset/global_assets/js/demo_pages/login.js')}}"></script>
+	<!-- /theme JS files -->
 
-	<!-- BEGIN SETTINGS -->
-	<!-- You can remove this after picking a style -->
-	<style>
-		body {
-			opacity: 0;
-		}
-	</style>
-	<script src="{{asset('js\settings.js')}}"></script>
-    <!-- END SETTINGS -->
-    <script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1685936,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
-    	@toastr_css
 </head>
 
-<body>
-    <main class="main d-flex justify-content-center w-100" style="background-image:asset('front/banner1.jpg')">
-        <div class="container d-flex flex-column">
-            <div class="row h-100">
-                <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
-                    <div class="d-table-cell align-middle">
-    
-                        <div class="text-center mt-4">
-                            <h1 class="h2">Reset Password, CASH WE CAN</h1>
-                        </div>
-    
-                        <div class="card">
-                            <div class="card-body">                  
-                                <div class="m-sm-4">
-                                <form method="POST" action="{{route('user.verification')}}">
-                                    @csrf
-                                        <div class="form-group">
-                                            <label>Your User Name</label>
-                                            <input class="form-control form-control-lg" type="text" name="email" placeholder="Enter Your Username">
-                                        </div>
-                                        <div class="text-center mt-3">
-                                            <button type="submit" class="btn btn-lg btn-primary">Send Verification Code</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-    
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+<body class="bg-slate-800">
 
-	<script src="{{asset('js\app.js')}}"></script>
-	@toastr_js
+	<!-- Page content -->
+	<div class="page-content">
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Content area -->
+			<div class="content d-flex justify-content-center align-items-center">
+
+				<!-- Login card -->
+				<form class="login-form" method="POST" action="{{route('user.verification')}}">
+                    @csrf
+					<div class="card mb-0">
+						<div class="card-body">
+							<div class="text-center mb-3">
+								<i class="icon-people icon-2x text-warning-400 border-warning-400 border-3 rounded-round p-3 mb-3 mt-1"></i>
+								<h5 class="mb-0">Send Verification Code On Email, CASH WE CAN</h5>
+							</div>
+
+							<div class="form-group form-group-feedback form-group-feedback-left">
+								<input type="text" name="email" class="form-control" placeholder="Enter The Username">
+								<div class="form-control-feedback">
+									<i class="icon-user text-muted"></i>
+								</div>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-block">Send Verification Code <i class="icon-circle-right2 ml-2"></i></button>
+							</div>
+						</div>
+					</div>
+				</form>
+				<!-- /login card -->
+
+			</div>
+			<!-- /content area -->
+
+		</div>
+		<!-- /main content --> 
+
+	</div>
+	<!-- /page content -->
+    <script src="{{asset('user_asset/assets/js/toastr.js')}}"></script>
 	@toastr_render
-</body>
 
+</body>
 </html>

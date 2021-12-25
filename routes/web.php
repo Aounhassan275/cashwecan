@@ -104,6 +104,9 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::post('verification','AuthController@sendVerification')->name('verification');
     Route::post('resetPassword','AuthController@resetPassword')->name('resetPassword');
     Route::get('register/{code}', 'AuthController@code');
+    Route::get('verify_account/{code}', 'AuthController@VerifyAccount')->name('VerifyAccount');
+    Route::view('resend_email', 'user.auth.resend_email')->name('resend_email');
+    Route::post('resendEmail','AuthController@resendEmail')->name('resendEmail');
     Route::group(['middleware' => 'auth:user'], function () { 
     /*******************Logout ROUTES*************/       
     Route::get('logout','AuthController@logout')->name('logout');

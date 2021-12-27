@@ -32,6 +32,16 @@
                             <input type="password" name="password" class="form-control" placeholder="Enter Employee Password" required>
                         </div>
                     </div>
+                    <div class="row">
+                         <div class="form-group col-6">
+                             <label class="form-label">Employee Community Income</label>
+                             <input type="number" name="community_income" class="form-control" placeholder="Enter Employee Community Income" required>
+                         </div>
+                         <div class="form-group col-6">
+                             <label class="form-label">Employee New Arrival Income</label>
+                             <input type="number" name="new_arrival_income" class="form-control" placeholder="Enter Employee New Arrival Income" required>
+                         </div>
+                     </div>   
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
@@ -52,6 +62,8 @@
                     <th style="width:auto;">Employee Name</th>
                     <th style="width:auto;">Employee Email</th>
                     <th style="width:auto;">Employee Balance</th>
+                    <th style="width:auto;">Employee Community Income</th>
+                    <th style="width:auto;">Employee New Arrival Income</th>
                     <th style="width:auto;">Action</th>
                     <th style="width:auto;">Action</th>
                 </tr>
@@ -63,9 +75,12 @@
                     <td>{{$admin->name}}</td>
                     <td>{{$admin->email}}</td>
                     <td>$ {{number_format($admin->balance, 2)}}</td>
+                    <td>{{$admin->community_income}} %</td>
+                    <td>{{$admin->new_arrival_income}} %</td>
                     <td class="table-action">
                         <button data-toggle="modal" data-target="#edit_modal" name="{{$admin->name}}" 
-                            email="{{$admin->email}}" id="{{$admin->id}}" class="edit-btn btn"><i class="align-middle" data-feather="edit-2"></i></button>
+                            email="{{$admin->email}}" community_income="{{$admin->community_income}}" 
+                            new_arrival_income="{{$admin->new_arrival_income}}" id="{{$admin->id}}" class="edit-btn btn"><i class="align-middle" data-feather="edit-2"></i></button>
                     </td>
                     <td class="table-action">
                         {{-- <a href="{{url('poll/delete',$package->id)}}"><i class="align-middle" data-feather="trash"></i></a> --}}
@@ -105,6 +120,16 @@
                         <label>Employee Password</label>
                         <input class="form-control" type="password" id="password" name="password">
                     </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label class="form-label">Employee Community Income</label>
+                            <input type="number" name="community_income" id="community_income" class="form-control" placeholder="Enter Employee Community Income" >
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="form-label">Employee New Arrival Income</label>
+                            <input type="number" name="new_arrival_income" id="new_arrival_income" class="form-control" placeholder="Enter Employee New Arrival Income">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancel</button>
@@ -123,9 +148,13 @@
             let name = $(this).attr('name');
             let email = $(this).attr('email');
             let method = $(this).attr('method');
+            let new_arrival_income = $(this).attr('new_arrival_income');
+            let community_income = $(this).attr('community_income');
             $('#name').val(name);
             $('#email').val(email);
             $('#id').val(id);
+            $('#community_income').val(community_income);
+            $('#new_arrival_income').val(new_arrival_income);
             $('#updateForm').attr('action','{{route('admin.admin.update','')}}' +'/'+id);
         });
     });

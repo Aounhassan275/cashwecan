@@ -85,21 +85,21 @@ class DepositController extends Controller
     {
         $user= User::find(Auth::user()->id);
         $package= Package::find($id);
-        $deposit = Deposit::create([
-            'user_id' => Auth::user()->id,
-            't_id' => uniqid(),
-            'payment' => 'Own Balance',
-            'package_id' => $package->id,
-            'amount' => $package->price,
-            'status' => 'old'
-        ]);
+        // $deposit = Deposit::create([
+        //     'user_id' => Auth::user()->id,
+        //     't_id' => uniqid(),
+        //     'payment' => 'Own Balance',
+        //     'package_id' => $package->id,
+        //     'amount' => $package->price,
+        //     'status' => 'old'
+        // ]);
         $user->update([
             'status' => 'active',
             'a_date' => Carbon::today(),
-            'package_id' => $deposit->package_id,
+            'package_id' => $package->id,
             'cash_wallet' => $user->cash_wallet -= $package->price,    
         ]);
-        ReferralIncome::referral($deposit);
+        ReferralIncome::referral($user);
         toastr()->success('Your Package Active Successfully.');
         return redirect(route('user.dashboard.index'));
     }

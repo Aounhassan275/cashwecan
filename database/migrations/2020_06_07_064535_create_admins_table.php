@@ -21,6 +21,8 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->double('balance')->default(0);
             $table->integer('type');
+            $table->float('community_income')->default(1);
+            $table->float('new_arrival_income')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

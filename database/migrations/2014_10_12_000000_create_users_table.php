@@ -33,12 +33,14 @@ class CreateUsersTable extends Migration
             $table->float('cash_wallet')->default(0);
             $table->float('total_income')->default(0);
             $table->float('community_pool')->default(0);
+            $table->float('investment_amount')->default(0);
             $table->date('a_date')->nullable();
             $table->string('code')->nullable();
-            $table->string('type')->default('original');
+            $table->string('type')->default('Member');
             $table->boolean('email_verified')->default(0)->nullable();
             $table->unsignedSmallInteger('refer_by')->nullable();
             $table->unsignedSmallInteger('referral')->nullable();
+            $table->unsignedSmallInteger('associated_with')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

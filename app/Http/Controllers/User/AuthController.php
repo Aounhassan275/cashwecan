@@ -37,6 +37,24 @@ class AuthController extends Controller
         ];
         if(Auth::guard('user')->attempt($creds)){
             $user = Auth::guard('user')->user();
+            if($user->total_referrals() >= 15000)
+            {
+                $user->update([
+                    'type' =>'Senior Member'
+                ]);
+            }elseif($user->total_referrals() >= 50000){
+                $user->update([
+                    'type' =>'Leader'
+                ]);
+            }elseif($user->total_referrals() >= 100000){
+                $user->update([
+                    'type' =>'Senior Leader'
+                ]);
+            }elseif($user->total_referrals() >= 200000){
+                $user->update([
+                    'type' =>'Top Leader'
+                ]);
+            }
             toastr()->success('Login Successfully');
             return redirect('user/dashboard');
         } else {

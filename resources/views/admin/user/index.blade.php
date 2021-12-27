@@ -21,6 +21,7 @@
                         <th style="width:auto;">Cash Wallet </th>
                         <th style="width:auto;">Temp Income </th>
                         <th style="width:auto;">Community Pool </th>
+                        <th style="width:auto;">Investment Amount </th>
                         <th style="width:auto;">Total Earning </th>
                         <th style="width:auto;">Refer By </th>
                         <th style="width:auto;">Placement </th>
@@ -39,6 +40,7 @@
                         <td>$ {{$user->cash_wallet}}</td>
                         <td>$ {{$user->total_income}}</td>
                         <td>$ {{$user->community_pool}}</td>
+                        <td>$ {{$user->investment_amount}}</td>
                         <td>$ {{$user->totalEarning()}}</td>
                         <td>{{$user->refer_by_name($user->refer_by)}}</td>
                         <td>{{$user->refer_by_name($user->referral)}}</td>

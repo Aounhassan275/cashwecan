@@ -244,17 +244,17 @@
                                 <div class="form-group col-md-6">
                                     <input type="hidden" name="id" value="{{$user->id}}">
                                     <label for="inputFirstName">User name</label>
-                                    <input type="text" class="form-control" name="name" id="inputFirstName" value="{{$user->name}}" @if(Auth::user()->email != 'admin2@mail.com') readonly @endif>
+                                    <input type="text" class="form-control" name="name" id="inputFirstName" value="{{$user->name}}" readonly>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Phone#</label>
-                                    <input type="number" class="form-control" name="phone"  value="{{$user->phone}}" @if(Auth::user()->email != 'admin2@mail.com')readonly @endif>
+                                    <input type="number" class="form-control" name="phone"  value="{{$user->phone}}" readonly >
                                 </div>  
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Email</label>
-                                    <input type="email" class="form-control" name="email"  value="{{$user->email}}" @if(Auth::user()->email != 'admin2@mail.com') readonly @endif>
+                                    <input type="email" class="form-control" name="email"  value="{{$user->email}}" >
                                 </div>   
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Password</label>
@@ -271,6 +271,11 @@
                                 <div class="form-group col-md-12">
                                     <label for="inputEmail4">Community Pool</label>
                                     <input type="number" class="form-control" name="community_pool"  value="{{$user->community_pool}}" >
+                                </div> 
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label ><input type="checkbox" name="email_verified"  {{ isset($user) && $user->email_verified ? 'checked' : '' }}> Email Verification</label>
                                 </div> 
                             </div>
                             <div class="text-right">

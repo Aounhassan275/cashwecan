@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Helpers\ReferralIncome;
+use App\Helpers\UserHepler;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyAccount;
 use App\Models\Earning;
@@ -118,12 +119,36 @@ class UserController extends Controller
             ]);
            
         }
-        $user->update([
-            'cash_wallet' => $user->cash_wallet + $request->cash_wallet,
-            'community_pool' =>  $user->community_pool +$request->community_pool,
-            'total_income' => $user->total_income - $amount
-        ]);
-        ReferralIncome::CommunityPoolIncome($request->community_pool);
+        if($user->package->price >= 1000)
+        {
+            $amount_for_packages = $user->community_pool + $request->community_pool/2;
+            $total_packages = $amount_for_packages/50;
+            $total_packages = (int)$total_packages;
+            $package_amount = $total_packages * 50;
+            $community_amount = $amount_for_packages - $package_amount;
+            if($community_amount > 0)
+            {
+                $user->update([
+                    'community_pool' =>  $community_amount,
+                ]);
+            }
+            for($i = 0;$i < $total_packages;$i++)     
+            {
+                UserHepler::CreateUser($user);
+            }       
+            $user->update([
+                'cash_wallet' => $user->cash_wallet + $request->cash_wallet,
+                'total_income' => $user->total_income - $amount
+            ]);
+        }else{
+            $user->update([
+                'cash_wallet' => $user->cash_wallet + $request->cash_wallet,
+                // 'community_pool' =>  $user->community_pool +$request->community_pool,
+                'investment_amount' =>  $user->investment_amount +$request->community_pool,
+                'total_income' => $user->total_income - $amount
+            ]);
+            ReferralIncome::CommunityPoolIncome($request->community_pool);
+        }
         toastr()->success('Amount Transferred Successfully');
         return response()->json([
             'status' => true,

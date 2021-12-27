@@ -52,7 +52,26 @@ DASHBOARD
             </div>
         </div>
     </div>
+    <div class="col-sm-6 col-xl-3">
+        <a href="#transfer_modal" data-toggle="modal" data-target="#transfer_modal">
+            <div class="card card-body bg-teal-400 has-bg-image">
+                <div class="media">
+                    
+                        <div class="mr-3 align-self-center">
+                            <blink> <i class="icon-nbsp icon-3x opacity-75"></i></blink>
+                        </div>
 
+                        <div class="media-body">
+                            <blink>
+                                <h3 class="mb-0">$ {{Auth::user()->total_income}}</h3>
+                                <span class="text-uppercase font-size-xs">Amount to Transfer</span>
+                            </blink>
+                        </div>
+                    
+                </div>
+            </div>
+        </a>
+    </div>
     <div class="col-sm-6 col-xl-3">
         <div class="card card-body">
             <div class="media mb-3">
@@ -97,26 +116,7 @@ DASHBOARD
             </div>
         </div>
     </div> --}}
-    <div class="col-sm-6 col-xl-3">
-        <a href="#transfer_modal" data-toggle="modal" data-target="#transfer_modal">
-            <div class="card card-body bg-teal-400 has-bg-image">
-                <div class="media">
-                    
-                        <div class="mr-3 align-self-center">
-                            <blink> <i class="icon-nbsp icon-3x opacity-75"></i></blink>
-                        </div>
-
-                        <div class="media-body">
-                            <blink>
-                                <h3 class="mb-0">$ {{Auth::user()->total_income}}</h3>
-                                <span class="text-uppercase font-size-xs">Amount to Transfer</span>
-                            </blink>
-                        </div>
-                    
-                </div>
-            </div>
-        </a>
-    </div>
+    
 </div>
 <div class="row">
     <div class="col-sm-6 col-xl-3">
@@ -172,8 +172,8 @@ DASHBOARD
                 </div>
 
                 <div class="media-body text-right">
-                    <h3 class="mb-0">$ {{Auth::user()->deposits()->sum('amount')}}</h3>
-                    <span class="text-uppercase font-size-xs">Total Deposit</span>
+                    <h3 class="mb-0">$ {{Auth::user()->total_referrals()}}</h3>
+                    <span class="text-uppercase font-size-xs">Referral Packages</span>
                 </div>
             </div>
         </div>
@@ -190,7 +190,7 @@ DASHBOARD
                 <div class="media-body text-right">
                     <h3 class="font-weight-semibold mb-0">
                         @if(Auth::user()->package)
-                        $ {{Auth::user()->package->price + Auth::user()->community_pool}}
+                        $ {{Auth::user()->package->price + Auth::user()->investment_amount}}
                         @endif
                     </h3>
                     <span class="text-uppercase font-size-sm text-muted">Package Price</span>

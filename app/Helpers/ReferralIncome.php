@@ -14,11 +14,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ReferralIncome
 {
-    public static function referral($deposit)
+    public static function referral($user)
     {
-        $user = $deposit->user; 
         $refer_by = User::find($user->refer_by);
-        $package = Package::find($deposit->package_id);
+        $package = $user->package;
         if($user->referral == null)
         {
             $fake_account = User::where('type','fake')->first();
@@ -44,11 +43,10 @@ class ReferralIncome
         ReferralIncome::DownLinePlacementIncome($package->price,$package,$user);
         //If the Refer By is leader then give him this also otherwise  goes to flush Account 
         ReferralIncome::TradeIncome($package->price,$package,$refer_by,$user);
-        ReferralIncome::CompanyIncome($package->price,$package);
+        ReferralIncome::CompanyIncome($package->price,$package,$type = 'Arrival');
         PackageHistory::create([
             'package_id' => $package->id,
-            'user_id' => $user->id,
-            'deposit_id' => $deposit->id
+            'user_id' => $user->id
         ]);
     } 
     public static  function FakeAccount($fake_account,$user)
@@ -293,7 +291,7 @@ class ReferralIncome
     {
         $trade_income = $price / 100 * $package->trade_income;
         info("Trade Income Amount : $trade_income");
-        if($user->type == 'leader')
+        if($user->id == $due_to->id)
         {
             Earning::create([
                 'price' => $trade_income,
@@ -306,23 +304,44 @@ class ReferralIncome
             ]);
             info("Trade Income Amount Added to $user->name : $trade_income"); 
         }else{
-            $flush_account = CompanyAccount::where('name','Flush Income')->first();
-            $flush_account->update([
-                'balance' => $flush_account->balance + $trade_income,
-            ]);
-            info("Trade Income Remaining Amount $trade_income Added to flush company Account"); 
+            if($user->type == 'Leader')
+            {
+                Earning::create([
+                    'price' => $trade_income,
+                    'user_id' => $user->id,
+                    'due_to' => $due_to->id,
+                    'type' => 'ranking_income'
+                ]);
+                $user->update([
+                    'total_income' => $user->total_income + $trade_income
+                ]);
+                info("Trade Income Amount Added to $user->name : $trade_income"); 
+            }
+            else{
+                $flush_account = CompanyAccount::where('name','Flush Income')->first();
+                $flush_account->update([
+                    'balance' => $flush_account->balance + $trade_income,
+                ]);
+                info("Trade Income Remaining Amount $trade_income Added to flush company Account"); 
+            }
         }
+       
     } 
-    public static function CompanyIncome($price,$package)
+    public static function CompanyIncome($price,$package,$type)
     {
         $company_income = $price / 100 * $package->company_income;
         info("Total Company Income Amount : $company_income");
         $company_account= CompanyAccount::where('name','Income')->first();
-        $employee_income = $price / 100 * 1;
-        info("Employee Income Amount : $employee_income");
         $employees = Admin::employee();
         foreach($employees as $employee)
         {
+            if($type == 'Community')
+            {
+                $employee_income = $price / 100 * $employee->community_income;
+            }else{
+                $employee_income = $price / 100 * $employee->new_arrival_income;
+            }
+
             $employee->update([
                 'balance' => $employee->balance + $employee_income,
             ]);
@@ -366,8 +385,8 @@ class ReferralIncome
         //Give it to Downline Tree members refer by and remaining goes to flush Account 
         ReferralIncome::DownLinePlacementIncome($price,$package,$user);
         //If the Refer By is leader then give him this also otherwise  goes to flush Account 
-        ReferralIncome::TradeIncome($price,$package,$refer_by,$user);
-        ReferralIncome::CompanyIncome($price,$package);
+        ReferralIncome::TradeIncome($price,$package,$user,$user);
+        ReferralIncome::CompanyIncome($price,$package,$type = 'Community');
     } 
     
 }

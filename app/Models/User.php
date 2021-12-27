@@ -22,7 +22,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name','fname','phone', 'email', 'password','city','status','balance','refer_by','cnic',
         'address','cash_wallet','total_income','community_pool','package_id', 'a_date','image', 
-        'verification','referral','code','type','email_verified'
+        'verification','referral','code','type','email_verified','investment_amount','associated_with'
     ];
 
     /**
@@ -162,6 +162,17 @@ class User extends Authenticatable
     {
         return $this->where('refer_by',$this->id)->where('type','!=','fake')->get();
     }
+	public function total_referrals()
+    {
+        $total_referrals = $this->mrefers()->where('status','active');
+        $amount = 0;
+        foreach($total_referrals as $referral)
+        {
+            $amount = $referral->package->price + $amount;
+        }
+        return $amount;
+    }
+
 	public function placement()
     {
         $placement =   $this->where('referral',$this->id)->where('type','!=','fake')->first();
@@ -276,10 +287,13 @@ class User extends Authenticatable
         $user = User::find($id);
         if($user)
         {
-            return $user->name;
+            if($user->type != 'fake')
+                return $user->name;
+            else 
+                return '';
+
         }else{
             return '';
-
         }
     }
     public function refer_by_user($id)

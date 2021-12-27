@@ -87,11 +87,7 @@
 
 			<span class="badge bg-success ml-md-3 mr-md-auto">Cash Wallet : $ {{Auth::user()->cash_wallet}}</span>
 			<span class="badge bg-teal ml-md-3 ">
-				@if(Auth::user()->type == 'leader')
-				Leader
-				@else
-				Member 
-				@endif
+				{{Auth::user()->type}}
 			</span>
 			<ul class="navbar-nav">
 

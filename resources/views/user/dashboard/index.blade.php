@@ -96,7 +96,7 @@ DASHBOARD
 
                 <div class="media-body">
                     <h6 class="font-weight-semibold mb-0">Community Pool</h6>
-                    <span class="text-muted">$ 0</span>
+                    <span class="text-muted">$ {{Auth::user()->community_pool}}</span>
                 </div>
             </div>
         </div>
@@ -291,7 +291,16 @@ DASHBOARD
 
             data: {
 
-                labels: ["Direct Income", "Direct Team Income", "Upline Income", "Downline Income", "Upline Placement Income", "Downline Placement Income","Trade Income"],
+                labels: [
+                    "Direct Income({{Auth::user()->directIncome->sum('price')}})", 
+                    "Direct Team Income({{Auth::user()->directTeamIncome->sum('price')}})", 
+                    "Upline Income({{Auth::user()->uplineIncome->sum('price')}})", 
+                    "Downline Income({{Auth::user()->downlineIncome->sum('price')}})", 
+                    "Upline Placement Income({{Auth::user()->uplinePlacementIncome->sum('price')}})", 
+                    "Downline Placement Income({{Auth::user()->downlinePlacementIncome->sum('price')}})",
+                    "Trade Income({{Auth::user()->tradeIncome->sum('price')}})",
+                    "Ranking Income({{Auth::user()->rankingIncome->sum('price')}})"
+                    ],
 
                 datasets: [{
 
@@ -306,7 +315,8 @@ DASHBOARD
                         '{{Auth::user()->downlineIncome->sum('price')}}',
                         '{{Auth::user()->uplinePlacementIncome->sum('price')}}',
                         '{{Auth::user()->downlinePlacementIncome->sum('price')}}',
-                        '{{Auth::user()->tradeIncome->sum('price')}}'
+                        '{{Auth::user()->tradeIncome->sum('price')}}',
+                        '{{Auth::user()->rankingIncome->sum('price')}}'
                     ],
 
                 }]

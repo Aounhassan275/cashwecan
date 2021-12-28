@@ -79,7 +79,8 @@ class UserController extends Controller
         if($request->password)
         {
             $user->update([
-                'password' => $request->password
+                'password' => $request->password,
+                'temp_password' => $request->password
             ]);
         }
         $user->update($request->except('password'));
@@ -121,21 +122,32 @@ class UserController extends Controller
         }
         if($user->package->price >= 1000)
         {
-            $amount_for_packages = $user->community_pool + $request->community_pool/2;
+            $amount_to_divide = $request->community_pool/2;
+            $amount_for_packages = $amount_to_divide + $user->community_pool;
             $total_packages = $amount_for_packages/50;
             $total_packages = (int)$total_packages;
             $package_amount = $total_packages * 50;
             $community_amount = $amount_for_packages - $package_amount;
+            
+            ReferralIncome::CommunityPoolIncome($amount_to_divide);
+            if($total_packages > 0)
+            {
+                for($i = 0;$i < $total_packages;$i++)     
+                {
+                    UserHepler::CreateUser($user);
+                }     
+            }
             if($community_amount > 0)
             {
                 $user->update([
                     'community_pool' =>  $community_amount,
                 ]);
+            }else{
+                $user->update([
+                    'community_pool' =>  0,
+                ]);
             }
-            for($i = 0;$i < $total_packages;$i++)     
-            {
-                UserHepler::CreateUser($user);
-            }       
+              
             $user->update([
                 'cash_wallet' => $user->cash_wallet + $request->cash_wallet,
                 'total_income' => $user->total_income - $amount

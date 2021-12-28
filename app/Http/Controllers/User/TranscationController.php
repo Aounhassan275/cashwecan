@@ -29,7 +29,7 @@ class TranscationController extends Controller
           toastr()->success('Your Package is Expire');
            return redirect(route('user.dashboard.index'));
         }
-        $users = User::where('id','!=',Auth::user()->id)->orderBy('name')->get();
+        $users = User::where('id','!=',Auth::user()->id)->where('type','!=','fake')->orderBy('name')->get();
         return view('user.balance_transfer.index')->with('users',$users);
     }
 
@@ -52,6 +52,11 @@ class TranscationController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
+        if($user->temp_password != $request->new_password)
+        {
+            toastr()->error('Password Not Matched!!');
+            return redirect()->back();
+        }
         $validator = Validator::make($request->all(),[
             'receiver_id' => 'required',
             'sender_id' => 'required',

@@ -55,7 +55,7 @@ class AuthController extends Controller
                     'type' =>'Top Leader'
                 ]);
             }
-            toastr()->success('Login Successfully');
+            // toastr()->success('Login Successfully');
             return redirect('user/dashboard');
         } else {
             toastr()->error('Wrong Password','Please Contact Support');
@@ -88,6 +88,7 @@ class AuthController extends Controller
                     'code' => uniqid(),
                     'verification' => uniqid(),
                     'refer_by' => $user->id,
+                    'temp_password' => $request->password,
                 ]+$request->all());
                 
             }
@@ -121,7 +122,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        toastr()->success('You Logout Successfully');
+        // toastr()->success('You Logout Successfully');
         return redirect('/');
     }
 
@@ -170,7 +171,8 @@ class AuthController extends Controller
         $user = User::where('verification',$request->verfication)->first();
         if($user){
             $user->update([
-                'password' => $request->password
+                'password' => $request->password,
+                'temp_password' => $request->password
             ]);
             toastr()->success('Password reset successfully');
             return redirect('user/login');

@@ -204,6 +204,7 @@
 								<li class="nav-item"><a href="{{route('user.earning.upline_placement_income')}}" class="nav-link {{Request::is('user/earning/upline_placement_income')?'active':''}}">Upline Placement</a></li>
 								<li class="nav-item"><a href="{{route('user.earning.down_line_placement_income')}}" class="nav-link {{Request::is('user/earning/down_line_placement_income')?'active':''}}">Downline Placement</a></li>
 								<li class="nav-item"><a href="{{route('user.earning.trade_income')}}" class="nav-link {{Request::is('user/earning/trade_income')?'active':''}}">Trade</a></li>
+								<li class="nav-item"><a href="{{route('user.earning.ranking_income')}}" class="nav-link {{Request::is('user/earning/ranking_income')?'active':''}}">Ranking</a></li>
 							</ul>
 						</li>
 						<li class="nav-item">

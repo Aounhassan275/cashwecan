@@ -138,6 +138,7 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
        Route::get('earning/upline_placement_income', 'EarningController@upline_placement_income')->name('earning.upline_placement_income');
        Route::get('earning/down_line_placement_income', 'EarningController@down_line_placement_income')->name('earning.down_line_placement_income');
        Route::get('report/overall_earning', 'EarningController@overall_earning')->name('report.overall_earning');
+       Route::get('earning/ranking_income', 'EarningController@ranking_income')->name('earning.ranking_income');
     /*******************Balance Transfer ROUTES*************/
     Route::get('balance_transfer', 'TranscationController@balance_transfer')->name('balance_transfer.index');
   /******************TRANSCATIONS  ROUTES****************/

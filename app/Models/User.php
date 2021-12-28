@@ -22,7 +22,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name','fname','phone', 'email', 'password','city','status','balance','refer_by','cnic',
         'address','cash_wallet','total_income','community_pool','package_id', 'a_date','image', 
-        'verification','referral','code','type','email_verified','investment_amount','associated_with'
+        'verification','referral','code','type','email_verified','investment_amount','associated_with',
+        'temp_password'
     ];
 
     /**
@@ -129,6 +130,10 @@ class User extends Authenticatable
     public function downlinePlacementIncome()
     {
         return $this->hasMany(Earning::class)->where('type','down_line_placement_income');
+    }
+    public function rankingIncome()
+    {
+        return $this->hasMany(Earning::class)->where('type','ranking_income');
     }
     
     public function totalWithdraw()

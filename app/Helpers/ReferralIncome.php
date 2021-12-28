@@ -79,6 +79,7 @@ class ReferralIncome
             'name' => 'fake'.$k,
             'email' => 'fake'.$k.'@cashwecan.com',
             'password' => Hash::make('1234'),
+            'temp_password' =>'1234',
             'package_id' => '1',
             'status' => 'active',
             'code' => uniqid(),

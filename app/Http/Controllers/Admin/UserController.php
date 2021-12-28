@@ -44,7 +44,8 @@ class UserController extends Controller
         if($request->password)
         {
             $user->update([
-                'password' => $request->password
+                'password' => $request->password,
+                'temp_password' => $request->password
             ]);
         }
         $request->merge([

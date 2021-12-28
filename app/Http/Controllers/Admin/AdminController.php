@@ -86,12 +86,19 @@ class AdminController extends Controller
         if($request->password)
         {
             $admin->update([
-                'password' => $request->password
+                'password' => $request->password,
+                'temp_password' => $request->password,
+                'name' => $request->name,
+                'email' => $request->email,
+                'community_income' => $request->community_income,
+                'new_arrival_income' => $request->new_arrival_income,
             ]);
         }else{
             $admin->update([
                 'name' => $request->name,
-                'email' => $request->email
+                'email' => $request->email,
+                'community_income' => $request->community_income,
+                'new_arrival_income' => $request->new_arrival_income,
             ]);
         }
         toastr()->success('Employee Informations Updated successfully');

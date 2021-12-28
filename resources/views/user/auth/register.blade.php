@@ -94,7 +94,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<button type="submit" onclick="$('.btn').text('Please Wait!!!').attr('disabled',true)" class="btn btn-primary btn-block">Sign Up <i class="icon-circle-right2 ml-2"></i></button>
+								<button type="submit" class="btn btn-primary btn-block">Sign Up <i class="icon-circle-right2 ml-2"></i></button>
 							</div>
 							<p  class="text-center">OR</p>
 							

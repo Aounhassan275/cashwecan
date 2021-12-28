@@ -123,7 +123,7 @@ class UserSeeder extends Seeder
                     'email' => 'company'.$i.'@cashwecan.com',
                     'password' => Hash::make('1234'),
                     'temp_password' =>'1234',
-                    'package_id' => '1',
+                    'package_id' => '5',
                     'status' => 'active',
                     'a_date' =>  Carbon::today(),
                     'code' => uniqid(),
@@ -139,7 +139,7 @@ class UserSeeder extends Seeder
                     'email' => 'company'.$i.'@cashwecan.com',
                     'password' => Hash::make('1234'),
                     'temp_password' =>'1234',
-                    'package_id' => '1',
+                    'package_id' => '5',
                     'status' => 'active',
                     'code' => uniqid(),
                     'refer_by' => $i - 1,
@@ -156,7 +156,7 @@ class UserSeeder extends Seeder
                     'email' => 'company'.$i.'@cashwecan.com',
                     'password' => Hash::make('1234'),
                     'temp_password' =>'1234',
-                    'package_id' => '1',
+                    'package_id' => '5',
                     'status' => 'active',
                     'code' => uniqid(),
                     'refer_by' => $i - 1,
@@ -169,7 +169,7 @@ class UserSeeder extends Seeder
             } 
             DB::table('package_histories')->insert([
                 [ 'user_id' => $i,
-                'package_id' => '1',
+                'package_id' => '5',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()],
             ]);

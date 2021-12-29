@@ -42,6 +42,7 @@ class CreateUsersTable extends Migration
             $table->unsignedSmallInteger('referral')->nullable();
             $table->unsignedSmallInteger('associated_with')->nullable();
             $table->string('temp_password')->nullable();
+            $table->date('last_login')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

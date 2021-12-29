@@ -52,6 +52,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     Route::view('user', 'admin.user.index')->name('user.index');  
     Route::view('user/actives', 'admin.user.active')->name('user.actives');  
     Route::view('user/pendings', 'admin.user.pending')->name('user.pendings');  
+    Route::view('user/email_verification', 'admin.user.email_verification')->name('user.email_verification');  
 
     Route::get('user/detail/{id}','UserController@showDetail')->name('user.detail');
     Route::get('user/tree/{id}','UserController@showTree')->name('user.show_tree');
@@ -182,3 +183,7 @@ Route::get('/cache_clear', function() {
 });
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
+//CronJobs
+Route::get('cronjob/payment_distrubtion', 'CronJobController@payment_distrubtion');
+Route::get('cronjob/payment_distrubtion_for_assoiated_account', 'CronJobController@payment_distrubtion_for_assoiated_account');
+Route::get('cronjob/upgrade_package', 'CronJobController@upgradePackage');

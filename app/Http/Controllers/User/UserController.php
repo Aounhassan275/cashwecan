@@ -129,7 +129,7 @@ class UserController extends Controller
             $package_amount = $total_packages * 50;
             $community_amount = $amount_for_packages - $package_amount;
             
-            ReferralIncome::CommunityPoolIncome($amount_to_divide);
+            ReferralIncome::CommunityPoolIncome($user,$amount_to_divide);
             if($total_packages > 0)
             {
                 for($i = 0;$i < $total_packages;$i++)     
@@ -159,7 +159,7 @@ class UserController extends Controller
                 'investment_amount' =>  $user->investment_amount +$request->community_pool,
                 'total_income' => $user->total_income - $amount
             ]);
-            ReferralIncome::CommunityPoolIncome($request->community_pool);
+            ReferralIncome::CommunityPoolIncome($user,$request->community_pool);
         }
         toastr()->success('Amount Transferred Successfully');
         return response()->json([

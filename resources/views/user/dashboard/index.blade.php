@@ -180,6 +180,37 @@ DASHBOARD
     </div>
 </div>
 <div class="row">
+    <div class="col-sm-6 col-xl-6">
+        <div class="card card-body bg-violet-400 has-bg-image">
+            <div class="media">
+                <div class="media-body">
+                    <h3 class="mb-0">{{Auth::user()->associatedUsers()->count()}}</h3>
+                    <span class="text-uppercase font-size-xs">Associated User</span>
+                </div>
+
+                <div class="ml-3 align-self-center">
+                    <i class="icon-users2 icon-3x opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-6">
+        <div class="card card-body bg-pink-400 has-bg-image">
+            <div class="media">
+                <div class="media-body">
+                    <h3 class="mb-0">$ {{Auth::user()->associatedUsersPackages()}}</h3>
+                    <span class="text-uppercase font-size-xs">Accoiated Package Price</span>
+                </div>
+
+                <div class="ml-3 align-self-center">
+                    <i class="icon-collaboration icon-3x opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-6 col-xl-3">
         <div class="card card-body">
             <div class="media">

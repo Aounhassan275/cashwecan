@@ -5,6 +5,7 @@ use App\Helpers\Message;
 use App\Helpers\MailHelper;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -55,6 +56,9 @@ class AuthController extends Controller
                     'type' =>'Top Leader'
                 ]);
             }
+            $user->update([
+                'last_login' => Carbon::today()
+            ]);
             // toastr()->success('Login Successfully');
             return redirect('user/dashboard');
         } else {
@@ -110,7 +114,11 @@ class AuthController extends Controller
             // ]+$request->all());
             
         }
-        MailHelper::EmailVerified($new_user);
+        try {
+            MailHelper::EmailVerified($new_user);
+        } catch (\Exception $e) {
+            info("Error in sending reminder email to $new_user->email " . $e->getMessage());
+        }
         toastr()->success('Your Account Has Been successfully Created, Please Verify Your Email Account via Link.');
         return redirect(route('user.login'));
     }
@@ -149,7 +157,12 @@ class AuthController extends Controller
         }
         $user->verification = uniqid();
         $user->save();
-        MailHelper::EmailVerified($user);
+        try {
+            MailHelper::EmailVerified($user);
+        } catch (\Exception $e) {
+            toastr()->error('Invalid Email.Contact Support!!');
+            return redirect()->back();
+        }
         toastr()->success('Email Send Successfully!');
         return redirect()->route('user.login');
     }

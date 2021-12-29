@@ -367,9 +367,8 @@ class ReferralIncome
         info("Company Income Amount : $company_income added to Company Account");
 
     } 
-    public static function CommunityPoolIncome($price)
+    public static function CommunityPoolIncome($user,$price)
     {
-        $user = Auth::user(); 
         $refer_by = User::find($user->refer_by);
         $package = $user->package;
         //Give it Main Refer By and add money in Total Income of Refer By User

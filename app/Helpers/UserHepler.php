@@ -22,7 +22,9 @@ class UserHepler
             'code' => uniqid(),
             'associated_with' => $user->id,
             'refer_by' => $user->id,
+            'email_verified' => true,
         ]);
+        info("$user->name  associted User Created : $new_user->name"); 
         ReferralIncome::referral($new_user);
     } 
     

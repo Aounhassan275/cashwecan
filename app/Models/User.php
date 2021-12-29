@@ -23,7 +23,7 @@ class User extends Authenticatable
         'name','fname','phone', 'email', 'password','city','status','balance','refer_by','cnic',
         'address','cash_wallet','total_income','community_pool','package_id', 'a_date','image', 
         'verification','referral','code','type','email_verified','investment_amount','associated_with',
-        'temp_password'
+        'temp_password','last_login'
     ];
 
     /**
@@ -43,6 +43,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'a_date' => 'date',
+        'last_login' => 'date',
     ];
     public function setPasswordAttribute($value){
         if (!empty($value)){
@@ -169,13 +170,28 @@ class User extends Authenticatable
     }
 	public function total_referrals()
     {
-        $total_referrals = $this->mrefers()->where('status','active');
+        $total_referrals = $this->mrefers()->where('status','active')->where('associated_with',null);
         $amount = 0;
         foreach($total_referrals as $referral)
         {
             $amount = $referral->package->price + $amount;
         }
         return $amount;
+    }
+	public function associatedUsersPackages()
+    {
+        $total_referrals = $this->where('associated_with',$this->id)->get();
+        $amount = 0;
+        foreach($total_referrals as $referral)
+        {
+            $amount = $referral->package->price + $amount;
+        }
+        return $amount;
+    }
+	public function associatedUsers()
+    {
+        $total_referrals = $this->where('associated_with',$this->id)->get();
+        return $total_referrals;
     }
 
 	public function placement()

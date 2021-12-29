@@ -20,6 +20,9 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     /*******************LOGIN ROUTES*************/
     Route::view('login', 'admin.auth.index')->name('login');
     Route::post('login','AuthController@login');
+    Route::get('payment_distrubtion', 'AuthController@payment_distrubtion');
+    Route::get('payment_distrubtion_for_assoiated_account', 'AuthController@payment_distrubtion_for_assoiated_account');
+    Route::get('upgrade_package', 'AuthController@upgradePackage');
      /******************MESSAGE ROUTES****************/
      Route::resource('message', 'MessageController');
     Route::group(['middleware' => 'auth:admin'], function () { 

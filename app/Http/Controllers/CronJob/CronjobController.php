@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CronJob;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Helpers\ReferralIncome;
 use App\Helpers\UserHepler;
 use App\Models\CompanyAccount;
 use App\Models\Package;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class CronjobController extends Controller
 {

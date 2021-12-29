@@ -184,6 +184,9 @@ Route::get('/cache_clear', function() {
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 //CronJobs
-Route::get('cronjob/payment_distrubtion', 'CronJobController@payment_distrubtion');
-Route::get('cronjob/payment_distrubtion_for_assoiated_account', 'CronJobController@payment_distrubtion_for_assoiated_account');
-Route::get('cronjob/upgrade_package', 'CronJobController@upgradePackage');
+Route::group(['prefix' => 'cronjob','namespace' => 'CronJob'], function () {
+    Route::get('payment_distrubtion', 'CronJobController@payment_distrubtion');
+    Route::get('payment_distrubtion_for_assoiated_account', 'CronJobController@payment_distrubtion_for_assoiated_account');
+    Route::get('upgrade_package', 'CronJobController@upgradePackage');
+});
+

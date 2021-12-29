@@ -163,6 +163,14 @@ Route::view('about_us', 'front.about.index');
 Route::view('videos', 'front.video.index'); 
 Route::view('withdraw', 'front.withdraw.index'); 
 Route::view('terms_&_condition', 'front.term.index'); 
+
+//CronJobs
+Route::group(['prefix' => 'cronjob','namespace' => 'CronJob'], function () {
+    Route::get('payment_distrubtion', 'CronJobController@payment_distrubtion');
+    Route::get('payment_distrubtion_for_assoiated_account', 'CronJobController@payment_distrubtion_for_assoiated_account');
+    Route::get('upgrade_package', 'CronJobController@upgradePackage');
+});
+
 /******************FUNCTIONALITY ROUTES****************/
 Route::get('/cd', function() {
     Artisan::call('config:cache');
@@ -182,11 +190,4 @@ Route::get('/cache_clear', function() {
     return 'Cache Clear DOne';
 });
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-
-//CronJobs
-Route::group(['prefix' => 'cronjob','namespace' => 'CronJob'], function () {
-    Route::get('payment_distrubtion', 'CronJobController@payment_distrubtion');
-    Route::get('payment_distrubtion_for_assoiated_account', 'CronJobController@payment_distrubtion_for_assoiated_account');
-    Route::get('upgrade_package', 'CronJobController@upgradePackage');
-});
 

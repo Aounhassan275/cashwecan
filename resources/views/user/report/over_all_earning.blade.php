@@ -105,7 +105,7 @@ OVERALL EARNING REPORT
             labels: [{!! $data['labels'] !!}],
             datasets: [
                 {
-                    label: 'Number of Reservations',
+                    label: 'Total Earnings',
                     data: [{!! $data['packages'] !!}],
                     borderWidth: 1,
                     hoverBorderWidth: 60,

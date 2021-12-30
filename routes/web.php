@@ -23,6 +23,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     Route::get('payment_distrubtion', 'AuthController@payment_distrubtion');
     Route::get('payment_distrubtion_for_assoiated_account', 'AuthController@payment_distrubtion_for_assoiated_account');
     Route::get('upgrade_package', 'AuthController@upgradePackage');
+    Route::get('payment_distrubtion_for_associated_Users', 'AuthController@payment_distrubtionforassociatedUsers');
      /******************MESSAGE ROUTES****************/
      Route::resource('message', 'MessageController');
     Route::group(['middleware' => 'auth:admin'], function () { 
@@ -143,6 +144,7 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
        Route::get('earning/down_line_placement_income', 'EarningController@down_line_placement_income')->name('earning.down_line_placement_income');
        Route::get('report/overall_earning', 'EarningController@overall_earning')->name('report.overall_earning');
        Route::get('earning/ranking_income', 'EarningController@ranking_income')->name('earning.ranking_income');
+       Route::get('earning/associated_income', 'EarningController@associated_income')->name('earning.associated_income');
     /*******************Balance Transfer ROUTES*************/
     Route::get('balance_transfer', 'TranscationController@balance_transfer')->name('balance_transfer.index');
   /******************TRANSCATIONS  ROUTES****************/
@@ -159,7 +161,7 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
 
 // Route::post('user/deposit', 'User\DepositController@store')->name('user.deposit.store');
 /******************FRONTEND ROUTES****************/
-Route::view('/', 'front.home.index');
+Route::get('/', 'User\AuthController@index');
 Route::view('contact_us', 'front.contact.index'); 
 Route::view('packages', 'front.package.index'); 
 Route::view('about_us', 'front.about.index'); 

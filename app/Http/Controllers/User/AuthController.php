@@ -194,5 +194,8 @@ class AuthController extends Controller
             return redirect()->back();
         }
     }
+    public function index(){
+        return redirect('user/login');
+    }
 
 }

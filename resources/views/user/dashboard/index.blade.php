@@ -180,12 +180,12 @@ DASHBOARD
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-6 col-xl-6">
+    <div class="col-sm-6 col-xl-3">
         <div class="card card-body bg-violet-400 has-bg-image">
             <div class="media">
                 <div class="media-body">
                     <h3 class="mb-0">{{Auth::user()->associatedUsers()->count()}}</h3>
-                    <span class="text-uppercase font-size-xs">Associated User</span>
+                    <span class="text-uppercase font-size-xs">Total Associated User</span>
                 </div>
 
                 <div class="ml-3 align-self-center">
@@ -195,7 +195,35 @@ DASHBOARD
         </div>
     </div>
 
-    <div class="col-sm-6 col-xl-6">
+    <div class="col-sm-6 col-xl-3">
+        <div class="card card-body bg-orange-400 has-bg-image">
+            <div class="media">
+                <div class="media-body">
+                    <h3 class="mb-0">$ {{Auth::user()->associatedUsersIncome()}}</h3>
+                    <span class="text-uppercase font-size-xs">Associated Cash Wallet</span>
+                </div>
+
+                <div class="ml-3 align-self-center">
+                    <i class="icon-wallet icon-3x opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="card card-body bg-brown-400 has-bg-image">
+            <div class="media">
+                <div class="media-body">
+                    <h3 class="mb-0">$ {{Auth::user()->associatedIncome->sum('price')}}</h3>
+                    <span class="text-uppercase font-size-xs">Total Associated Income</span>
+                </div>
+
+                <div class="ml-3 align-self-center">
+                    <i class="icon-cash3 icon-3x opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
         <div class="card card-body bg-pink-400 has-bg-image">
             <div class="media">
                 <div class="media-body">
@@ -330,14 +358,15 @@ DASHBOARD
                     "Upline Placement Income({{Auth::user()->uplinePlacementIncome->sum('price')}})", 
                     "Downline Placement Income({{Auth::user()->downlinePlacementIncome->sum('price')}})",
                     "Trade Income({{Auth::user()->tradeIncome->sum('price')}})",
-                    "Ranking Income({{Auth::user()->rankingIncome->sum('price')}})"
+                    "Ranking Income({{Auth::user()->rankingIncome->sum('price')}})",
+                    "Associated Income({{Auth::user()->associatedIncome->sum('price')}})"
                     ],
 
                 datasets: [{
 
                     label: "Earning",
 
-                    backgroundColor: ["#990099","#109618","#ff9900", "#dc3912", "#3366cc","#33C4FF","#0C3343"],
+                    backgroundColor: ["#990099","#109618","#ff9900", "#dc3912", "#3366cc","#33C4FF","#0C3343","#EC7063","#49BA98"],
 
                     data: [
                         '{{Auth::user()->directIncome->sum('price')}}',
@@ -347,7 +376,8 @@ DASHBOARD
                         '{{Auth::user()->uplinePlacementIncome->sum('price')}}',
                         '{{Auth::user()->downlinePlacementIncome->sum('price')}}',
                         '{{Auth::user()->tradeIncome->sum('price')}}',
-                        '{{Auth::user()->rankingIncome->sum('price')}}'
+                        '{{Auth::user()->rankingIncome->sum('price')}}',
+                        '{{Auth::user()->associatedIncome->sum('price')}}'
                     ],
 
                 }]

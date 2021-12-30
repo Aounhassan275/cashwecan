@@ -137,6 +137,11 @@ class User extends Authenticatable
         return $this->hasMany(Earning::class)->where('type','ranking_income');
     }
     
+    public function associatedIncome()
+    {
+        return $this->hasMany(Earning::class)->where('type','associated_income');
+    }
+    
     public function totalWithdraw()
     {
         return $this->hasMany(Withdraw::class)->sum('payment');
@@ -187,6 +192,16 @@ class User extends Authenticatable
             $amount = $referral->package->price + $amount;
         }
         return $amount;
+    }
+	public function associatedUsersIncome()
+    {
+        $total_referrals = $this->where('associated_with',$this->id)->get();
+        $amount = 0;
+        foreach($total_referrals as $referral)
+        {
+            $amount = $referral->cash_wallet + $amount;
+        }
+        return $amount/2;
     }
 	public function associatedUsers()
     {

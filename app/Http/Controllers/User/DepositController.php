@@ -85,6 +85,21 @@ class DepositController extends Controller
     {
         $user= User::find(Auth::user()->id);
         $package= Package::find($id);
+        if($user->cash_wallet >= $package->price)
+        {
+            $user->update([
+                'status' => 'active',
+                'a_date' => Carbon::today(),
+                'package_id' => $package->id,
+                'cash_wallet' => $user->cash_wallet -= $package->price,    
+            ]);
+            ReferralIncome::referral($user);
+            toastr()->success('Your Package Active Successfully.');
+            return redirect(route('user.dashboard.index'));
+        }else{
+            toastr()->warning('Your Cash Wallet have not enough balance to purchase Package.');
+            return redirect()->back();
+        }
         // $deposit = Deposit::create([
         //     'user_id' => Auth::user()->id,
         //     't_id' => uniqid(),
@@ -93,15 +108,7 @@ class DepositController extends Controller
         //     'amount' => $package->price,
         //     'status' => 'old'
         // ]);
-        $user->update([
-            'status' => 'active',
-            'a_date' => Carbon::today(),
-            'package_id' => $package->id,
-            'cash_wallet' => $user->cash_wallet -= $package->price,    
-        ]);
-        ReferralIncome::referral($user);
-        toastr()->success('Your Package Active Successfully.');
-        return redirect(route('user.dashboard.index'));
+      
     }
 
     /**

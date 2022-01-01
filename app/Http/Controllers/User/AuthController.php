@@ -159,12 +159,15 @@ class AuthController extends Controller
         $user->save();
         try {
             MailHelper::EmailVerified($user);
+            toastr()->success('Email Send Successfully!');
+            return redirect()->route('user.login');
         } catch (\Exception $e) {
-            toastr()->error('Invalid Email.Contact Support!!');
+            $error  =  $e->getmessage();
+            info("Email Error $error");
+            toastr()->error('Invalid Email Contact Support!!');
             return redirect()->back();
         }
-        toastr()->success('Email Send Successfully!');
-        return redirect()->route('user.login');
+     
     }
     public function VerifyAccount($code){
         $user = User::where('verification',$code)->first();

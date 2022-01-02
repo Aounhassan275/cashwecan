@@ -7,6 +7,7 @@ use App\Models\Message;
 use App\Http\Controllers\Controller;
 use App\Models\Email;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmailController extends Controller
 {
@@ -17,6 +18,11 @@ class EmailController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return redirect()->route('admin.dashboard.index');
+        }
         return view('admin.email.index');
     }
 
@@ -53,6 +59,11 @@ class EmailController extends Controller
      */
     public function show($id)
     {
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return redirect()->route('admin.dashboard.index');
+        }
         $message = Message::find($id);
         return view('admin.email.show',compact('message'));
     }

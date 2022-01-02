@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Source;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SourceController extends Controller
 {
@@ -15,6 +16,11 @@ class SourceController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return redirect()->route('admin.dashboard.index');
+        }
         return view('admin.source.index');
 
     }

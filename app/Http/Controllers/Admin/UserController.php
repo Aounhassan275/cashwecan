@@ -9,8 +9,49 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return redirect()->route('admin.dashboard.index');
+        }
+      return view('admin.user.index');
+    }
+    public function active()
+    {
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return redirect()->route('admin.dashboard.index');
+        }
+      return view('admin.user.active');
+    }
+    public function pending()
+    {
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return redirect()->route('admin.dashboard.index');
+        }
+      return view('admin.user.pending');
+    }
+    public function email_verification()
+    {
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return redirect()->route('admin.dashboard.index');
+        }
+      return view('admin.user.email_verification');
+    }
     public function showDetail($id)
     {
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return redirect()->route('admin.dashboard.index');
+        }
       $user = User::find($id);
       $placement = User::where('referral',$user->id)->get();
       return view('admin.user.detail',compact('user','placement'));

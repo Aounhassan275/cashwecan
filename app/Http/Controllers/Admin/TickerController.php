@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Ticker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TickerController extends Controller
 {
@@ -15,6 +16,11 @@ class TickerController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return redirect()->route('admin.dashboard.index');
+        }
         return view('admin.ticker.index');
     }
 

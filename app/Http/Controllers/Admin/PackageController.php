@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PackageController extends Controller
 {
@@ -15,6 +16,11 @@ class PackageController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return redirect()->route('admin.dashboard.index');
+        }
         return view('admin.package.index');
     }
 
@@ -25,6 +31,11 @@ class PackageController extends Controller
      */
     public function create()
     {
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return redirect()->route('admin.dashboard.index');
+        }
         return view('admin.package.create');
     }
 
@@ -60,6 +71,11 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return view('admin.dashboard.index');
+        }
         return view('admin.package.edit')->with('package',$package);
     }
 

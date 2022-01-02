@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Helpers\MailHelper;
 use App\Helpers\ReferralIncome;
 use App\Helpers\UserHepler;
 use App\Http\Controllers\Controller;
@@ -107,6 +108,26 @@ class UserController extends Controller
            return redirect(route('user.dashboard.index'));
         }
         return view('user.refer.index')->with('user',$user);
+    }
+    public function emailVerification()
+    {
+        $user = Auth::user();
+        if($user->email_verified == true){
+            toastr()->error('Your Account is already Verified');
+            return redirect()->back();
+        }
+        $user->verification = uniqid();
+        $user->save();
+        try {
+            MailHelper::EmailVerified($user);
+            toastr()->success('Email Send Successfully!');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            $error  =  $e->getmessage();
+            info("Email Error $error");
+            toastr()->error('Invalid Email Contact Support!!');
+            return redirect()->back();
+        }
     }
     public function transferFunds(Request $request)
     {

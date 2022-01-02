@@ -7,37 +7,7 @@
     </div>
 </div>
 <div class="row">
-
-    {{-- <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
-
-        <div class="card flex-fill">
-
-            <div class="card-body py-4">
-
-                <div class="media">
-
-                    <div class="d-inline-block mt-2 mr-3">
-
-                        <i class="feather-lg text-info" data-feather="dollar-sign"></i>
-
-                    </div>
-
-                    <div class="media-body">
-
-                        <h3 class="mb-2">$ {{number_format(Auth::user()->balance, 2)}}</h3>
-
-                        <div class="mb-0">Available Balance</div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div> --}}
-    <div class="col-6 col-sm-6 col-xl  d-xxl-flex">
+    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
 
         <div class="card flex-fill">
 
@@ -68,7 +38,7 @@
         </div>
 
     </div>
-    <div class="col-6 col-sm-6 col-xl  d-xxl-flex">
+    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
 
         <div class="card flex-fill">
 
@@ -78,7 +48,7 @@
 
                     <div class="d-inline-block mt-2 mr-3">
 
-                        <i class="feather-lg text-info" data-feather="dollar-sign"></i>
+                        <i class="feather-lg text-primary" data-feather="dollar-sign"></i>
 
                     </div>
 
@@ -99,13 +69,193 @@
         </div>
 
     </div>
+    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
 
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-warning" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        @php  
+                            $team_leader= App\Models\CompanyAccount::where('name','Team Leader')->first();
+                        @endphp
+                        <h3 class="mb-2">$ {{number_format(@$team_leader->balance, 2)}}</h3>
+
+                        <div class="mb-0">Team Leader Account Balance</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-success" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        @php  
+                            $gift= App\Models\CompanyAccount::where('name','Gift')->first();
+                        @endphp
+                        <h3 class="mb-2">$ {{number_format(@$gift->balance, 2)}}</h3>
+
+                        <div class="mb-0">Gift Account Balance</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-danger" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        @php  
+                            $new_account= App\Models\CompanyAccount::where('name','New Account')->first();
+                        @endphp
+                        <h3 class="mb-2">$ {{number_format(@$new_account->balance, 2)}}</h3>
+
+                        <div class="mb-0">Team Leader Account Balance</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-voilet" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        <h3 class="mb-2">$ {{Auth::user()->purchase_packages()}}</h3>
+
+                        <div class="mb-0">Purchased Packages</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 col-sm-6 col-xl  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-voilet" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        <h3 class="mb-2">$ {{App\Models\User::active()->sum('cash_wallet')}}</h3>
+
+                        <div class="mb-0">User Cash Wallet</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-6 col-sm-6 col-xl  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-teal" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        <h3 class="mb-2">$ {{App\Models\User::active()->sum('total_income')}}</h3>
+
+                        <div class="mb-0">User Temp Income</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 </div>
 <div class="row">
     <div class="col-lg-12">
         <div class="w-100">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <a href="{{route('admin.package.index')}}">
                         <div class="card flex-fill">
                             <div class="card-header">
@@ -127,7 +277,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <a href="{{route('admin.messages.index')}}">
                         <div class="card flex-fill">
                             <div class="card-header">
@@ -144,6 +294,28 @@
                                 </div>
                                 <div class="progress progress-sm shadow-sm mb-1">
                                     <div class="progress-bar bg-info" role="progressbar" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="{{route('admin.user.email_verification')}}">
+                        <div class="card flex-fill">
+                            <div class="card-header">
+                                <span class="badge badge-success float-right">All</span>
+                                <h5 class="card-title mb-0">Email Verification Pending</h5>
+                            </div>
+                            <div class="card-body my-2">
+                                <div class="row d-flex align-items-center mb-4">
+                                    <div class="col-8">
+                                        <h2 class="d-flex align-items-center mb-0 font-weight-light">
+                                            {{App\Models\User::where('email_verified',0)->where('associated_with',null)->where('type','!=','fake')->count()}}
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm shadow-sm mb-1">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
                                 </div>
                             </div>
                         </div>

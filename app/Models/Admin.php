@@ -49,4 +49,14 @@ class Admin extends Authenticatable
     {
         return $this->hasMany('App\Models\Transcation');
     }
+    public function purchase_packages()
+    {
+        $packages = PackageHistory::all();
+        $amount = 0;
+        foreach($packages as $package)
+        {
+            $amount = $amount + $package->package->price;
+        }
+        return $amount;
+    }
 }

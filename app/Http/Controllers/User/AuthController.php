@@ -21,11 +21,11 @@ class AuthController extends Controller
             toastr()->error('You are Blocked,Kindly Contact Support');
             return redirect()->back();
              }
-             if($user->email_verified == false)
-            {
-                toastr()->error('Verify Your Account on Email Address');
-                return redirect()->back();
-             }
+            //  if($user->email_verified == false)
+            // {
+            //     toastr()->error('Verify Your Account on Email Address');
+            //     return redirect()->back();
+            //  }
         }
         if(!$user){
             toastr()->error('Please register your account');

@@ -47,17 +47,6 @@
 						</a>
 					</li>
 					@if(Auth::user()->type == 2) 
-					<li class="sidebar-item">
-						<a href="{{url('#users')}}" data-toggle="collapse" class="sidebar-link collapsed">
-							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">User</span>
-						</a>
-						<ul id="users" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar"> 
-							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.index')}}">All User</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.actives')}}">Active User</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.user.pendings')}}">Pending User</a></li>
-
-						</ul>
-					</li>
 					<li class="sidebar-item {{Request::is('admin.balance_transfer.index')?'active':''}}">
 
 						<a class="sidebar-link" href="{{route('admin.balance_transfer.index')}}">
@@ -67,15 +56,16 @@
 						</a>
 
 					</li>	
-					{{-- <li class="sidebar-item">
-						<a href="{{url('#deposit')}}" data-toggle="collapse" class="sidebar-link collapsed">
-							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Packages Deposit</span>
+					<li class="sidebar-item">
+						<a href="{{url('#transcation')}}" data-toggle="collapse" class="sidebar-link collapsed">
+							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Trancations</span>
 						</a>
-						<ul id="deposit" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-							<li class="sidebar-item "><a class="sidebar-link" href="{{route('admin.deposit.index')}}">Deposit Request</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.deposit.show')}}">Deposit History</a></li>
+						<ul id="transcation" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+							<li class="sidebar-item "><a class="sidebar-link" href="{{route('admin.transcation.index')}}">Your Transcations</a></li>
+							<li class="sidebar-item "><a class="sidebar-link" href="{{route('admin.transcation.all')}}">All User Trancations</a></li>
+							<li class="sidebar-item "><a class="sidebar-link" href="{{route('admin.transcation.pin_history')}}">All Pin History</a></li>
 						</ul>
-					</li> --}}
+					</li>
 					@else
 					<li class="sidebar-item">
 						<a href="{{url('#layouts')}}" data-toggle="collapse" class="sidebar-link collapsed">

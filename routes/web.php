@@ -53,10 +53,10 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     /******************Email ROUTES****************/
     Route::resource('email', 'EmailController');
     /******************User ROUTES****************/
-    Route::view('user', 'admin.user.index')->name('user.index');  
-    Route::view('user/actives', 'admin.user.active')->name('user.actives');  
-    Route::view('user/pendings', 'admin.user.pending')->name('user.pendings');  
-    Route::view('user/email_verification', 'admin.user.email_verification')->name('user.email_verification');  
+    Route::get('user', 'UserController@index')->name('user.index');  
+    Route::get('user/actives', 'UserController@active')->name('user.actives');  
+    Route::get('user/pendings', 'UserController@pending')->name('user.pendings');  
+    Route::get('user/email_verification', 'UserController@email_verification')->name('user.email_verification');  
 
     Route::get('user/detail/{id}','UserController@showDetail')->name('user.detail');
     Route::get('user/tree/{id}','UserController@showTree')->name('user.show_tree');
@@ -125,6 +125,7 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::get('{payment}/deposit/{package}', 'DepositController@deposit')->name('deposits.index');    
     Route::get('package/direct_deposit/{package}', 'DepositController@directDeposit')->name('package.direct_deposit');    
     /******************REFRRAL ROUTES****************/
+    Route::get('resend/verification_email', 'UserController@emailVerification')->name('resend.email_verification');
     Route::get('refer', 'UserController@refer')->name('refer.index');
     Route::get('refer/tree','ReferralController@showTree')->name('tree.show');
     Route::post('transfer_funds','UserController@transferFunds')->name('transfer_funds');

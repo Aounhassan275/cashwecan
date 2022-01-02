@@ -16,7 +16,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.employee.index');
+        if(Auth::user()->type == 2) 
+        {
+            toastr()->warning('You dont have access');
+            return redirect()->route('admin.dashboard.index');
+        }else{
+            return view('admin.employee.index');
+        }
     }
     public function dashboard()
     {

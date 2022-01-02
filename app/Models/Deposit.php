@@ -28,7 +28,7 @@ class Deposit extends Model
     }
     public static function new()
     {
-        return (New static)::where('status','new')->where('payment','Binance')->get();
+        return (New static)::where('status','new')->get();
     }
     public static function binance()
     {

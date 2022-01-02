@@ -262,13 +262,21 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
                                     <label for="inputEmail4">Cash Wallet</label>
-                                    <input type="text" class="form-control" name="cash_wallet"  value="{{$user->cash_wallet}}" >
+                                    <input type="number" class="form-control" name="cash_wallet"  value="{{$user->cash_wallet}}" >
+                                </div> 
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Temp Income</label>
+                                    <input type="number" class="form-control" name="cash_wallet"  value="{{$user->total_income}}" >
                                 </div> 
                             </div> 
                             <div class="form-row">
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Total Invesment</label>
+                                    <input type="number" class="form-control" name="investment_amount"  value="{{$user->investment_amount}}" >
+                                </div> 
+                                <div class="form-group col-md-6">
                                     <label for="inputEmail4">Community Pool</label>
                                     <input type="number" class="form-control" name="community_pool"  value="{{$user->community_pool}}" >
                                 </div> 

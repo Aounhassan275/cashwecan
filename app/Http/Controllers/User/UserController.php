@@ -141,6 +141,14 @@ class UserController extends Controller
             ]);
            
         }
+        if($amount < 10)
+        {
+            return response()->json([
+                'status' => false,
+                'message' => 'Amount must be $ 10 or more'
+            ]);
+           
+        }
         if($user->package->price >= 1000)
         {
             $amount_to_divide = $request->community_pool/2;

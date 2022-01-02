@@ -268,7 +268,7 @@
                                 </div> 
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Temp Income</label>
-                                    <input type="number" class="form-control" name="cash_wallet"  value="{{$user->total_income}}" >
+                                    <input type="number" class="form-control" name="total_income"  value="{{$user->total_income}}" >
                                 </div> 
                             </div> 
                             <div class="form-row">

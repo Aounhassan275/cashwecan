@@ -111,7 +111,7 @@ class AuthController extends Controller
     public function payment_distrubtion_for_assoiated_account() {
 		info("Payment Distrubtion For Assoiated Account CRONJOB CALLED AT " . date("d-M-Y h:i a"));
         $users = User::where('associated_with','!=',null)
-                ->where('cash_wallet','>',0)
+                ->where('cash_wallet','>',10)
                 ->get();
 		if ($users) {
             $total_users = $users->count();

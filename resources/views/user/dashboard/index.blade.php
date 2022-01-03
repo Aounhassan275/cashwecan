@@ -22,14 +22,14 @@ DASHBOARD
 
 @section('contents')
 @if(Auth::user()->email_verified == false)
-<div class="row">
+{{-- <div class="row">
     <div class="col-md-12">
         <div class="alert bg-warning text-white alert-styled-right alert-dismissible">
             <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
             <span class="font-weight-semibold">Warning!</span> Your Account is not Verified otherwise account get blocked in {{(10-Carbon\Carbon::today()->diffInDays(Auth::user()->created_at))}} day(s).Email is already Send to your Account.If Not Received?<a href="{{route('user.resend.email_verification')}}" class="alert-link">Click Here</a>.
         </div>
     </div>
-</div>
+</div> --}}
 @endif
 <div class="row">
     <div class="col-md-6">

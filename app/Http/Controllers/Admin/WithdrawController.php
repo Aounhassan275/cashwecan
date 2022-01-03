@@ -43,13 +43,15 @@ class WithdrawController extends Controller
         // dd($deposit);
         $withdraw->update([
             'status' => 'Completed',
-        ]);     
+        ]);
+        $amount = $withdraw->payment/100 * 90;
+        $name = $withdraw->user->name;
+        info("Withdraw Completed : $amount Transferred To User $name");   
         $company_account= CompanyAccount::find(1);
         $company_account->update([
-          'balance' => $company_account->balance -= $withdraw->payment,
+          'balance' => $company_account->balance -= $amount,
         ]);
         toastr()->success('Withdraw is Completed Now');
-
         return redirect()->back();
     }
 }

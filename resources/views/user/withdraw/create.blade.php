@@ -3,6 +3,14 @@
 Withdraw
 @endsection
 @section('contents')
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert bg-info text-white alert-styled-right alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+            <span class="font-weight-semibold">Alert!</span>User Balance in cash wallet will be atleast $25 to get withdraw.
+        </div>
+    </div>
+</div>
 <div class="row" >
     <div class="col-md-12">
         <!-- Basic layout-->

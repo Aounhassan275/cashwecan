@@ -157,7 +157,7 @@ class UserController extends Controller
             $total_packages = (int)$total_packages;
             $package_amount = $total_packages * 50;
             $community_amount = $amount_for_packages - $package_amount;
-            
+            info("Amount To Transfer For Community Pool $user->name : $amount_to_divide");
             ReferralIncome::CommunityPoolIncome($user,$amount_to_divide);
             if($total_packages > 0)
             {

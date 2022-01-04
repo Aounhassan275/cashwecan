@@ -29,7 +29,7 @@
                    <div class="row">
                         <div class="form-group col-4">
                             <label class="form-label">Total Direct Income</label>
-                            <input type="number" class="form-control" name="direct_income"  placeholder="Total Direct Income" value="{{$package->price}}">
+                            <input type="number" class="form-control" name="direct_income"  placeholder="Total Direct Income" value="{{$package->direct_income}}">
                         </div>
                         <div class="form-group col-4">
                             <label class="form-label">Direct Team Income</label>

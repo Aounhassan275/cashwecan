@@ -69,10 +69,16 @@ class AuthController extends Controller
     }
     public function register(Request $request)
     {
+        
         if($request->code)
         { 
             if($request->password != $request->confirm_password){
                 toastr()->error('Password Dont Match');
+                return redirect()->back()->withInput();
+            }
+            $image = $request->image->getClientOriginalExtension();
+            if($image != "jpeg" && $image != "jpg" && $image != "png"){
+                toastr()->error('Only Image File get Upload');
                 return redirect()->back()->withInput();
             }
             $user= User::where('code',$request->code)->first();

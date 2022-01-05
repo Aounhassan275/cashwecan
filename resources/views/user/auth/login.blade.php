@@ -74,10 +74,12 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 ml-2"></i></button>
 							</div>
+							<p  class="text-center">Want To Register with Company?</p>
+							<a href="{{url('user/register/61d209bc1220c')}}"><button type="button" class="btn btn-primary btn-block">Register Now <i class="icon-circle-right2 ml-2"></i></button></a>
+						
 							<p  class="text-center">Dont Received Account Verification Email?</p>
 							
 							<a href="{{route('user.resend_email')}}"><button type="button" class="btn btn-primary btn-block">Resend Email <i class="icon-circle-right2 ml-2"></i></button></a>
-						
 						</div>
 					</div>
 				</form>

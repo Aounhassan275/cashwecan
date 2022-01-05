@@ -141,11 +141,11 @@ class UserController extends Controller
             ]);
            
         }
-        if($amount < 10)
+        if($amount < 5)
         {
             return response()->json([
                 'status' => false,
-                'message' => 'Amount must be $ 10 or more'
+                'message' => 'Amount must be $ 5 or more'
             ]);
            
         }

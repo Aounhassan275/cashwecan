@@ -42,7 +42,7 @@ class AuthController extends Controller
 		info("Payment Distrubtion CRONJOB:   $payment_distrubtion_days");
         $users = User::where('associated_with',null)
                 ->whereDate('last_login',$payment_distrubtion_days)
-                ->where('total_income','>',10)
+                ->where('total_income','>',5)
                 ->where('refer_by','!=',null)
                 ->where('type','!=','fake')
                 ->get();
@@ -111,7 +111,7 @@ class AuthController extends Controller
     public function payment_distrubtion_for_assoiated_account() {
 		info("Payment Distrubtion For Assoiated Account CRONJOB CALLED AT " . date("d-M-Y h:i a"));
         $users = User::where('associated_with','!=',null)
-                ->where('cash_wallet','>',10)
+                ->where('cash_wallet','>',5)
                 ->get();
 		if ($users) {
             $total_users = $users->count();
@@ -184,7 +184,7 @@ class AuthController extends Controller
     public function payment_distrubtionforassociatedUsers() {
 		info("Payment Distrubtion CRONJOB CALLED AT " . date("d-M-Y h:i a"));
         $users = User::where('associated_with','!=',null)
-                ->where('total_income','>',10)
+                ->where('total_income','>',5)
                 ->where('refer_by','!=',null)
                 ->where('type','!=','fake')
                 ->get();

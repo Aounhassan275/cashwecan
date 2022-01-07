@@ -8,6 +8,14 @@ OVERALL EARNING REPORT
 @endsection
 @section('styles')
 <script src="{{asset('user_asset/global_assets/js/demo_pages/picker_date.js')}}"></script>
+
+<style>
+    .chart-container {
+  position: relative;
+  margin: auto;
+  height: 80vh;
+}
+</style>
 @endsection
 
 
@@ -54,7 +62,7 @@ OVERALL EARNING REPORT
                         </div>    
                     </div>
                 </form>
-                <div class="text-center" style="padding: 10px">
+                <div class="text-center chart-container" style="padding: 10px">
                     <canvas id="report"></canvas>
                 </div>
             </div>
@@ -134,6 +142,7 @@ OVERALL EARNING REPORT
                 intersect: false
             },
             responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 xAxes: [{
                     display: false,
@@ -147,6 +156,7 @@ OVERALL EARNING REPORT
                     }
                 }]
             },
+            
             cutoutPercentage: 25,
         }
     });

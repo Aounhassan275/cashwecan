@@ -4,6 +4,13 @@ VIEW DIRECT INCOME
 @endsection
 @section('styles')
 <script src="{{asset('user_asset/global_assets/js/demo_pages/picker_date.js')}}"></script>
+<style>
+      .chart-container {
+  position: relative;
+  margin: auto;
+  height: 80vh;
+}
+</style>
 @endsection
 @section('contents')
 
@@ -79,8 +86,8 @@ VIEW DIRECT INCOME
                         </div>    
                     </div>
                 </form>
-                <div class="table-responsive">
-                    <canvas id="report"></canvas>
+                <div  style="position: relative; height:40vh; width:75vw">
+                    <canvas id="report" ></canvas>
                 </div>
             </div>
         </div>
@@ -117,6 +124,7 @@ VIEW DIRECT INCOME
                 intersect: false
             },
             responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 xAxes: [{
                 }],

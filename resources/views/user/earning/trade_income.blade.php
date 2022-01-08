@@ -79,7 +79,7 @@ VIEW TRADE INCOME
                         </div>    
                     </div>
                 </form>
-                <div class="table-responsive">
+                <div class="table-responsive" style="position: relative; height:50vh; width:75vw">
                     <canvas id="report"></canvas>
                 </div>
             </div>
@@ -116,6 +116,8 @@ VIEW TRADE INCOME
                 intersect: false
             },
             responsive: true,
+            maintainAspectRatio: false,
+
             scales: {
                 xAxes: [{
                 }],

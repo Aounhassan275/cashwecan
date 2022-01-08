@@ -62,7 +62,7 @@ OVERALL EARNING REPORT
                         </div>    
                     </div>
                 </form>
-                <div class="text-center chart-container" style="padding: 10px">
+                <div class="text-center chart-container" style="position: relative; height:80vh; width:75vw">
                     <canvas id="report"></canvas>
                 </div>
             </div>

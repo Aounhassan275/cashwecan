@@ -63,55 +63,57 @@
         <div class="card-header">
             <h5 class="card-title">View Accounts Detail</h5>
         </div>
-        <table class="table" id="datatables-reponsive">
-            <thead>
-                <tr>
-                    <th style="width:auto;">Sr#</th>
-                    <th style="width:auto;">Image</th>
-                    <th style="width:auto;">Account Holder Name</th>
-                    <th style="width:auto;">Account Number</th>
-                    <th style="width:auto;">Payment Method</th>
-                    <th style="width:auto;">Bank Name</th>
-                    <th style="width:auto;">Receiver Number</th>
-                    <th style="width:auto;">Action</th>
-                    <th style="width:auto;">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (App\Models\Payment::all() as $key => $payment)
-                <tr> 
-                    <td>{{$key+1}}</td>
-                    <td>
-                        @if($payment->image)
-                        <img src="{{asset($payment->image)}}" width="50px;" height="50px;">
+        <div class="table-responsive">
+            <table class="table" id="datatables-reponsive">
+                <thead>
+                    <tr>
+                        <th style="width:auto;">Sr#</th>
+                        <th style="width:auto;">Image</th>
+                        <th style="width:auto;">Account Holder Name</th>
+                        <th style="width:auto;">Account Number</th>
+                        <th style="width:auto;">Payment Method</th>
+                        <th style="width:auto;">Bank Name</th>
+                        <th style="width:auto;">Receiver Number</th>
+                        <th style="width:auto;">Action</th>
+                        <th style="width:auto;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (App\Models\Payment::all() as $key => $payment)
+                    <tr> 
+                        <td>{{$key+1}}</td>
+                        <td>
+                            @if($payment->image)
+                            <img src="{{asset($payment->image)}}" width="50px;" height="50px;">
+                            @endif
+                        </td>
+                        <td>{{$payment->name}}</td>
+                        <td>{{$payment->number}}</td>
+                        <td>{{$payment->method}}</td>
+                        @if ($payment->method =='Bank Account')
+                        <td>{{$payment->bank}}</td>
+                        <td>{{$payment->bnumber}}</td>
+                        @else
+                        <td></td>
+                        <td></td>
                         @endif
-                    </td>
-                    <td>{{$payment->name}}</td>
-                    <td>{{$payment->number}}</td>
-                    <td>{{$payment->method}}</td>
-                    @if ($payment->method =='Bank Account')
-                    <td>{{$payment->bank}}</td>
-                    <td>{{$payment->bnumber}}</td>
-                    @else
-                    <td></td>
-                    <td></td>
-                    @endif
-                    <td class="table-action">
-                        <button data-toggle="modal" data-target="#edit_modal" name="{{$payment->name}}" 
-                            method="{{$payment->method}}" number="{{$payment->number}}" bnumber="{{$payment->bnumber}}" bank="{{$payment->bank}}" id="{{$payment->id}}" class="edit-btn btn"><i class="align-middle" data-feather="edit-2"></i></button>
-                    </td>
-                    <td class="table-action">
-                        {{-- <a href="{{url('poll/delete',$package->id)}}"><i class="align-middle" data-feather="trash"></i></a> --}}
-                        <form action="{{route('admin.payment.destroy',$payment->id)}}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button class="btn"><i class="align-middle" data-feather="trash"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                        <td class="table-action">
+                            <button data-toggle="modal" data-target="#edit_modal" name="{{$payment->name}}" 
+                                method="{{$payment->method}}" number="{{$payment->number}}" bnumber="{{$payment->bnumber}}" bank="{{$payment->bank}}" id="{{$payment->id}}" class="edit-btn btn"><i class="align-middle" data-feather="edit-2"></i></button>
+                        </td>
+                        <td class="table-action">
+                            {{-- <a href="{{url('poll/delete',$package->id)}}"><i class="align-middle" data-feather="trash"></i></a> --}}
+                            <form action="{{route('admin.payment.destroy',$payment->id)}}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn"><i class="align-middle" data-feather="trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <div id="edit_modal" class="modal fade">

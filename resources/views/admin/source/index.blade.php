@@ -34,36 +34,38 @@
         <div class="card-header">
             <h5 class="card-title">View Sources</h5>
         </div>
-        <table class="table" id="datatables-reponsive">
-            <thead>
-                <tr>
-                    <th style="width:auto;">Sr No.</th>
-                    <th style="width:auto;">Source Name</th>
-                    <th style="width:auto;">Action</th>
-                    <th style="width:auto;">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (App\Models\Source::all() as $key => $source)
-                <tr> 
-                    <td>{{$key+1}}</td>
-                    <td>{{$source->name}}</td>
-                    <td class="table-action">
-                        <button data-toggle="modal" data-target="#edit_modal" name="{{$source->name}}" 
-                             id="{{$source->id}}" class="edit-btn btn"><i class="align-middle" data-feather="edit-2"></i></button>
-                    </td>
-                    <td class="table-action">
-                        {{-- <a href="{{url('poll/delete',$package->id)}}"><i class="align-middle" data-feather="trash"></i></a> --}}
-                        <form action="{{route('admin.source.destroy',$source->id)}}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button class="btn"><i class="align-middle" data-feather="trash"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table" id="datatables-reponsive">
+                <thead>
+                    <tr>
+                        <th style="width:auto;">Sr No.</th>
+                        <th style="width:auto;">Source Name</th>
+                        <th style="width:auto;">Action</th>
+                        <th style="width:auto;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (App\Models\Source::all() as $key => $source)
+                    <tr> 
+                        <td>{{$key+1}}</td>
+                        <td>{{$source->name}}</td>
+                        <td class="table-action">
+                            <button data-toggle="modal" data-target="#edit_modal" name="{{$source->name}}" 
+                                id="{{$source->id}}" class="edit-btn btn"><i class="align-middle" data-feather="edit-2"></i></button>
+                        </td>
+                        <td class="table-action">
+                            {{-- <a href="{{url('poll/delete',$package->id)}}"><i class="align-middle" data-feather="trash"></i></a> --}}
+                            <form action="{{route('admin.source.destroy',$source->id)}}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn"><i class="align-middle" data-feather="trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <div id="edit_modal" class="modal fade">

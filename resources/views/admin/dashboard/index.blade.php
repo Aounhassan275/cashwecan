@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+    <div class="col-md-4   d-xxl-flex">
 
         <div class="card flex-fill">
 
@@ -38,7 +38,7 @@
         </div>
 
     </div>
-    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+    <div class="col-md-4   d-xxl-flex">
 
         <div class="card flex-fill">
 
@@ -69,7 +69,7 @@
         </div>
 
     </div>
-    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+    <div class="col-md-4   d-xxl-flex">
 
         <div class="card flex-fill">
 
@@ -102,7 +102,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+    <div class="col-md-4 d-xxl-flex">
 
         <div class="card flex-fill">
 
@@ -133,7 +133,7 @@
         </div>
 
     </div>
-    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+    <div class="col-md-4  d-xxl-flex">
 
         <div class="card flex-fill">
 
@@ -164,7 +164,7 @@
         </div>
 
     </div>
-    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+    <div class="col-md-4  d-xxl-flex">
 
         <div class="card flex-fill">
 
@@ -194,7 +194,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-6 col-sm-6 col-xl  d-xxl-flex">
+    <div class="col-md-4  d-xxl-flex">
 
         <div class="card flex-fill">
 
@@ -222,7 +222,7 @@
         </div>
 
     </div>
-    <div class="col-6 col-sm-6 col-xl  d-xxl-flex">
+    <div class="col-md-4  d-xxl-flex">
 
         <div class="card flex-fill">
 

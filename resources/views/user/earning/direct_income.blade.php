@@ -86,7 +86,7 @@ VIEW DIRECT INCOME
                         </div>    
                     </div>
                 </form>
-                <div  style="position: relative; height:40vh; width:75vw">
+                <div class="table-responsive" style="position: relative; height:50vh; width:75vw">
                     <canvas id="report" ></canvas>
                 </div>
             </div>

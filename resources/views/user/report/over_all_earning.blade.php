@@ -9,13 +9,6 @@ OVERALL EARNING REPORT
 @section('styles')
 <script src="{{asset('user_asset/global_assets/js/demo_pages/picker_date.js')}}"></script>
 
-<style>
-    .chart-container {
-  position: relative;
-  margin: auto;
-  height: 80vh;
-}
-</style>
 @endsection
 
 
@@ -62,7 +55,7 @@ OVERALL EARNING REPORT
                         </div>    
                     </div>
                 </form>
-                <div class="text-center chart-container" style="position: relative; height:80vh; width:75vw">
+                <div class="text-center chart-container table-responsive" style="position: relative; height:80vh; width:100%">
                     <canvas id="report"></canvas>
                 </div>
             </div>
@@ -76,6 +69,7 @@ OVERALL EARNING REPORT
 <script src="{{ url('chart/Chart.min.js') }}"></script>
 <script>
     var ctx = document.getElementById("report").getContext('2d');
+
     var colors = [
         '#FA00A7',
         '#52DDB0',
@@ -109,6 +103,7 @@ OVERALL EARNING REPORT
     ];
     var myChart = new Chart(ctx, {
         type: 'doughnut',
+        
         data: {
             labels: [{!! $data['labels'] !!}],
             datasets: [
@@ -157,7 +152,7 @@ OVERALL EARNING REPORT
                 }]
             },
             
-            cutoutPercentage: 25,
+            percentageInnerCutout : 90,
         }
     });
     function getRandomColor() {

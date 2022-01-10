@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1,">
     <meta name="description" content="CASH WE CAN | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
 	<meta name="author" content="Bootlab">
     <title>ADMIN PANEL | CASH WE CAN</title> 

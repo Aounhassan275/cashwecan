@@ -300,6 +300,7 @@
                     <div class="card-header">
                         <h5 class="card-title">View Deposit History</h5>
                     </div>
+                    <div class="table-responsive">
                     <table id="datatables-buttons" class="table table-striped">
                         <thead>
                             <tr>
@@ -326,6 +327,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>   
             <div class="tab-pane fade" id="draw" role="tabpanel">
@@ -333,6 +335,7 @@
                     <div class="card-header">
                         <h5 class="card-title">View Withdraw History</h5>
                     </div>
+                    <div class="table-responsive">
                     <table id="datatables-buttons" class="table table-striped">
                         <thead>
                             <tr>
@@ -364,6 +367,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div> 
             <div class="tab-pane fade" id="referral" role="tabpanel">
@@ -371,6 +375,7 @@
                     <div class="card-header">
                         <h5 class="card-title">View Referral History</h5>
                     </div>
+                    <div class="table-responsive">
                     <table id="datatables-buttons" class="table table-striped">
                         <thead>
                             <tr>
@@ -397,6 +402,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
         </div>

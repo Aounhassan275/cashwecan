@@ -191,7 +191,7 @@
     $(function() {
         // Datatables Responsive
         $("#datatables-reponsive").DataTable({
-            responsive: true
+            // responsive: true
         });
     });
 </script>

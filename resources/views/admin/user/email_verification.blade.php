@@ -77,8 +77,8 @@
     $(function() {
         // Datatables with Buttons
         var datatablesButtons = $("#datatables-buttons").DataTable({
-            responsive: true,
-            lengthChange: !1,
+            // responsive: true,
+            // lengthChange: !1,
             buttons: ["copy", "print"]
         });
         datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)");

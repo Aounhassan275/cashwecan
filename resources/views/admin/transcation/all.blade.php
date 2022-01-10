@@ -11,6 +11,7 @@
         <div class="card-header">
             <h5 class="card-title">View Transcations </h5>
         </div>
+        <div class="table-responsive">
         <table id="datatables-buttons" class="table table-striped">
             <thead>
                 <tr>
@@ -43,6 +44,7 @@
                 @endforeach
             </tbody>
         </table>
+        </div>
     </div>
 </div>
 
@@ -52,8 +54,8 @@
     $(function() {
         // Datatables with Buttons
         var datatablesButtons = $("#datatables-buttons").DataTable({
-            responsive: true,
-            lengthChange: !1,
+            // responsive: true,
+            // lengthChange: !1,
             buttons: ["copy", "print"]
         });
         datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)");

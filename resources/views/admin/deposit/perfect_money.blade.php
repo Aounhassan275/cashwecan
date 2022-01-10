@@ -11,6 +11,8 @@
         <div class="card-header">
             <h5 class="card-title">View Deposit History Created Through Perfect Money</h5>
         </div>
+        <div class="table-responsive">
+
         <table id="datatables-buttons" class="table table-striped">
             <thead>
                 <tr>
@@ -41,6 +43,7 @@
                 @endforeach
             </tbody>
         </table>
+        </div>
     </div>
 </div>
 

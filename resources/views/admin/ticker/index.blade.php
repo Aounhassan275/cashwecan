@@ -35,6 +35,7 @@
         <div class="card-header">
             <h5 class="card-title">View Ticker Messages</h5>
         </div>
+        <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
@@ -58,6 +59,7 @@
                 @endforeach
             </tbody>
         </table>
+        </div>
     </div>
 </div>
 @endsection

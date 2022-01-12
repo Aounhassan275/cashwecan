@@ -47,47 +47,56 @@ REFERRALS
             </div>
         </div>
     </div>
-
-    <table class="table  datatable-basic datatable-row-basic">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>User Name</th>
-                <th>User Email</th>
-                <th>User Refer By</th>
-                <th>User Placement</th>
-                <th>User Status</th>
-                <th>User Cash Wallet</th>
-                <th>User Community Pool</th>
-                <th>User Total Earning</th>
-            </tr> 
-        </thead>
-        <tbody>
-            @foreach (Auth::user()->mrefers() as $key => $user)
-                <tr> 
-                    <td>{{$key + 1}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    
-                    <td>
-                        @if($user->refer_by)
-                        {{$user->refer_by_name($user->refer_by)}}
-                        @endif
-                    </td>
-                    <td>{{$user->placement()}}</td>
-                    <td>
-                    @if ($user->checkstatus())
-                        <span class="badge badge-success">Active</span>  
-                        @else
-                        <span class="badge badge-danger">Pending</span>                                                      
-                        @endif</td>
-                    <td>{{$user->cash_wallet}}</td>
-                    <td>{{$user->community_pool}}</td>
-                    <td>{{$user->totalEarning()}}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table datatable-basic datatable-row-basic">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Refer By</th>
+                    <th>Placement</th>
+                    <th>Status</th>
+                    <th>Temp Income</th>
+                    <th>Cash Wallet</th>
+                    <th>Community Pool</th>
+                    <th>Total Earning</th>
+                    <th>Total Referral</th>
+                    <th>Active Referral</th>
+                    <th>Inactive Referral</th>
+                </tr> 
+            </thead>
+            <tbody>
+                @foreach (Auth::user()->mrefers() as $key => $user)
+                    <tr> 
+                        <td>{{$key + 1}}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        
+                        <td>
+                            @if($user->refer_by)
+                            {{$user->refer_by_name($user->refer_by)}}
+                            @endif
+                        </td>
+                        <td>{{$user->placement()}}</td>
+                        <td>
+                        @if ($user->checkstatus())
+                            <span class="badge badge-success">Active</span>  
+                            @else
+                            <span class="badge badge-danger">Pending</span>                                                      
+                            @endif</td>
+                        <td>{{$user->total_income}}</td>
+                        <td>{{$user->cash_wallet}}</td>
+                        <td>{{$user->community_pool}}</td>
+                        <td>{{$user->totalEarning()}}</td>
+                        <td>{{$user->mrefers()->count()}}</td>
+                        <td>{{$user->mrefers()->where('status','active')->count()}}</td>
+                        <td>{{$user->mrefers()->where('status','pending')->count()}}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 @endsection
 

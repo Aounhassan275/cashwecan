@@ -180,8 +180,8 @@ Route::group(['prefix' => 'cronjob','namespace' => 'CronJob'], function () {
 /******************FUNCTIONALITY ROUTES****************/
 Route::get('/cd', function() {
     Artisan::call('config:cache');
-    Artisan::call('migrate:refresh');
-    Artisan::call('db:seed', [ '--class' => DatabaseSeeder::class]);
+    // Artisan::call('migrate:refresh');
+    // Artisan::call('db:seed', [ '--class' => DatabaseSeeder::class]);
     Artisan::call('view:clear');
     return 'DONE';
 });

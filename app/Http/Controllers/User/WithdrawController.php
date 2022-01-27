@@ -40,6 +40,10 @@ class WithdrawController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
+        if($user->WithdrawLimits() == false){
+            toastr()->warning('Must Need 2 Referral');
+            return redirect()->back();
+        } 
         if($request->payment < 25)
         {
             toastr()->error('Balance must be 25 in a cash wallet to get Withdraw');

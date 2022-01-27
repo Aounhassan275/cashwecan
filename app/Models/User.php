@@ -270,6 +270,26 @@ class User extends Authenticatable
         }
         return false;
     }
+	public function WithdrawLimits()
+    {
+        $withdraw_limit = $this->package->withdraw_limit;
+        $referral_count = User::where('refer_by',$this->id)->where('type','!=','fake')->count();
+        if($referral_count >= $withdraw_limit)
+        {
+            return true;
+        }
+        return false;
+    }
+	public function FundTransferLimits()
+    {
+        $fund_limit = $this->package->fund_limit;
+        $referral_count = User::where('refer_by',$this->id)->where('type','!=','fake')->count();
+        if($referral_count >= $fund_limit)
+        {
+            return true;
+        }
+        return false;
+    }
 	public function ComparUplineuser($downline,$upline)
     {
         $minimum_limit = $downline->package->min_limit;
@@ -352,5 +372,23 @@ class User extends Authenticatable
     public function pin_used()
     {
         return $this->hasMany(PinUsed::class,'user_id');
+    }
+    public function getUprPackageReferral()
+    {
+        $parent = $this;
+        for($i = 0; $i < 100;$i++)
+        {
+            $parent = User::where('id',$parent->refer_by)->first();
+            if($parent)
+            {
+                if($parent->package->price >= 50)
+                {
+                    return $parent;
+                }
+            }
+            if(!$parent)
+                break;
+        }
+        return null;
     }
 }

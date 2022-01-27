@@ -76,6 +76,16 @@
                         </div>
                    </div>
                    <div class="row">
+                    <div class="form-group col-6">
+                        <label class="form-label">Withdraw Limit</label>
+                        <input type="number" class="form-control" name="withdraw_limit"  placeholder="Withdraw Limit" value="{{$package->withdraw_limit}}">
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="form-label">Fund Limit</label>
+                        <input type="number" class="form-control" name="fund_limit"  placeholder="Fund Limit" value="{{$package->fund_limit}}">
+                    </div>
+               </div>
+                   <div class="row">
                         <div class="form-group col-12">
                             <label class="form-label">Image</label>
                             <input type="file" class="form-control" name="image"  >

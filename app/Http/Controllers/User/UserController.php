@@ -176,7 +176,7 @@ class UserController extends Controller
                     'community_pool' =>  0,
                 ]);
             }
-              
+            info("Amount To Deduct From Total Amount $user->name  ($user->total_income) : $amount");
             $user->update([
                 'cash_wallet' => $user->cash_wallet + $request->cash_wallet,
                 'total_income' => $user->total_income - $amount

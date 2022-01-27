@@ -95,16 +95,49 @@ class ReferralIncome
     public static  function directIncome($price,$package,$user,$due_to)
     {
         $direct_income = $price / 100 * $package->direct_income;
-        info("Direct Income Amount To $user->name : $direct_income");
-        Earning::create([
-            'price' => $direct_income,
-            'user_id' => $user->id,
-            'due_to' => $due_to->id,
-            'type' => 'direct_income'
-        ]);
-        $user->update([
-            'total_income' => $user->total_income + $direct_income
-        ]);
+        info("Direct Income adding $direct_income $user->total_income to $user->name");
+        $referral_account = User::where('referral',$user->id)->first();
+        if($referral_account)
+        {
+            Earning::create([
+                'price' => $direct_income,
+                'user_id' => $user->id,
+                'due_to' => $due_to->id,
+                'type' => 'direct_income'
+            ]);
+            info("Direct Income User have Refferral Account $referral_account->name");
+            $user->update([
+                'total_income' => $user->total_income + $direct_income
+            ]);
+            info("Direct Income Transfer Successfully to Total Income $user->total_income");
+        }else{
+            if($user->package->price == $price)
+            {
+                Earning::create([
+                    'price' => $direct_income,
+                    'user_id' => $user->id,
+                    'due_to' => $due_to->id,
+                    'type' => 'direct_income'
+                ]);
+                $user->update([
+                    'cash_wallet' => $user->cash_wallet + $direct_income
+                ]);
+                info("Direct Income Transfer Successfully to Cash Wallet $user->cash_wallet");
+            }else{
+                $tree_account = $due_to->getUprPackageReferral();
+                Earning::create([
+                    'price' => $direct_income,
+                    'user_id' => $tree_account->id,
+                    'due_to' => $due_to->id,
+                    'type' => 'direct_income'
+                ]);
+                $tree_account->update([
+                    'total_income' => $user->total_income + $direct_income
+                ]);
+                info("Direct Income To $user->name Refferal $tree_account->name : $user->total_income");
+            }
+        }
+       
     } 
     public static  function directTeamIncome($price,$package,$user,$due_to)
     {

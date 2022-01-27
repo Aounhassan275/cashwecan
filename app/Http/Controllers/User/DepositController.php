@@ -93,7 +93,14 @@ class DepositController extends Controller
                 'package_id' => $package->id,
                 'cash_wallet' => $user->cash_wallet -= $package->price,    
             ]);
-            ReferralIncome::referral($user);
+            if($package->price > 10)
+            {
+                ReferralIncome::referral($user);
+            }else
+            {
+                $refer_by = User::find($user->refer_by);
+                ReferralIncome::directIncome($package->price,$package,$refer_by,$user);
+            }
             toastr()->success('Your Package Active Successfully.');
             return redirect(route('user.dashboard.index'));
         }else{

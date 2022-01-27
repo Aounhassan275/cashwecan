@@ -57,6 +57,10 @@ class TranscationController extends Controller
             toastr()->error('Password Not Matched!!');
             return redirect()->back();
         }
+        if($user->FundTransferLimits() == false){
+            toastr()->error('Must Need 2 Referral');
+            return redirect()->back();
+      }
         $validator = Validator::make($request->all(),[
             'receiver_id' => 'required',
             'sender_id' => 'required',

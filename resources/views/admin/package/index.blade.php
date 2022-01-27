@@ -29,6 +29,8 @@
                         <th style="width:auto;">Image</th>
                         <th style="width:auto;">Max Limit</th>
                         <th style="width:auto;">Min Limit</th>
+                        <th style="width:auto;">Withdraw Limit</th>
+                        <th style="width:auto;">Fund Limit</th>
                         <th style="width:auto;">Action</th>
                         <th style="width:auto;">Action</th>
                     </tr>
@@ -50,6 +52,8 @@
                         <td>{{$package->company_income}}</td> --}}
                         <td>{{$package->max_limit}}</td>
                         <td>{{$package->min_limit}}</td>
+                        <td>{{$package->withdraw_limit}}</td>
+                        <td>{{$package->fund_limit}}</td>
                         <td class="table-action">
                             <a href="{{route('admin.package.edit',$package->id)}}"><i class="align-middle" data-feather="edit-2"></i></a>
                         </td>

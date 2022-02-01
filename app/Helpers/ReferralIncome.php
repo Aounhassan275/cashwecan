@@ -148,17 +148,23 @@ class ReferralIncome
         $direct_teams = $user->directTeamParents();
         foreach($direct_teams as $direct_team)
         {
-            Earning::create([
-                'price' => $per_person_amount,
-                'user_id' => $direct_team->id,
-                'due_to' => $due_to->id,
-                'type' => 'direct_team_income'
-            ]);
-            $direct_team->update([
-                'total_income' => $direct_team->total_income + $per_person_amount
-            ]);
-            info("Direct Team Income Amount Added to $direct_team->name : $per_person_amount"); 
-            $direct_team_income = $direct_team_income - $per_person_amount;
+            $referral_account = User::where('referral',$direct_team->id)->first();
+            if($referral_account)
+            {
+                Earning::create([
+                    'price' => $per_person_amount,
+                    'user_id' => $direct_team->id,
+                    'due_to' => $due_to->id,
+                    'type' => 'direct_team_income'
+                ]);
+                $direct_team->update([
+                    'total_income' => $direct_team->total_income + $per_person_amount
+                ]);
+                info("Direct Team Income Amount Added to $direct_team->name : $per_person_amount"); 
+                $direct_team_income = $direct_team_income - $per_person_amount;
+            }else{
+                info("Direct Team Income Amount For $direct_team->name added to Flush Account as it is not in tree"); 
+            }
         }
         if($direct_team_income > 0)
         {

@@ -74,7 +74,7 @@ class ReferralIncome
         info("Deleting Fake Account : $fake_account->name"); 
         $fake_account->delete();
         $account = User::where('type','fake')->where('referral',null)->first();
-        $k = $account->id + 1;
+        $k = $account->id +1;
         $new_fake_account = User::create([
             'name' => 'fake'.$k,
             'email' => 'fake'.$k.'@cashwecan.com',
@@ -132,7 +132,7 @@ class ReferralIncome
                     'type' => 'direct_income'
                 ]);
                 $tree_account->update([
-                    'total_income' => $user->total_income + $direct_income
+                    'total_income' => $tree_account->total_income + $direct_income
                 ]);
                 info("Direct Income To $user->name Refferal $tree_account->name : $user->total_income");
             }
@@ -251,7 +251,8 @@ class ReferralIncome
         foreach($uplines as $upline)
         {
             $response = $upline->CompareDownlineuser($upline,$user);
-            if($response)
+            $referral_account = User::where('referral',$upline->id)->first();
+            if($response && $referral_account)
             {
                 $refer_by = User::find($upline->refer_by);
                 if($refer_by)
@@ -294,7 +295,8 @@ class ReferralIncome
         {
             // $response = $downline->ComparUplineuser($downline,$user);
             $response =true;
-            if($response)
+            $referral_account = User::where('referral',$downline->id)->first();
+            if($response && $referral_account)
             {
                 $refer_by = User::find($downline->refer_by);
                 if($refer_by)

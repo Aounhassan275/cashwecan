@@ -240,6 +240,20 @@
 								<span>Transcations</span>
 							</a>
 						</li>	
+						<li class="nav-item nav-item-submenu {{Request::is('user/product*')?'nav-item-open':''}}">
+							<a href="#" class="nav-link"><i class="icon-stack3"></i> <span>Product</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('user/product*')?'display:block':''}}">
+								<li class="nav-item"><a href="{{route('user.product.create')}}" class="nav-link {{Request::is('user/product.create')?'active':''}}">Add Products</a></li>
+								<li class="nav-item"><a href="{{route('user.product.index')}}" class="nav-link {{Request::is('user/product')?'active':''}}">Manage</a></li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('user.chat.index')}}" class="nav-link {{Request::is('user/chat')?'active':''}}">
+								<i class="icon-mail-read"></i>
+								<span>Chat</span>
+							</a>
+						</li>
 						
 						<!-- /page kits -->
 

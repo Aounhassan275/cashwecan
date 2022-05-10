@@ -93,6 +93,17 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     Route::resource('transcation', 'TranscationController'); 
     /******************PIN  ROUTES****************/
     Route::view('pin_history', 'admin.transcation.pin')->name('transcation.pin_history');
+    /******************CATEGORY ROUTES****************/
+    Route::resource('category', 'CategoryController');
+    /******************BRAND ROUTES****************/
+    Route::resource('brand', 'BrandController');
+    /******************PRODUCTS ROUTES****************/
+    Route::post('product/get_category_brand', 'ProductController@getCategoryBrand')->name('product.brands');     
+    Route::resource('product', 'ProductController');
+    Route::resource('product_image', 'ProductImageController');
+    /******************CHATS ROUTES****************/
+    Route::resource('chat', 'ChatController');
+    Route::resource('chatmessage', 'ChatMessageController');
 });
 });
 /******************USER PANELS ROUTES****************/
@@ -154,6 +165,13 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::view('pin/used', 'user.pin.used')->name('pin.used');
     Route::resource('pin', 'PinController'); 
     Route::resource('pin_used', 'PinUsedController'); 
+    /******************PRODUCTS ROUTES****************/
+    Route::post('product/get_category_brand', 'ProductController@getCategoryBrand')->name('product.brands');     
+    Route::resource('product', 'ProductController');
+    Route::resource('product_image', 'ProductImageController');
+    /******************Chat  ROUTES****************/
+    Route::resource('chat', 'ChatController');
+    Route::resource('chatmessage', 'ChatMessageController');
 });
 
 
@@ -162,7 +180,13 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
 
 // Route::post('user/deposit', 'User\DepositController@store')->name('user.deposit.store');
 /******************FRONTEND ROUTES****************/
-Route::get('/', 'User\AuthController@index');
+Route::view('/', 'front.home.index');
+Route::get('categories', 'FrontendController@showCategory')->name('category.index');
+Route::get('category/{name}', 'FrontendController@showCategoryDetails')->name('category.show');
+Route::get('brands', 'FrontendController@showBrands')->name('brand.index');
+Route::get('brand/{name}', 'FrontendController@showBrandDetails')->name('brand.show');
+Route::get('products', 'FrontendController@showProducts')->name('product.index');
+Route::get('product/{name}', 'FrontendController@showProductDetails')->name('product.show');
 Route::view('contact_us', 'front.contact.index'); 
 Route::view('packages', 'front.package.index'); 
 Route::view('about_us', 'front.about.index'); 
@@ -180,8 +204,8 @@ Route::group(['prefix' => 'cronjob','namespace' => 'CronJob'], function () {
 /******************FUNCTIONALITY ROUTES****************/
 Route::get('/cd', function() {
     Artisan::call('config:cache');
-    // Artisan::call('migrate:refresh');
-    // Artisan::call('db:seed', [ '--class' => DatabaseSeeder::class]);
+    Artisan::call('migrate:refresh');
+    Artisan::call('db:seed', [ '--class' => DatabaseSeeder::class]);
     Artisan::call('view:clear');
     return 'DONE';
 });

@@ -1,555 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
     @yield('meta')
-    <!--Favicon-->
-    <link rel="shortcut icon" type="image/png" href="{{asset('front/image/favicon.png')}}">
-    <!--icofont icon css-->
-    <link rel="stylesheet" href="{{asset('front/css/icofont.min.css')}}">
-    <!--magnific popup css-->
-    <link rel="stylesheet" href="{{asset('front/css/magnific-popup.css')}}">
-    <!--magnific popup css-->
-    <link rel="stylesheet" href="{{asset('front/css/bootstrap.min.css')}}">
-    <!--magnific popup css-->
-    <link rel="stylesheet" href="{{asset('front/css/slick.css')}}">
-    <!--google font-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&amp;display=swap" rel="stylesheet">
-    <!--main css-->
-    <link rel="stylesheet" href="{{asset('front/css/app.css')}}">
+    <link href="{{asset('front/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('front/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('front/css/prettyPhoto.css')}}" rel="stylesheet">
+    <link href="{{asset('front/css/price-range.css')}}" rel="stylesheet">
+    <link href="{{asset('front/css/animate.css')}}" rel="stylesheet">
+	<link href="{{asset('front/css/main.css')}}" rel="stylesheet">
+	<link href="{{asset('front/css/responsive.css')}}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="{{asset('front/images/ico/favicon.ico')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('front/images/ico/apple-touch-icon-144-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('front/images/ico/apple-touch-icon-114-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('front/images/ico/apple-touch-icon-72-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" href="{{asset('front/images/ico/apple-touch-icon-57-precomposed.png')}}">
     @toastr_css
-</head>
+</head><!--/head-->
+
 <body>
+	<header id="header"><!--header-->
+		<div class="header_top"><!--header_top-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contactinfo">
+							<ul class="nav nav-pills">
+								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="social-icons pull-right">
+							<ul class="nav navbar-nav">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header_top-->
+		
+		<div class="header-middle"><!--header-middle-->
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 clearfix">
+						<div class="logo pull-left">
+							<a href="{{url('/')}}"><img src="{{asset('front/images/home/logo.png')}}" alt="" /></a>
+						</div>
+					</div>
+					<div class="col-md-8 clearfix">
+						<div class="shop-menu clearfix pull-right">
+							<ul class="nav navbar-nav">	
+                                <li><a href="{{url('user/register')}}"><i class="fa fa-user"></i> Register</a></li>
+								<li><a href="{{url('user/login')}}"><i class="fa fa-lock"></i> Login</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-middle-->
+	
+		<div class="header-bottom"><!--header-bottom-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="mainmenu pull-left">
+							<ul class="nav navbar-nav collapse navbar-collapse">
+								<li><a href="{{url('/')}}" class="{{Request::is('/')?'active':''}}">Home</a></li>
+								<li><a href="{{url('categories')}}" class="{{Request::is('categories')?'active':''}}">Category</a></li>
+								<li><a href="{{url('brands')}}" class="{{Request::is('brands')?'active':''}}">Brands</a></li>
+								<li><a href="{{url('products')}}" class="{{Request::is('products')?'active':''}}">Products</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-bottom-->
+	</header><!--/header-->
+	@yield('content')
+    
+	<footer id="footer"><!--Footer-->
+		{{-- <div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="companyinfo">
+							<h2><span>e</span>-shopper</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+						</div>
+					</div>
+					<div class="col-sm-7">
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="{{asset('front/images/home/iframe1.png')}}" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="{{asset('front/images/home/iframe2.png')}}" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="{{asset('front/images/home/iframe3.png')}}" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="{{asset('front/images/home/iframe4.png')}}" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="address">
+							<img src="{{asset('front/images/home/map.png')}}" alt="" />
+							<p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer-widget">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Service</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Online Help</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Order Status</a></li>
+								<li><a href="#">Change Location</a></li>
+								<li><a href="#">FAQ’s</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Quock Shop</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">T-Shirt</a></li>
+								<li><a href="#">Mens</a></li>
+								<li><a href="#">Womens</a></li>
+								<li><a href="#">Gift Cards</a></li>
+								<li><a href="#">Shoes</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Policies</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Terms of Use</a></li>
+								<li><a href="#">Privecy Policy</a></li>
+								<li><a href="#">Refund Policy</a></li>
+								<li><a href="#">Billing System</a></li>
+								<li><a href="#">Ticket System</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>About Shopper</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Company Information</a></li>
+								<li><a href="#">Careers</a></li>
+								<li><a href="#">Store Location</a></li>
+								<li><a href="#">Affillate Program</a></li>
+								<li><a href="#">Copyright</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3 col-sm-offset-1">
+						<div class="single-widget">
+							<h2>About Shopper</h2>
+							<form action="#" class="searchform">
+								<input type="text" placeholder="Your email address" />
+								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+								<p>Get the most recent updates from <br />our site and be updated your self...</p>
+							</form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div> --}}
+		
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © 2021 Cashwecan Inc. All rights reserved.</p>
+					{{-- <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p> --}}
+				</div>
+			</div>
+		</div>
+		
+	</footer><!--/Footer-->
+	
 
-<!--Start Preloader-->
-<div class="preloader" id="preloader"></div>
-<!--End Preloader-->
-
-<!-- scroll To top begin -->
-<a href="#header-section" class="scrollToTop"><img src="{{asset('front/image/rocket.png')}}" alt="#"></a>
-<!-- scroll To top end -->
-
-<!-- header top begin -->
-<header class="header-section" id="header-section">
-    <div class="header-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 d-flex justify-content-start travula-content-center">
-                    <div class="header-left">
-                        <ul>
-                            <li class="header-left-list">
-                                <p class="header-left-text">
-                                    <span class="header-left-icon">
-                                        <i class="icofont-headphone-alt"></i>
-                                        <a href="mailto:info@cashwecan.com">Support</a>
-                                    </span>
-                                </p>
-                            </li>
-                            <li class="header-left-list">
-                                <p class="header-left-text">
-                                    <span class="header-left-icon">
-                                        <i class="icofont-email"></i>
-                                        <a href="mailto:info@cashwecan.com">info@cashwecan.com</a>
-                                    </span>
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 d-flex justify-content-end travula-content-center">
-                    <div class="header-right">
-                        <ul>
-                            <li class="header-right-list">
-                                
-                                <p class="header-right-text">
-                                    <span class="header-right-icon carticon">
-                                        <img src="{{asset('front/image/user.png')}}" alt="user-img">
-                                    </span>
-                                    <a href="{{route('user.login')}}">Login</a>
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- nav top begin -->
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light travula-navbar">
-        <div class="container">
-
-            <div class="logo-section">
-                <a class="logo-title navbar-brand" href="{{url('/')}}"><img src="{{asset('front/image/logo.png')}}" alt="logo">Cash We Can</a>
-            </div>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="icofont-navigation-menu"></i>
-            </button>
-            <div class="collapse navbar-collapse nav-main justify-content-end" id="navbarNav">
-                <ul class="navbar-nav" id="primary-menu">
-                    <li class="nav-item active">
-                        <a class="nav-link active" href="{{url('/')}}">HOME
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('about_us')}}">ABOUT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('packages')}}">PACKAGES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('withdraw')}}">WITHDRAW</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('contact_us')}}">CONTACT US</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="right-side-box">
-                <a class="join-btn global-btn" href="#">JOIN US</a>
-            </div>
-        </div>
-    </nav>
-    <!-- nav top end -->
-</header>
-<!-- header top end -->
-
-<!-- banner top begin -->
-<section class="banner-section">
-    <div class="myVideo">
-        <img src="{{asset('front/image/video-hero.png')}}" alt="#">
-    </div>
-    <div class="overlay">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="left-area">
-                        <div class="banner-text">
-                            <h2>Cash We Can</h2>
-                            <h3 style="font-weight:bold;">FREEDOM OF SALE AND PURCHASE</h3>
-                            <h3 class="font-regular">A Profitable Platform For High-Margin</h3>
-                        </div>
-                        <div class="get-start">
-                            <a class="global-btn" href="#">GET STARTED NOW!</a>
-                        </div>
-
-                        <div class="arrow-bottom">
-                            <a href="#about-section"><i class="icofont-thin-down"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <img class="smart-plane" src="{{asset('front/image/plane.png')}}" alt="#">
-        </div>
-    </div>
-</section>
-<!-- banner top end -->
-@yield('content')
-
-<!-- contact-us section begin -->
-<section class="contact-us-section" id="contact-us-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="section-text">
-                    <h5 class="section-subtitle">Contact Us</h5>
-                    <h2 class="section-title">Get in Touch</h2>
-                    <p class="section-description">Please feel free to contact us through our support center.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-5">
-                <div class="contact-form">
-                    <form method="post" action="{{route('admin.message.store')}}" class="contact-form-aqua">
-                        @csrf
-                        <h2 class="contact-head">Send Us a Massage</h2>
-                        <input type="text" name="name" required="" placeholder="Name *" class="contact-frm active">
-                        <input type="email" name="email" required="" placeholder="Email *" class="contact-frm">
-                        <input type="text" name="subject" required="" placeholder="Subject *" class="contact-frm">
-                        <textarea name="message" id="message" placeholder="Message *" class="contact-msg"></textarea>
-                        <input type="submit" value="SUBMIT NOW" class="global-btn">
-                        <br>
-                        <br>
-                        <span class="msgSubmit"></span>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="contact-img">
-                    <img src="{{asset('front/image/contact-bg.png')}}" alt="#">
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-<!-- contact-us section end -->
-
-<!-- questions section begin -->
-<section class="questions-section">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <div class="section-text">
-                    <h5 class="section-subtitle">Got Any Questions</h5>
-                    <h2 class="section-title">We've Got Answers</h2>
-                    <p class="section-description">Choose a category below for immediate investmwnt help! If our FAQ section has not answered your inquiry, please contact us via email, live chat, or telephone, and our Customer Support team will be happy to assist you further!</p>
-                 </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-12 col-md-12">
-                <ul class="nav nav-pills mb-3 justify-content-center questions-nav-pills" id="questions-pills-tab" role="tablist">
-                    <li class="nav-item questions-nav-item">
-                        <a class="nav-link questions-nav-link active" id="questions-pills-basic-tab" data-toggle="pill" href="#pills-basic" role="tab" aria-controls="questions-pills-basic-tab" aria-selected="true">Basic Question</a>
-                    </li>
-                    <li class="nav-item questions-nav-item">
-                        <a class="nav-link questions-nav-link" id="questions-pills-investing-tab" data-toggle="pill" href="#pills-investing" role="tab" aria-controls="questions-pills-investing-tab" aria-selected="false">Investing Question</a>
-                    </li>
-                    <li class="nav-item questions-nav-item">
-                        <a class="nav-link questions-nav-link" id="questions-pills-withdrawal-tab" data-toggle="pill" href="#pills-withdrawal" role="tab" aria-controls="questions-pills-withdrawal-tab" aria-selected="false">Withdrawal Question</a>
-                    </li>
-                    <li class="nav-item questions-nav-item">
-                        <a class="nav-link questions-nav-link" id="questions-pills-referral-tab" data-toggle="pill" href="#pills-referral" role="tab" aria-controls="questions-pills-referral-tab" aria-selected="false">Referral Program</a>
-                    </li>
-                </ul>
-                <div class="tab-content questions-tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active questions-tab-pane" id="pills-basic" role="tabpanel" aria-labelledby="questions-pills-basic-tab">
-                        <div class="questions-accordion" id="withdrawal-accordion">
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="withdrawal-headingOne">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link questions-btn-link" data-toggle="collapse" data-target="#withdrawal-collapseOne" aria-expanded="true" aria-controls="questions-pills-basic-tab">
-                                            What Are The Main Advantages Of Cash We Can?
-                                        </button>
-                                    </h5>
-                                </div>
-
-                                <div id="withdrawal-collapseOne" class="collapse show questions-show" aria-labelledby="withdrawal-headingOne" data-parent="#withdrawal-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="withdrawal-headingTwo">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed questions-btn-link" data-toggle="collapse" data-target="#withdrawal-collapseTwo" aria-expanded="false" aria-controls="questions-pills-investing-tab">
-                                            Is It Free Of Charge To Open An Account?
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="withdrawal-collapseTwo" class="collapse questions-show" aria-labelledby="withdrawal-headingTwo" data-parent="#withdrawal-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="withdrawal-headingThree">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed questions-btn-link" data-toggle="collapse" data-target="#withdrawal-collapseThree" aria-expanded="false" aria-controls="questions-pills-withdrawal-tab">
-                                            How Secure User Accounts And Personal Data?
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="withdrawal-collapseThree" class="collapse questions-show" aria-labelledby="withdrawal-headingThree" data-parent="#withdrawal-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="withdrawal-headingFour">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed questions-btn-link" data-toggle="collapse" data-target="#withdrawal-collapseFour" aria-expanded="false" aria-controls="questions-pills-referral-tab">
-                                            How Many Accounts Can I Open On The Site?
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="withdrawal-collapseFour" class="collapse questions-show" aria-labelledby="withdrawal-headingFour" data-parent="#withdrawal-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade questions-tab-pane" id="pills-investing" role="tabpanel" aria-labelledby="questions-pills-investing-tab">
-                        <div class="questions-accordion" id="investing-accordion">
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="investing-headingOne">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link questions-btn-link" data-toggle="collapse" data-target="#investing-collapseOne" aria-expanded="true" aria-controls="questions-pills-basic-tab">
-                                            What Are The Main Advantages Of Cash We Can?
-                                        </button>
-                                    </h5>
-                                </div>
-
-                                <div id="investing-collapseOne" class="collapse show questions-show" aria-labelledby="investing-headingOne" data-parent="#investing-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="investing-headingTwo">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed questions-btn-link" data-toggle="collapse" data-target="#investing-collapseTwo" aria-expanded="false" aria-controls="questions-pills-investing-tab">
-                                            Is It Free Of Charge To Open An Account?
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="investing-collapseTwo" class="collapse questions-show" aria-labelledby="investing-headingTwo" data-parent="#investing-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="investing-headingThree">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed questions-btn-link" data-toggle="collapse" data-target="#investing-collapseThree" aria-expanded="false" aria-controls="questions-pills-withdrawal-tab">
-                                            How Secure User Accounts And Personal Data?
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="investing-collapseThree" class="collapse questions-show" aria-labelledby="investing-headingThree" data-parent="#investing-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="investing-headingFour">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed questions-btn-link" data-toggle="collapse" data-target="#investing-collapseFour" aria-expanded="false" aria-controls="questions-pills-referral-tab">
-                                            How Many Accounts Can I Open On The Site?
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="investing-collapseFour" class="collapse questions-show" aria-labelledby="investing-headingFour" data-parent="#investing-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade questions-tab-pane" id="pills-withdrawal" role="tabpanel" aria-labelledby="questions-pills-withdrawal-tab">
-                        <div class="questions-accordion" id="basic-accordion">
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="basic-headingOne">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link questions-btn-link" data-toggle="collapse" data-target="#basic-collapseOne" aria-expanded="true" aria-controls="questions-pills-basic-tab">
-                                            What Are The Main Advantages Of Cash We Can?
-                                        </button>
-                                    </h5>
-                                </div>
-
-                                <div id="basic-collapseOne" class="collapse show questions-show" aria-labelledby="basic-headingOne" data-parent="#basic-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="basic-headingTwo">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed questions-btn-link" data-toggle="collapse" data-target="#basic-collapseTwo" aria-expanded="false" aria-controls="questions-pills-investing-tab">
-                                            Is It Free Of Charge To Open An Account?
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="basic-collapseTwo" class="collapse questions-show" aria-labelledby="basic-headingTwo" data-parent="#basic-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="basic-headingThree">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed questions-btn-link" data-toggle="collapse" data-target="#basic-collapseThree" aria-expanded="false" aria-controls="questions-pills-withdrawal-tab">
-                                            How Secure User Accounts And Personal Data?
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="basic-collapseThree" class="collapse questions-show" aria-labelledby="basic-headingThree" data-parent="#basic-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="basic-headingFour">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed questions-btn-link" data-toggle="collapse" data-target="#basic-collapseFour" aria-expanded="false" aria-controls="questions-pills-referral-tab">
-                                            How Many Accounts Can I Open On The Site?
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="basic-collapseFour" class="collapse questions-show" aria-labelledby="basic-headingFour" data-parent="#basic-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade questions-tab-pane" id="pills-referral" role="tabpanel" aria-labelledby="questions-pills-referral-tab">
-                        <div class="questions-accordion" id="referral-accordion">
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="referral-headingOne">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link questions-btn-link" data-toggle="collapse" data-target="#referral-collapseOne" aria-expanded="true" aria-controls="questions-pills-basic-tab">
-                                            What Are The Main Advantages Of Cash We Can?
-                                        </button>
-                                    </h5>
-                                </div>
-
-                                <div id="referral-collapseOne" class="collapse show questions-show" aria-labelledby="referral-headingOne" data-parent="#referral-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="referral-headingTwo">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed questions-btn-link" data-toggle="collapse" data-target="#referral-collapseTwo" aria-expanded="false" aria-controls="questions-pills-investing-tab">
-                                            Is It Free Of Charge To Open An Account?
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="referral-collapseTwo" class="collapse questions-show" aria-labelledby="referral-headingTwo" data-parent="#referral-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="referral-headingThree">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed questions-btn-link" data-toggle="collapse" data-target="#referral-collapseThree" aria-expanded="false" aria-controls="questions-pills-withdrawal-tab">
-                                            How Secure User Accounts And Personal Data?
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="referral-collapseThree" class="collapse questions-show" aria-labelledby="referral-headingThree" data-parent="#referral-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card questions-card">
-                                <div class="card-header questions-card-header" id="referral-headingFour">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed questions-btn-link" data-toggle="collapse" data-target="#referral-collapseFour" aria-expanded="false" aria-controls="questions-pills-referral-tab">
-                                            How Many Accounts Can I Open On The Site?
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="referral-collapseFour" class="collapse questions-show" aria-labelledby="referral-headingFour" data-parent="#referral-accordion">
-                                    <div class="card-body questions-card-body">
-                                        All stored data on our servers remains protected via encryption technology all the time. All account related transactions done by our clients are mediated exclusively via secured internet connections.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- questions section end -->
-
-<!-- footer section begin -->
-<footer class="footer-section">
-    <div class="overlay">
-
-        <div class="footer-content">
-            <div class="container">
-                <div class="footer-top-content">
-                    <div class="row text-center">
-                        <div class="col-lg-12">
-                            <div class="social-icon">
-                                <ul class="icon-area">
-                                    <li class="social-nav">
-                                        <a href="#"><i class="icofont-facebook"></i></a>
-                                    </li>
-                                    <li class="social-nav">
-                                        <a href="#"><i class="icofont-twitter"></i></a>
-                                    </li>
-                                    <li class="social-nav">
-                                        <a href="#"><i class="icofont-pinterest"></i></a>
-                                    </li>
-                                    <li class="social-nav">
-                                        <a href="#"><i class="icofont-rss"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="section-text">
-                                <h5 class="section-subtitle">Subscribe to Cash We Can</h5>
-                                <h2 class="section-title">To Get Exclusive benefits</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-lg-7">
-                            <div class="subscribe">
-                                <input type="email" name="email" autocomplete="off" placeholder="Your Email Address" class="input-subscribe">
-                                <button class="subscribe-btn global-btn">Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-                <div class="footer-bottom">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-lg-6 col-md-12 d-flex justify-content-start travula-content-center">
-                            <div class="footer-bottom-left">
-                                <p>Copyright © 2020. All Rights Reserved By <a href="#">Cash We Can</a></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 d-flex justify-content-end travula-content-center">
-                            <div class="footer-bottom-right">
-                                <ul>
-                                    <li>
-                                        <a href="#">Privacy & Policy</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Term Of Service</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Affilate</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- footer section end -->
-
-<script src="{{asset('front/js/jquery.js')}}"></script>
-<script src="{{asset('front/js/slick.js')}}"></script>
-<script src="{{asset('front/js/magnific-popup.min.js')}}"></script>
-<script src="{{asset('front/js/animated-headline.js')}}"></script>
-<script src="{{asset('front/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('front/js/app.js')}}"></script>
-@toastr_js
-@toastr_render
-@yield('javascript')
+  
+    <script src="{{asset('front/js/jquery.js')}}"></script>
+	<script src="{{asset('front/js/bootstrap.min.js')}}"></script>
+	<script src="{{asset('front/js/jquery.scrollUp.min.js')}}"></script>
+	<script src="{{asset('front/js/price-range.js')}}"></script>
+    <script src="{{asset('front/js/jquery.prettyPhoto.j')}}s"></script>
+    <script src="{{asset('front/js/main.js')}}"></script>
+    @toastr_js
+    @toastr_render
+    @yield('scripts')
 </body>
-
-<!-- Mirrored from pixner.net/travula/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Apr 2020 07:37:18 GMT -->
 </html>

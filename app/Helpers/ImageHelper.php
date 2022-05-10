@@ -36,6 +36,16 @@ class ImageHelper
         $myImage->save($originalPath.$filename);
         return $path.$filename;
     }
+    public static function saveProductImage($imagefile,$path)
+    {
+        $originalImage=$imagefile;
+        $myImage = Image::make($originalImage);
+        $myImage->resize(1024,1024);
+        $originalPath = public_path().$path;
+        $filename = rand(0,100).time().'.'.$originalImage->getClientOriginalExtension();
+        $myImage->save($originalPath.$filename);
+        return $path.$filename;
+    }
 
     public static function saveImageFromApi($base64Image,$path){
 

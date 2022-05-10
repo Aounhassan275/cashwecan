@@ -391,4 +391,25 @@ class User extends Authenticatable
         }
         return null;
     }
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+    public function chats()
+    {
+        return $this->hasMany(Chat::class);
+    }  
+    public function messages()
+    {
+        return $this->hasMany(ChatMessage::class,'user_id');
+    }
+    public function checkLimitForProducts()
+    {
+        if($this->package->max_limit > $this->products->count())
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

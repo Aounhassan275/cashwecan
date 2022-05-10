@@ -161,7 +161,23 @@
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Add Employee</span>
 						</a>
 					</li>	
+					<li class="sidebar-item {{Request::is('admin/brand/*') || Request::is('admin/category') || Request::is('admin/product')  ?'active':''}}">
+						<a href="{{url('#social')}}" data-toggle="collapse" class="sidebar-link collapsed">
+							<i class="align-middle" data-feather="settings"></i> <span class="align-middle">Social Section</span>
+						</a>
+						<ul id="social" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+							<li class="sidebar-item {{Request::is('admin/category')?'active':''}}"><a class="sidebar-link" href="{{route('admin.category.index')}}">Manage Category</a></li>
+							<li class="sidebar-item {{Request::is('admin/brand')?'active':''}}"><a class="sidebar-link" href="{{route('admin.brand.index')}}">Manage Brand</a></li>
+							<li class="sidebar-item {{Request::is('admin/product')?'active':''}}"><a class="sidebar-link" href="{{route('admin.product.index')}}">Create Product</a></li>
+							<li class="sidebar-item {{Request::is('admin/product')?'active':''}}"><a class="sidebar-link" href="{{route('admin.product.create')}}">Manage Products</a></li>
+						</ul>
+					</li>
 					@endif
+					<li class="sidebar-item {{Request::is('admin.chat.index')?'active':''}}">
+						<a class="sidebar-link" href="{{route('admin.chat.index')}}">
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Chat</span>
+						</a>
+					</li>
 					<li class="sidebar-item {{Request::is('admin.profile.index')?'active':''}}">
 						<a class="sidebar-link" href="{{route('admin.profile.index')}}">
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Profile</span>

@@ -108,7 +108,7 @@ class WithdrawController extends Controller
      */
     public function destroy(Withdraw $withdraw)
     {
-                $withdraw->delete();
+        $withdraw->delete();
         toastr()->success('Your Withdraw Request is Deleted Successfully');
         return redirect()->back();
     }

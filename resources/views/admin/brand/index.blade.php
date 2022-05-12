@@ -24,7 +24,7 @@
                             <label class="form-label">Brand Category</label>
                             <select name="category_id" class="form-control select2" required>
                                 <option selected disabled>Select</option>
-                                @foreach (App\Models\category::all() as $category)
+                                @foreach (App\Models\Category::all() as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>                        

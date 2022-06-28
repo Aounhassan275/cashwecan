@@ -52,9 +52,25 @@
                         </div>
                     </div>
                    <div class="row">
-                        <div class="form-group col-12">
+                        <div class="form-group col-6">
                             <label class="form-label">Product Images</label>
                             <input type="file" name="images[]" class="form-control" multiple  required>
+                        </div>
+                        <div class="form-group col-3">
+                            <label class="form-label">Country</label>
+                            <select name="country_id" id="country_id" class="form-control select2" required>
+                                <option selected disabled>Select</option>
+                                @foreach(App\Models\Country::all() as $country)
+                                <option value="{{$country->id}}">{{$country->name}}</option>
+                                @endforeach
+                            </select>                        
+                        </div>
+                        <div class="form-group col-3">
+                            <label class="form-label">Cities</label>
+                            <select name="city_id" id="city_id" class="form-control select2" required>
+                                <option selected disabled>Select</option>
+                                
+                            </select>                        
                         </div>
                         <div class="form-group col-12">
                             <label class="form-label">Product Description</label>
@@ -104,6 +120,26 @@
                     $('#brand_id').append('<option disabled>Select Product Brands</option>');
                     for (i=0;i<result.length;i++){
                         $('#brand_id').append('<option value="'+result[i].id+'">'+result[i].name+'</option>');
+                    }
+                }
+            });
+        });
+        $('#country_id').on('change', function() {
+            id = this.value;
+            $.ajax({
+                url: "{{route('admin.product.cities')}}",
+                method: 'post',
+                data: {
+                    id: id,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                success: function(result){
+                    $('#city_id').empty();
+                    $('#city_id').append('<option disabled>Select Product Cities</option>');
+                    for (i=0;i<result.length;i++){
+                        $('#city_id').append('<option value="'+result[i].id+'">'+result[i].name+'</option>');
                     }
                 }
             });

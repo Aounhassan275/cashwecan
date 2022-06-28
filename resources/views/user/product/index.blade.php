@@ -20,6 +20,7 @@
                 <th>Product Price</th>
                 <th>Product Category</th>
                 <th>Product Brand</th>
+                <th>Product Orders</th>
                 <th>Action</th>
             </tr> 
         </thead>
@@ -31,6 +32,7 @@
                 <td>PKR {{$product->price}}</td>
                 <td>{{@$product->category->name}}</td>
                 <td>{{@$product->brand->name}}</td>
+                <td><a href="{{route('user.order.index')}}">{{@$product->orders->count()}}</a></td>
                 <td class="text-center">
                     <a href="{{route('user.product.edit',$product->id)}}"><i class="icon-pencil7"></i></a>
                     <form action="{{route('user.product.destroy',$product->id)}}" method="POST">

@@ -71,7 +71,9 @@
 							</div>
 						</div>
 						@endforeach
-                        {!! $products->links() !!}
+						<div class="col-sm-12 text-center">
+							{!! $products->links() !!}
+						</div>
 					</div><!--features_items-->
 					
 					

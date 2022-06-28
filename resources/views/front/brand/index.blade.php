@@ -62,7 +62,9 @@
 							</div>
 						</div>
 						@endforeach
-						{!! $brands->links() !!}
+						<div class="col-sm-12 text-center">
+							{!! $col->links() !!}
+						</div>
 					</div><!--features_items-->
 					
 					

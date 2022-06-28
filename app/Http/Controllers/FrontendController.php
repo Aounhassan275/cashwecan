@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -30,6 +33,28 @@ class FrontendController extends Controller
         $brand = Brand::where('name',str_replace('_', ' ',$name))->first();
         $products = Product::where('brand_id',$brand->id)->paginate(20);
         return view('front.brand.show',compact('brand','products'));
+    }
+    public function showCities()
+    {
+        $cities = City::paginate(120);
+        return view('front.city.index',compact('cities'));
+    }
+    public function showCityDetails($name)
+    {
+        $city = City::where('name',str_replace('_', ' ',$name))->first();
+        $products = Product::where('city_id',$city->id)->paginate(20);
+        return view('front.city.show',compact('city','products'));
+    }
+    public function showCountries()
+    {
+        $countries = Country::paginate(30);
+        return view('front.country.index',compact('countries'));
+    }
+    public function showCountryDetails($name)
+    {
+        $country = Country::where('name',str_replace('_', ' ',$name))->first();
+        $products = Product::where('country_id',$country->id)->paginate(20);
+        return view('front.country.show',compact('country','products'));
     }
     public function showProducts()
     {

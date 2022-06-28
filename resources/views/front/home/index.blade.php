@@ -102,7 +102,30 @@
 									<li><a href="{{route('brand.index')}}"> <span class="pull-right">({{App\Models\Brand::count()}})</span>All Brands</a></li>
 								</ul>
 							</div>
-						</div><!--/brands_products-->
+						</div>
+						<div class="brands_products"><!--brands_products-->
+							<h2>Cities</h2>
+							<div class="brands-name">
+								<ul class="nav nav-pills nav-stacked">
+									@foreach(App\Models\City::take(10)->get() as $city)
+									<li><a href="{{route('city.show',str_replace(' ', '_',$city->name))}}"> <span class="pull-right">({{$city->products->count()}})</span>{{@$city->name}}</a></li>
+									@endforeach
+									<li><a href="{{route('city.index')}}"> <span class="pull-right">({{App\Models\City::count()}})</span>All Cities</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="brands_products"><!--brands_products-->
+							<h2>Countries</h2>
+							<div class="brands-name">
+								<ul class="nav nav-pills nav-stacked">
+									@foreach(App\Models\Country::take(10)->get() as $country)
+									<li><a href="{{route('country.show',str_replace(' ', '_',$country->name))}}"> <span class="pull-right">({{$country->products->count()}})</span>{{@$country->name}}</a></li>
+									@endforeach
+									<li><a href="{{route('country.index')}}"> <span class="pull-right">({{App\Models\Country::count()}})</span>All Countries</a></li>
+								</ul>
+							</div>
+						</div>
+						<!--/brands_products-->
 						
 						
 						{{-- <div class="shipping text-center"><!--shipping-->

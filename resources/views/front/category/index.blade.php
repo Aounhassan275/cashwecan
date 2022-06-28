@@ -62,7 +62,9 @@
 							</div>
 						</div>
 						@endforeach
-						{!! $categories->links() !!}
+						<div class="col-sm-12 text-center">
+							{!! $categories->links() !!}
+						</div>
 					</div><!--features_items-->
 					
 					

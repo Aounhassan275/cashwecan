@@ -87,7 +87,7 @@
 
 			<span class="badge bg-success ml-md-3 mr-md-auto">Cash Wallet : $ {{Auth::user()->cash_wallet}}</span>
 			<a href="{{url('/')}}">
-				<span class="badge bg-primary ml-md-3">Move To E-Commerce Section</span>
+				<span class="badge bg-primary ml-md-3">Go-to E-Commerce Section</span>
 			</a>
 			<span class="badge bg-teal ml-md-3 ">
 				{{Auth::user()->type}}

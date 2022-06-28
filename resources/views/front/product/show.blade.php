@@ -56,7 +56,8 @@
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
-								<h2>{{$product->name}}</h2>
+								<h2>{{$product->name}}<a href="{{route('user.chat.index')}}" style="color:black;"><span class="badge badge-danger">Chat</span> </a>
+								</h2>
 								<p>{!! @$product->description !!}</p>
 								<span>
 									<span>PKR {{$product->price}}</span>
@@ -64,7 +65,9 @@
 								<p><b>Phone:</b> {{@$product->phone}}</p>
 								<p><b>Category:</b> {{@$product->category->name}}</p>
 								<p><b>Brand:</b> {{@$product->brand->name}}</p>
-								<a href="{{route('user.chat.index')}}" class="btn btn-success" style="width:250px;">Chat</a>
+								<p><b>Country:</b> {{@$product->country->name}}</p>
+								<p><b>City:</b> {{@$product->city->name}}</p>
+								<a href="{{route('user.product.order',$product->id)}}" class="btn btn-success" style="width:250px;">Purchase</a>
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->

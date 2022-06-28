@@ -20,6 +20,7 @@
                         <th style="width:auto;">Product Price</th>
                         <th style="width:auto;">Product Category</th>
                         <th style="width:auto;">Product Brand</th>
+                        <th style="width:auto;">Product Orders</th>
                         <th style="width:auto;">Action</th>
                         <th style="width:auto;">Action</th>
                     </tr>
@@ -32,6 +33,7 @@
                         <td>PKR {{$product->price}}</td>
                         <td>{{@$product->category->name}}</td>
                         <td>{{@$product->brand->name}}</td>
+                        <td class="text-center">{{@$product->orders->count()}}</td>
                         <td class="table-action">
                             <a href="{{route('admin.product.edit',$product->id)}}"><i class="align-middle" data-feather="edit-2"></i></a>
                         </td>

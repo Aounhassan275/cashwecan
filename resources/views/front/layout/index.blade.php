@@ -64,8 +64,13 @@
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">	
-                                <li><a href="{{url('user/register')}}"><i class="fa fa-user"></i> Register</a></li>
-								<li><a href="{{url('user/login')}}"><i class="fa fa-lock"></i> Login</a></li>
+								@if (Auth::guard('user')->check())
+								<li><a href="{{url('user/dashboard')}}"><i class="fa fa-lock"></i> Dashboard</a></li>
+								<li><a href="{{url('user/logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
+								@else
+									<li><a href="{{url('user/register')}}"><i class="fa fa-user"></i> Register</a></li>
+									<li><a href="{{url('user/login')}}"><i class="fa fa-lock"></i> Login</a></li>
+								@endif
 							</ul>
 						</div>
 					</div>
@@ -90,6 +95,8 @@
 								<li><a href="{{url('/')}}" class="{{Request::is('/')?'active':''}}">Home</a></li>
 								<li><a href="{{url('categories')}}" class="{{Request::is('categories')?'active':''}}">Category</a></li>
 								<li><a href="{{url('brands')}}" class="{{Request::is('brands')?'active':''}}">Brands</a></li>
+								<li><a href="{{url('countries')}}" class="{{Request::is('countries')?'active':''}}">Countries</a></li>
+								<li><a href="{{url('cities')}}" class="{{Request::is('cities')?'active':''}}">Cities</a></li>
 								<li><a href="{{url('products')}}" class="{{Request::is('products')?'active':''}}">Products</a></li>
 							</ul>
 						</div>

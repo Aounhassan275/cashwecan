@@ -5,9 +5,12 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -113,5 +116,36 @@ class ProductController extends Controller
         }
         
         return response()->json($brands);
+    }
+    public function getCountryCities(Request $request)
+    {
+        if($request->id == 'all'){
+            $cities = City::all();
+        } else {
+            $cities = Country::find($request->id)->cities;
+        }
+        
+        return response()->json($cities);
+    }
+    
+    public function showProducts()
+    {
+        $products = Product::orderBy('display_order')->paginate(30);
+        return view('user.product.view',compact('products'));
+    }
+    public function showProductDetails($name)
+    {
+        $product = Product::where('name',str_replace('_', ' ',$name))->first();
+        return view('user.product.show',compact('product'));
+    }
+    public function orderProducts($id)
+    {
+        $product = Product::find($id);
+        if($product->user_id == Auth::user()->id)
+        {
+            toastr()->error('You are the owner of this Product!');
+            return back();
+        }
+        return view('user.order.create',compact('product'));
     }
 }

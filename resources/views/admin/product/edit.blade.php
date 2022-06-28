@@ -44,13 +44,27 @@
                         </div>
                    </div>
                    <div class="row">
-                        <div class="form-group col-6">
+                        <div class="form-group col-4">
                             <label class="form-label">Contact Number</label>
                             <input type="text" class="form-control" required name="phone"  placeholder="Contact Number" value="{{@$product->phone}}">
                         </div>
-                        <div class="form-group col-6">
-                            <label class="form-label">City</label>
-                            <input type="text" class="form-control" required name="city"  placeholder="City" value="{{@$product->city}}">
+                        <div class="form-group col-4">
+                            <label class="form-label">Country</label>
+                            <select name="country_id" id="country_id" class="form-control select2" required>
+                                <option selected disabled>Select</option>
+                                @foreach(App\Models\Country::all() as $country)
+                                <option @if($product->country_id == $country->id) selected @endif value="{{$country->id}}">{{$country->name}}</option>
+                                @endforeach
+                            </select>                        
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="form-label">Cities</label>
+                            <select name="city_id" id="city_id" class="form-control select2" required>
+                                <option selected disabled>Select</option>
+                                @foreach(App\Models\City::where('country_id',$product->country_id)->get() as $city)
+                                <option @if($product->city_id == $city->id) selected @endif value="{{$city->id}}">{{$city->name}}</option>
+                                @endforeach
+                            </select>                        
                         </div>
                     </div>
                    <div class="row">
@@ -165,6 +179,26 @@
                     $('#brand_id').append('<option disabled>Select Product Brands</option>');
                     for (i=0;i<result.length;i++){
                         $('#brand_id').append('<option value="'+result[i].id+'">'+result[i].name+'</option>');
+                    }
+                }
+            });
+        });
+        $('#country_id').on('change', function() {
+            id = this.value;
+            $.ajax({
+                url: "{{route('admin.product.cities')}}",
+                method: 'post',
+                data: {
+                    id: id,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                success: function(result){
+                    $('#city_id').empty();
+                    $('#city_id').append('<option disabled>Select Product Cities</option>');
+                    for (i=0;i<result.length;i++){
+                        $('#city_id').append('<option value="'+result[i].id+'">'+result[i].name+'</option>');
                     }
                 }
             });

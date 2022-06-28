@@ -96,11 +96,20 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     /******************CATEGORY ROUTES****************/
     Route::resource('category', 'CategoryController');
     /******************BRAND ROUTES****************/
-    Route::resource('brand', 'BrandController');
+    Route::resource('brand', 'BrandController');  
+    /******************COUNTRY ROUTES****************/
+    Route::resource('country', 'CountryController');
+    /******************CITY ROUTES****************/
+    Route::resource('city', 'CityController');
     /******************PRODUCTS ROUTES****************/
     Route::post('product/get_category_brand', 'ProductController@getCategoryBrand')->name('product.brands');     
+    Route::post('product/get_country_city', 'ProductController@getCountryCities')->name('product.cities');     
     Route::resource('product', 'ProductController');
     Route::resource('product_image', 'ProductImageController');
+    /******************ORDER ROUTES****************/
+    Route::get('order/onHold/{id}', 'OrderController@orderonHold')->name('order.onHold');
+    Route::get('order/completed/{id}', 'OrderController@orderCompleted')->name('order.completed');
+    Route::resource('order', 'OrderController');  
     /******************CHATS ROUTES****************/
     Route::resource('chat', 'ChatController');
     Route::resource('chatmessage', 'ChatMessageController');
@@ -166,9 +175,17 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::resource('pin', 'PinController'); 
     Route::resource('pin_used', 'PinUsedController'); 
     /******************PRODUCTS ROUTES****************/
-    Route::post('product/get_category_brand', 'ProductController@getCategoryBrand')->name('product.brands');     
+    Route::post('product/get_category_brand', 'ProductController@getCategoryBrand')->name('product.brands');   
+    Route::post('product/get_country_city', 'ProductController@getCountryCities')->name('product.cities');       
     Route::resource('product', 'ProductController');
     Route::resource('product_image', 'ProductImageController');
+    Route::get('products', 'ProductController@showProducts')->name('products.index');
+    Route::get('product/{name}', 'ProductController@showProductDetails')->name('products.show');
+    Route::get('product/order/{id}', 'ProductController@orderProducts')->name('product.order');
+    /******************ORDER ROUTES****************/
+    Route::get('order/onHold/{id}', 'OrderController@orderonHold')->name('order.onHold');
+    Route::get('order/completed/{id}', 'OrderController@orderCompleted')->name('order.completed');
+    Route::resource('order', 'OrderController');  
     /******************Chat  ROUTES****************/
     Route::resource('chat', 'ChatController');
     Route::resource('chatmessage', 'ChatMessageController');
@@ -185,6 +202,10 @@ Route::get('categories', 'FrontendController@showCategory')->name('category.inde
 Route::get('category/{name}', 'FrontendController@showCategoryDetails')->name('category.show');
 Route::get('brands', 'FrontendController@showBrands')->name('brand.index');
 Route::get('brand/{name}', 'FrontendController@showBrandDetails')->name('brand.show');
+Route::get('cities', 'FrontendController@showCities')->name('city.index');
+Route::get('city/{name}', 'FrontendController@showCityDetails')->name('city.show');
+Route::get('countries', 'FrontendController@showCountries')->name('country.index');
+Route::get('country/{name}', 'FrontendController@showCountryDetails')->name('country.show');
 Route::get('products', 'FrontendController@showProducts')->name('product.index');
 Route::get('product/{name}', 'FrontendController@showProductDetails')->name('product.show');
 Route::view('contact_us', 'front.contact.index'); 

@@ -230,6 +230,10 @@ class UserSeeder extends Seeder
             'updated_at' => Carbon::now()],
             
         ]);
+        DB::table('countries')->insert([
+            [ 'name' => 'Pakistan'],
+            
+        ]);
         DB::table('company_accounts')->insert([
             [ 
             'name' => 'Income',

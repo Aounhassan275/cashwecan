@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
@@ -111,5 +113,15 @@ class ProductController extends Controller
         }
         
         return response()->json($brands);
+    }
+    public function getCountryCities(Request $request)
+    {
+        if($request->id == 'all'){
+            $cities = City::all();
+        } else {
+            $cities = Country::find($request->id)->cities;
+        }
+        
+        return response()->json($cities);
     }
 }

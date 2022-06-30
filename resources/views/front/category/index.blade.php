@@ -10,6 +10,28 @@
 	<section>
 		<div class="container">
 			<div class="row">
+				
+				<div class="col-sm-9 padding-right">
+					<div class="features_items"><!--features_items-->
+						<h2 class="title text-center">CATEGORIES</h2>
+						@foreach($categories as $category)
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a href="{{route('category.show',str_replace(' ', '_',$category->name))}}"><i class="fa fa-plus-square"></i>{{@$category->name}} ({{$category->products->count()}})</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						@endforeach
+						<div class="col-sm-12 text-center">
+							{!! $categories->links() !!}
+						</div>
+					</div><!--features_items-->
+					
+					
+				</div>
 				<div class="col-sm-3">
 					<div class="left-sidebar">
 						<h2>Category</h2>
@@ -46,28 +68,6 @@
 						</div><!--/shipping--> --}}
 					
 					</div>
-				</div>
-				
-				<div class="col-sm-9 padding-right">
-					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">CATEGORIES</h2>
-						@foreach($categories as $category)
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="{{route('category.show',str_replace(' ', '_',$category->name))}}"><i class="fa fa-plus-square"></i>{{@$category->name}} ({{$category->products->count()}})</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						@endforeach
-						<div class="col-sm-12 text-center">
-							{!! $categories->links() !!}
-						</div>
-					</div><!--features_items-->
-					
-					
 				</div>
 			</div>
 		</div>

@@ -164,6 +164,7 @@
         </div>
 
     </div>
+    
     <div class="col-md-4  d-xxl-flex">
 
         <div class="card flex-fill">
@@ -194,6 +195,35 @@
     </div>
 </div>
 <div class="row">
+    <div class="col-md-4  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+                        <i class="feather-lg text-voilet" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        @php  
+                            $trade_income= App\Models\CompanyAccount::where('name','Trade Income')->first();
+                        @endphp
+                        <h3 class="mb-2">$ {{number_format(@$trade_income->balance, 2)}}</h3>
+                        <div class="mb-0">Trade Income</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
     <div class="col-md-4  d-xxl-flex">
 
         <div class="card flex-fill">

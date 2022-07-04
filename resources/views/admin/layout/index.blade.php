@@ -174,10 +174,24 @@
 							<li class="sidebar-item {{Request::is('admin/product')?'active':''}}"><a class="sidebar-link" href="{{route('admin.product.index')}}">Manage Product</a></li>
 						</ul>
 					</li>
+					<li class="sidebar-item {{Request::is('admin/company_account/*') ?'active':''}}">
+						<a href="{{url('#company_account')}}" data-toggle="collapse" class="sidebar-link collapsed">
+							<i class="align-middle" data-feather="settings"></i> <span class="align-middle">Company Account</span>
+						</a>
+						<ul id="company_account" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+							<li class="sidebar-item {{Request::is('admin/company_account')?'active':''}}"><a class="sidebar-link" href="{{route('admin.company_account.index')}}">Add</a></li>
+							<li class="sidebar-item {{Request::is('admin/company_account/manage')?'active':''}}"><a class="sidebar-link" href="{{route('admin.company_account.manage')}}">Manage</a></li>
+						</ul>
+					</li>
 					@endif
 					<li class="sidebar-item {{Request::is('admin.chat.index')?'active':''}}">
 						<a class="sidebar-link" href="{{route('admin.chat.index')}}">
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Chat</span>
+						</a>
+					</li>
+					<li class="sidebar-item {{Request::is('admin/setting')?'active':''}}">
+						<a class="sidebar-link" href="{{route('admin.setting.index')}}">
+							<i class="align-middle" data-feather="settings"></i> <span class="align-middle">Setting</span>
 						</a>
 					</li>
 					<li class="sidebar-item {{Request::is('admin.profile.index')?'active':''}}">

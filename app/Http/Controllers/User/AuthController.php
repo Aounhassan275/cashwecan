@@ -59,6 +59,8 @@ class AuthController extends Controller
             $user->update([
                 'last_login' => Carbon::today()
             ]);
+            request()->session()->put('cash_wallet', $user->cash_wallet);
+            request()->session()->put('name', $user->name);
             // toastr()->success('Login Successfully');
             return redirect('user/dashboard');
         } else {
@@ -135,6 +137,9 @@ class AuthController extends Controller
     }
     public function logout()
     {
+        
+        request()->session()->forget('cash_wallet');
+        request()->session()->forget('name');
         Auth::logout();
         // toastr()->success('You Logout Successfully');
         return redirect('/');

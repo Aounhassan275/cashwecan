@@ -52,6 +52,8 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     Route::resource('video', 'VideoController'); 
     /******************Email ROUTES****************/
     Route::resource('email', 'EmailController');
+    /******************Setting ROUTES****************/
+    Route::resource('setting', 'SettingController');
     /******************User ROUTES****************/
     Route::get('user', 'UserController@index')->name('user.index');  
     Route::get('user/actives', 'UserController@active')->name('user.actives');  
@@ -113,6 +115,10 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     /******************CHATS ROUTES****************/
     Route::resource('chat', 'ChatController');
     Route::resource('chatmessage', 'ChatMessageController');
+    /******************COMPANY ACCOUNTS ROUTES****************/
+    Route::view('company_account/manage', 'admin.company_account.manage')->name('company_account.manage');
+    Route::post('company_account_transfer', 'CompanyAccountController@transfer')->name('company_account.transfer');
+    Route::resource('company_account', 'CompanyAccountController');
 });
 });
 /******************USER PANELS ROUTES****************/

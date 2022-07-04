@@ -23,7 +23,10 @@ class User extends Authenticatable
         'name','fname','phone', 'email', 'password','city','status','balance','refer_by','cnic',
         'address','cash_wallet','total_income','community_pool','package_id', 'a_date','image', 
         'verification','referral','code','type','email_verified','investment_amount','associated_with',
-        'temp_password','last_login'
+        'temp_password','last_login','sale_reward',
+        'facebook','instagram','whatsapp','youtube','linkedin','twitter',
+        'description'
+
     ];
 
     /**
@@ -415,5 +418,39 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+    public function images()
+    {
+        return $this->hasMany(UserImages::class);
+    }
+    public function cnicFront()
+    {
+        $image =  $this->images->where('name','Cnic Front')->first();
+        if($image)
+        {
+            return $image->image;
+        }else{
+            return null;
+        }
+    }
+    public function cnicBack()
+    {
+        $image = $this->images->where('name','Cnic Back')->first();
+        if($image)
+        {
+            return $image->image;
+        }else{
+            return null;
+        }
+    }
+    public function banner()
+    {
+        $image = $this->images->where('name','Banner')->first();
+        if($image)
+        {
+            return $image->image;
+        }else{
+            return null;
+        }
     }
 }

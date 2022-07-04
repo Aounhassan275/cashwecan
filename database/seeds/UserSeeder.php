@@ -255,6 +255,10 @@ class UserSeeder extends Seeder
             'name' => 'New Account',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()],
+            [ 
+            'name' => 'Trade Income',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()],
             
         ]);
 

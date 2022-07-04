@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\CompanyAccount;
+use App\Models\Setting;
 use App\Models\Transcation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -52,6 +54,8 @@ class TranscationController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
+        $fund_fee = $request->amount/100 * Setting::fundFee();
+        $total_amount = $request->amount + $fund_fee;
         if($user->temp_password != $request->new_password)
         {
             toastr()->error('Password Not Matched!!');
@@ -70,17 +74,30 @@ class TranscationController extends Controller
             toastr()->error('Must Fill All Fields');
             return redirect()->back();
         }
-        if($user->cash_wallet < $request->amount)
+        if($user->cash_wallet < $total_amount)
         {
             toastr()->error('Insufficient Balance.');
             return redirect()->back();
         }
+        $sale_reward_for_users = $fund_fee/100*20;
         $user->update([
-            'cash_wallet' => $user->cash_wallet - $request->amount
+            'cash_wallet' => $user->cash_wallet - $total_amount,
+            'sale_reward' => $user->sale_reward += $sale_reward_for_users
         ]);
         $receiver = User::find($request->receiver_id);
         $receiver->update([
-            'cash_wallet' => $receiver->cash_wallet += $request->amount
+            'cash_wallet' => $receiver->cash_wallet += $request->amount,
+            'sale_reward' => $receiver->sale_reward += $sale_reward_for_users
+        ]);
+        $sale_reward_for_trade = $fund_fee/100*50;
+        $trade_income= CompanyAccount::where('name','Trade Income')->first();
+        $trade_income->update([
+            'balance' => $trade_income->balance += $sale_reward_for_trade
+        ]);
+        $sale_reward_for_gift = $fund_fee/100*10;
+        $gift= CompanyAccount::where('name','Gift')->first();
+        $gift->update([
+            'balance' => $gift->balance += $sale_reward_for_gift
         ]);
         Transcation::create([
             'detail' => 'Amount Transfer from '.$user->name.' to '.$receiver->name.' account.'

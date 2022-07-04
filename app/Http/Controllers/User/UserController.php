@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CompanyAccount;
 use App\Models\Earning;
 use App\Models\User;
+use App\Models\UserImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -77,6 +78,57 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user = User::find($request->id);
+        if($request->banner)
+        {
+            if($user->banner())
+            {
+                $banner_image = $user->images->where('name','Banner')->first();
+                $banner_image->update([
+                    'image' => $request->banner
+                ]);
+            }else{
+                UserImages::create([
+                    'name' => 'Banner',
+                    'image' => $request->banner,
+                    'user_id' => $user->id
+                ]);
+            }
+            
+        }         
+        if($request->cnic_front)
+        {
+            if($user->cnicFront())
+            {
+                $cnic_front = $user->images->where('name','Cnic Front')->first();
+                $cnic_front->update([
+                    'image' => $request->cnic_front
+                ]);
+            }else{
+                UserImages::create([
+                    'name' => 'Cnic Front',
+                    'image' => $request->cnic_front,
+                    'user_id' => $user->id
+                ]);
+            }
+            
+        }      
+        if($request->cnic_back)
+        {
+            if($user->cnicBack())
+            {
+                $cnic_back = $user->images->where('name','Cnic Back')->first();
+                $cnic_back->update([
+                    'image' => $request->cnic_back
+                ]);
+            }else{
+                UserImages::create([
+                    'name' => 'Cnic Back',
+                    'image' => $request->cnic_back,
+                    'user_id' => $user->id
+                ]);
+            }
+            
+        }      
         if($request->password)
         {
             $user->update([

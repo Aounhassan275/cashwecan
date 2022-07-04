@@ -100,6 +100,8 @@ class UserController extends Controller
     {
         // Auth::logout();
         Auth::guard('user')->login($user);
+        request()->session()->put('cash_wallet', $user->cash_wallet);
+        request()->session()->put('name', $user->name);
         return redirect()->route('user.dashboard.index');
     }
 }

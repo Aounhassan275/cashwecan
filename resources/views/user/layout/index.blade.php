@@ -46,10 +46,7 @@
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/form_layouts.js')}}"></script>
 	<script src="{{asset('user_asset/global_assets/js/demo_pages/dashboard.js')}}"></script>
 	<!-- /theme JS files -->
-	
-	<!-- Theme JS files -->
-	<script src="{{asset('user_asset/global_assets/js/plugins/editors/summernote/summernote.min.js')}}"></script>
-	<script src="{{asset('user_asset/global_assets/js/demo_pages/editor_summernote.js')}}"></script>
+
 	<!-- /theme JS files -->
 
 	@yield('styles')
@@ -86,6 +83,7 @@
 			</ul>
 
 			<span class="badge bg-success ml-md-3 mr-md-auto">Cash Wallet : $ {{Auth::user()->cash_wallet}}</span>
+			<span class="badge bg-info ml-md-3">Sale Reward : $ {{Auth::user()->sale_reward}}</span>
 			<a href="{{url('/')}}">
 				<span class="badge bg-primary ml-md-3">Go-to E-Commerce Section</span>
 			</a>

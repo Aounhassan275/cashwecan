@@ -255,6 +255,12 @@
 								<span>Chat</span>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="{{route('user.chat.admin')}}" class="nav-link {{Request::is('user/chat/admin')?'active':''}}">
+								<i class="icon-mail-read"></i>
+								<span>Chat with Admin</span>
+							</a>
+						</li>
 						
 						<!-- /page kits -->
 

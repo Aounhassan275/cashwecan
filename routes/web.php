@@ -173,6 +173,7 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
        Route::get('earning/ranking_income', 'EarningController@ranking_income')->name('earning.ranking_income');
        Route::get('earning/associated_income', 'EarningController@associated_income')->name('earning.associated_income');
     /*******************Balance Transfer ROUTES*************/
+    Route::post('balance_transfer/amount', 'TranscationController@getfeeAmount')->name('balance_transfer.amount');
     Route::get('balance_transfer', 'TranscationController@balance_transfer')->name('balance_transfer.index');
   /******************TRANSCATIONS  ROUTES****************/
     Route::resource('transcation', 'TranscationController'); 
@@ -193,6 +194,8 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::get('order/completed/{id}', 'OrderController@orderCompleted')->name('order.completed');
     Route::resource('order', 'OrderController');  
     /******************Chat  ROUTES****************/
+    Route::get('chat/admin', 'ChatController@chatWithAdmin')->name('chat.admin');
+    Route::get('chat/user/{id}', 'ChatController@chatWithUser')->name('chat.user');
     Route::resource('chat', 'ChatController');
     Route::resource('chatmessage', 'ChatMessageController');
 });
@@ -214,6 +217,7 @@ Route::get('countries', 'FrontendController@showCountries')->name('country.index
 Route::get('country/{name}', 'FrontendController@showCountryDetails')->name('country.show');
 Route::get('products', 'FrontendController@showProducts')->name('product.index');
 Route::get('product/{name}', 'FrontendController@showProductDetails')->name('product.show');
+Route::get('product_user/{id}', 'FrontendController@showProductUserDetails')->name('product.user');
 Route::view('contact_us', 'front.contact.index'); 
 Route::view('packages', 'front.package.index'); 
 Route::view('about_us', 'front.about.index'); 

@@ -33,13 +33,17 @@ Balance Transfer
                 <form id="transcationsForm" action="{{route('user.transcation.store')}}"  method="post">
                     @csrf
                     <div class="row">
-                        <div class="form-group col-6">
+                        <div class="form-group col-4">
                             <label class="form-label">Transfer Payment</label>
                             <input type="number"    name="amount" id="amount" class="form-control"  required>                        
                             <input type="hidden"  name="sender_id" id="sender_id" class="form-control" value="{{Auth::user()->id}}">                        
                             <input type="hidden"  name="new_password" id="new_password" class="form-control" >                        
                         </div>
-                        <div class="form-group col-6">
+                        <div class="form-group col-4">
+                            <label class="form-label">Amount To Charge</label>
+                            <input type="text" id="paying_amount" class="form-control"  readonly>                        
+                        </div>
+                        <div class="form-group col-4">
                             <label class="form-label">Members</label>
                             <select data-placeholder="Enter 'as'" name="receiver_id" id="receiver_id" class="form-control select-minimum " data-fouc>
                                 <option></option>
@@ -97,6 +101,22 @@ Balance Transfer
         $('#new_password').val(password);
         $('#transfer_modal').modal('hide');
         $('#transcationsForm').submit();
+    });
+    $('#amount').on('change', function () {
+        amount = $(this).val();
+        $.ajax({
+            url: "{{route('user.balance_transfer.amount')}}",
+            method: 'post',
+            data: {
+                amount: amount,
+            },
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            success: function(response){
+                $('#paying_amount').val(response.amount);
+            }
+        });
     });
 </script>
 @endsection

@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody> 
-                    @foreach (App\Models\Chat::all() as $key => $chat)
+                    @foreach (App\Models\Chat::where('other_user_id',null)->get() as $key => $chat)
                     <tr>
                         <td>{{$key+1}}</td>
                         <td><img src="{{asset($chat->user->image)}}" style="width:100px;height:auto;"></td>

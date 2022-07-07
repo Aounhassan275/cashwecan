@@ -150,4 +150,11 @@ class TranscationController extends Controller
     {
         //
     }
+    public function getfeeAmount(Request $request)
+    {
+        $fee = Setting::fundFee();
+        $total_fee = $request->amount/100 * $fee;
+        $amount = $request->amount + $total_fee;
+        return response()->json(['amount' => $amount]);
+    }
 }

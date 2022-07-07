@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,5 +66,10 @@ class FrontendController extends Controller
     {
         $product = Product::where('name',str_replace('_', ' ',$name))->first();
         return view('front.product.show',compact('product'));
+    }
+    public function showProductUserDetails($id)
+    {
+        $user = User::find($id);
+        return view('front.product.user',compact('user'));
     }
 }

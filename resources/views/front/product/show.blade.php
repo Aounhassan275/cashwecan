@@ -1,7 +1,7 @@
 @extends('front.layout.index')
 @section('meta')
     
-<title>{{$product->name}} | CASH WE CAN</title>
+<title>{{$product->name}} | {{App\Models\Setting::siteName()}}</title>
 <meta name="description" content="Multipurpose HTML template.">
 @endsection
 

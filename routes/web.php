@@ -106,6 +106,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     /******************PRODUCTS ROUTES****************/
     Route::post('product/get_category_brand', 'ProductController@getCategoryBrand')->name('product.brands');     
     Route::post('product/get_country_city', 'ProductController@getCountryCities')->name('product.cities');     
+    Route::get('product/orders/{id}', 'ProductController@getProductOrders')->name('product.order');     
     Route::resource('product', 'ProductController');
     Route::resource('product_image', 'ProductImageController');
     /******************ORDER ROUTES****************/

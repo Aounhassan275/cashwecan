@@ -15,18 +15,18 @@ class FrontendController extends Controller
 {
     public function showCategory()
     {
-        $categories = Category::paginate(30);
+        $categories = Category::paginate(120);
         return view('front.category.index',compact('categories'));
     }
     public function showCategoryDetails($name)
     {
         $category = Category::where('name',str_replace('_', ' ',$name))->first();
-        $products = Product::where('category_id',$category->id)->paginate(20);
-        return view('front.category.show',compact('category','products'));
+        $brands = Brand::where('category_id',$category->id)->paginate(20);
+        return view('front.category.show',compact('category','brands'));
     }
     public function showBrands()
     {
-        $brands = Brand::paginate(30);
+        $brands = Brand::paginate(120);
         return view('front.brand.index',compact('brands'));
     }
     public function showBrandDetails($name)
@@ -48,14 +48,14 @@ class FrontendController extends Controller
     }
     public function showCountries()
     {
-        $countries = Country::paginate(30);
+        $countries = Country::paginate(120);
         return view('front.country.index',compact('countries'));
     }
     public function showCountryDetails($name)
     {
         $country = Country::where('name',str_replace('_', ' ',$name))->first();
-        $products = Product::where('country_id',$country->id)->paginate(20);
-        return view('front.country.show',compact('country','products'));
+        $cities = City::where('country_id',$country->id)->paginate(20);
+        return view('front.country.show',compact('country','cities'));
     }
     public function showProducts()
     {

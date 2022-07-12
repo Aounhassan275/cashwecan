@@ -1,7 +1,7 @@
 @extends('front.layout.index')
 @section('meta')
     
-<title>{{$category->name}} PRODUCTS | CASH WE CAN</title>
+<title>{{$category->name}} PRODUCTS | {{App\Models\Setting::siteName()}}</title>
 <meta name="description" content="Multipurpose HTML template.">
 @endsection
 
@@ -12,32 +12,21 @@
 				
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">{{$category->name}} Products</h2>
-						@foreach($products as $product)
+						<h2 class="title text-center">{{$category->name}} BRANDS</h2>
+						@foreach($brands as $brand)
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
-								<div class="single-products">
-										<div class="productinfo text-center">
-											<img src="{{asset(@$product->images->first()->image)}}" alt="" />
-											<h2>PKR {{@$product->price}}</h2>
-											<p>{{@$product->name}}</p>
-											<a href="{{route('product.show',str_replace(' ', '_',$product->name))}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Buy</a>
-										</div>
-										<div class="product-overlay">
-											<div class="overlay-content">
-												<h2>PKR {{@$product->price}}</h2>
-												<p>{{$product->name}}</p>
-												<a href="{{route('product.show',str_replace(' ', '_',$product->name))}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Buy</a>
-											</div>
-										</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a href="{{route('brand.show',str_replace(' ', '_',$brand->name))}}"><i class="fa fa-plus-square"></i>{{@$brand->name}} ({{$brand->products->count()}})</a></li>
+									</ul>
 								</div>
 							</div>
 						</div>
 						@endforeach
 						<div class="col-sm-12 text-center">
-							{!! $products->links() !!}
+							{!! $brands->links() !!}
 						</div>
-
 					</div><!--features_items-->
 					
 					

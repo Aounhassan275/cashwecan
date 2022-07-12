@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
 	<meta name="author" content="Bootlab">
-    <title> CASH WE CAN </title> 	
+    <title> {{App\Models\Setting::siteName()}} </title> 	
 
 	<link rel="preconnect" href="{{asset('//fonts.gstatic.com/')}}" crossorigin="">
 
@@ -46,7 +46,7 @@
 					<div class="d-table-cell align-middle">
 
 						<div class="text-center">
-							<h1 class="display-1 font-weight-bold">CASHWECAN.COM</h1>
+							<h1 class="display-1 font-weight-bold">{{App\Models\Setting::siteName()}}.COM</h1>
 							<p class="h1">Is Under Contruction.</p>
 						</div>
 

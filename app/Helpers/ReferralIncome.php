@@ -10,6 +10,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use App\Models\PackageHistory;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 
 class ReferralIncome
@@ -77,7 +78,7 @@ class ReferralIncome
         $k = $account->id +1;
         $new_fake_account = User::create([
             'name' => 'fake'.$k,
-            'email' => 'fake'.$k.'@cashwecan.com',
+            'email' => 'fake'.$k.'@'.Setting::siteEmail(),
             'password' => Hash::make('1234'),
             'temp_password' =>'1234',
             'package_id' => '1',

@@ -3,7 +3,7 @@
 
 <div class="row mb-2 mb-xl-4">
     <div class="col-auto d-none d-sm-block">
-    <h3>Manage Company Account | CASH WE CAN</h3>
+    <h3>Manage Company Account | {{App\Models\Setting::siteName()}}</h3>
     </div>
 </div>
 <div class="row">

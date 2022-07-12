@@ -1,7 +1,7 @@
 @extends('front.layout.index')
 @section('meta')
     
-<title>HOME | CASH WE CAN</title>
+<title>HOME | {{App\Models\Setting::siteName()}}</title>
 <meta name="description" content="Multipurpose HTML template.">
 @endsection
 
@@ -57,9 +57,9 @@
                     <div class="about-left">
                         <div class="section-text">
                             <h5 class="section-subtitle">Who we are</h5>
-                            <h2 class="section-title">About Cash We Can</h2>
+                            <h2 class="section-title">About {{App\Models\Setting::siteName()}}</h2>
                             <h5 class="about-details">To meet <span>today's challenges</span>, we've created a unique fund management system</h5>
-                            <p class="section-description">Cash We Can - a private financial company specializing in service providing. Our system is risk-free thanks to the development and improvement of semi-automatic system of rates. We upgraded our automatic system so that the last step before the rate is now done by seller.</p>
+                            <p class="section-description">{{App\Models\Setting::siteName()}} - a private financial company specializing in service providing. Our system is risk-free thanks to the development and improvement of semi-automatic system of rates. We upgraded our automatic system so that the last step before the rate is now done by seller.</p>
                         </div>
 
                         <div class="about-box">
@@ -492,7 +492,7 @@
                     <div class="section-text">
                         <h5 class="section-subtitle">INVESTMENT OFFER</h5>
                         <h2 class="section-title">Our Investment Plans</h2>
-                        <p class="section-description">Cash We Can provides a straightforward and transparent mechanism to attract investments and make more profits.</p>
+                        <p class="section-description">{{App\Models\Setting::siteName()}} provides a straightforward and transparent mechanism to attract investments and make more profits.</p>
                     </div>
                 </div>
             </div>
@@ -657,7 +657,7 @@
 
                             <div class="btn-area">
                                 <div class="left-area">
-                                    <p>Make money with Cash We Can</p>
+                                    <p>Make money with {{App\Models\Setting::siteName()}}</p>
                                     <a class="start-now-btn global-btn" href="#">START EARNING NOW</a>
                                 </div>
                                 <div class="right-area">

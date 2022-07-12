@@ -3,7 +3,7 @@
 
 <div class="row mb-2 mb-xl-4">
     <div class="col-auto d-none d-sm-block">
-    <h3>VIEW PRODUCT | CASH WE CAN</h3>
+    <h3>VIEW PRODUCT | {{App\Models\Setting::siteName()}}</h3>
     </div>
 </div>
 <div class="col-12 ">
@@ -21,6 +21,7 @@
                         <th style="width:auto;">Product Category</th>
                         <th style="width:auto;">Product Brand</th>
                         <th style="width:auto;">Product Orders</th>
+                        <th style="width:auto;">Product Owner</th>
                         <th style="width:auto;">Action</th>
                         <th style="width:auto;">Action</th>
                     </tr>
@@ -33,7 +34,20 @@
                         <td>PKR {{$product->price}}</td>
                         <td>{{@$product->category->name}}</td>
                         <td>{{@$product->brand->name}}</td>
-                        <td class="text-center">{{@$product->orders->count()}}</td>
+                        <td class="text-center">
+                            <a href="{{route('admin.product.order',$product->id)}}">
+                                {{@$product->orders->count()}}
+                            </a>
+                        </td>
+                        <td>
+                            @if(@$product->user)
+                                <a href="{{route('admin.user.detail',$product->user->id)}}">
+                                    {{$product->user->name}}
+                                </a>
+                            @else 
+                                Admin
+                            @endif
+                        </td>
                         <td class="table-action">
                             <a href="{{route('admin.product.edit',$product->id)}}"><i class="align-middle" data-feather="edit-2"></i></a>
                         </td>

@@ -4,7 +4,7 @@
 
 <div class="row mb-2 mb-xl-4">
     <div class="col-auto d-none d-sm-block">
-    <h3>View Sent Emails | CASH WE CAN</h3>
+    <h3>View Sent Emails | {{App\Models\Setting::siteName()}}</h3>
     </div>
 </div>
 <div class="col-12 ">

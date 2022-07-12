@@ -3,7 +3,7 @@
 
 <div class="row mb-2 mb-xl-4">
     <div class="col-auto d-none d-sm-block">
-    <h3>VIEW USER With Unverified Mail | CASH WE CAN</h3>
+    <h3>VIEW USER With Unverified Mail | {{App\Models\Setting::siteName()}}</h3>
     </div>
 </div>
 <div class="col-12 ">

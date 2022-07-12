@@ -1,7 +1,7 @@
 @extends('front.layout.index')
 @section('meta')
     
-<title>WITHDRAW HISTORY | CASH WE CAN</title>
+<title>WITHDRAW HISTORY | {{App\Models\Setting::siteName()}}</title>
 <meta name="description" content="Multipurpose HTML template.">
 @endsection
 

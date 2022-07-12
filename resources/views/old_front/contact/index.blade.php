@@ -1,7 +1,7 @@
 @extends('front.layout.index')
 @section('meta')
     
-<title>CONTACT US | CASH WE CAN</title>
+<title>CONTACT US | {{App\Models\Setting::siteName()}}</title>
 <meta name="description" content="Multipurpose HTML template.">
 @endsection
 

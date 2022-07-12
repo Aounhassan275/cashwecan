@@ -68,9 +68,13 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request,$id)
     {
-        //
+        
+        $order = Order::find($id);
+        $order->update($request->all());
+        toastr()->success('Order Informations Updated successfully');
+        return redirect()->back();
     }
 
     /**

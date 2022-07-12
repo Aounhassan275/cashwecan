@@ -261,6 +261,23 @@ class UserSeeder extends Seeder
             'updated_at' => Carbon::now()],
             
         ]);
+        DB::table('settings')->insert([
+            [ 
+            'name' => 'Fund Transfer Fee',
+            'value' => '3',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()],
+            [ 
+            'name' => 'Site Name',
+            'value' => 'Buy E Bazar',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()],
+            [ 
+            'name' => 'Site Email Slug',
+            'value' => 'buyebazar.com',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()],
+        ]);
 
 
     }

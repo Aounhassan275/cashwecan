@@ -1,7 +1,7 @@
 @extends('front.layout.index')
 @section('meta')
     
-<title>ABOUT US | CASH WE CAN</title>
+<title>ABOUT US | {{App\Models\Setting::siteName()}}</title>
 <meta name="description" content="Multipurpose HTML template.">
 @endsection
 
@@ -15,9 +15,9 @@
                     <div class="about-left">
                         <div class="section-text">
                             <h5 class="section-subtitle">Who we are</h5>
-                            <h2 class="section-title">About Cash We Can</h2>
+                            <h2 class="section-title">About {{App\Models\Setting::siteName()}}</h2>
                             <h5 class="about-details">To meet <span>today's challenges</span>, we've created a unique fund management system</h5>
-                            <p class="section-description">Cash We Can - a private financial company specializing in travel investment. Our system is risk-free thanks to the development and improvement of semi-automatic system of rates. We upgraded our automatic system so that the last step before the rate is now done by our operators.</p>
+                            <p class="section-description">{{App\Models\Setting::siteName()}} - a private financial company specializing in travel investment. Our system is risk-free thanks to the development and improvement of semi-automatic system of rates. We upgraded our automatic system so that the last step before the rate is now done by our operators.</p>
                         </div>
 
                         <div class="about-box">

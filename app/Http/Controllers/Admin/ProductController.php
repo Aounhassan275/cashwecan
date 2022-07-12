@@ -104,6 +104,11 @@ class ProductController extends Controller
         toastr()->success('Prodct Deleted Successfully');
         return redirect()->back();
     }
+    public function getProductOrders( $id)
+    {
+        $product = Product::find($id);
+        return view('admin.order.index',compact('product'));
+    }
     public function getCategoryBrand(Request $request)
     {
         if($request->id == 'all'){

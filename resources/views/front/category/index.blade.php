@@ -1,7 +1,7 @@
 @extends('front.layout.index')
 @section('meta')
     
-<title>CATEGORIES | CASH WE CAN</title>
+<title>CATEGORIES | {{App\Models\Setting::siteName()}}</title>
 <meta name="description" content="Multipurpose HTML template.">
 @endsection
 
@@ -19,7 +19,7 @@
 							<div class="product-image-wrapper">
 								<div class="choose">
 									<ul class="nav nav-pills nav-justified">
-										<li><a href="{{route('category.show',str_replace(' ', '_',$category->name))}}"><i class="fa fa-plus-square"></i>{{@$category->name}} ({{$category->products->count()}})</a></li>
+										<li><a href="{{route('category.show',str_replace(' ', '_',$category->name))}}"><i class="fa fa-plus-square"></i>{{@$category->name}} ({{$category->brands->count()}})</a></li>
 									</ul>
 								</div>
 							</div>

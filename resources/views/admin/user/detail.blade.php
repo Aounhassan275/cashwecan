@@ -3,7 +3,7 @@
 
 <div class="row mb-2 mb-xl-4">
     <div class="col-auto d-none d-sm-block">
-    <h3>USER DETAIL | CASH WE CAN</h3>
+    <h3>USER DETAIL | {{App\Models\Setting::siteName()}}</h3>
     </div>
 </div>
 <div class="row">
@@ -279,6 +279,12 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Community Pool</label>
                                     <input type="text" class="form-control" name="community_pool"  value="{{$user->community_pool}}" >
+                                </div> 
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">Sale Reward</label>
+                                    <input type="text" class="form-control" name="sale_reward"  value="{{$user->sale_reward}}" >
                                 </div> 
                             </div>
                             <div class="form-row">

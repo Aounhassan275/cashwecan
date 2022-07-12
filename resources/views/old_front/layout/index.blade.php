@@ -82,7 +82,7 @@
         <div class="container">
 
             <div class="logo-section">
-                <a class="logo-title navbar-brand" href="{{url('/')}}"><img src="{{asset('front/image/logo.png')}}" alt="logo">Cash We Can</a>
+                <a class="logo-title navbar-brand" href="{{url('/')}}"><img src="{{asset('front/image/logo.png')}}" alt="logo">{{App\Models\Setting::siteName()}}</a>
             </div>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -128,7 +128,7 @@
                 <div class="col-lg-6">
                     <div class="left-area">
                         <div class="banner-text">
-                            <h2>Cash We Can</h2>
+                            <h2>{{App\Models\Setting::siteName()}}</h2>
                             <h3 style="font-weight:bold;">FREEDOM OF SALE AND PURCHASE</h3>
                             <h3 class="font-regular">A Profitable Platform For High-Margin</h3>
                         </div>
@@ -224,7 +224,7 @@
                                 <div class="card-header questions-card-header" id="withdrawal-headingOne">
                                     <h5 class="mb-0">
                                         <button class="btn btn-link questions-btn-link" data-toggle="collapse" data-target="#withdrawal-collapseOne" aria-expanded="true" aria-controls="questions-pills-basic-tab">
-                                            What Are The Main Advantages Of Cash We Can?
+                                            What Are The Main Advantages Of {{App\Models\Setting::siteName()}}?
                                         </button>
                                     </h5>
                                 </div>
@@ -285,7 +285,7 @@
                                 <div class="card-header questions-card-header" id="investing-headingOne">
                                     <h5 class="mb-0">
                                         <button class="btn btn-link questions-btn-link" data-toggle="collapse" data-target="#investing-collapseOne" aria-expanded="true" aria-controls="questions-pills-basic-tab">
-                                            What Are The Main Advantages Of Cash We Can?
+                                            What Are The Main Advantages Of {{App\Models\Setting::siteName()}}?
                                         </button>
                                     </h5>
                                 </div>
@@ -346,7 +346,7 @@
                                 <div class="card-header questions-card-header" id="basic-headingOne">
                                     <h5 class="mb-0">
                                         <button class="btn btn-link questions-btn-link" data-toggle="collapse" data-target="#basic-collapseOne" aria-expanded="true" aria-controls="questions-pills-basic-tab">
-                                            What Are The Main Advantages Of Cash We Can?
+                                            What Are The Main Advantages Of {{App\Models\Setting::siteName()}}?
                                         </button>
                                     </h5>
                                 </div>
@@ -407,7 +407,7 @@
                                 <div class="card-header questions-card-header" id="referral-headingOne">
                                     <h5 class="mb-0">
                                         <button class="btn btn-link questions-btn-link" data-toggle="collapse" data-target="#referral-collapseOne" aria-expanded="true" aria-controls="questions-pills-basic-tab">
-                                            What Are The Main Advantages Of Cash We Can?
+                                            What Are The Main Advantages Of {{App\Models\Setting::siteName()}}?
                                         </button>
                                     </h5>
                                 </div>
@@ -495,7 +495,7 @@
                                 </ul>
                             </div>
                             <div class="section-text">
-                                <h5 class="section-subtitle">Subscribe to Cash We Can</h5>
+                                <h5 class="section-subtitle">Subscribe to {{App\Models\Setting::siteName()}}</h5>
                                 <h2 class="section-title">To Get Exclusive benefits</h2>
                             </div>
                         </div>
@@ -514,7 +514,7 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-6 col-md-12 d-flex justify-content-start travula-content-center">
                             <div class="footer-bottom-left">
-                                <p>Copyright © 2020. All Rights Reserved By <a href="#">Cash We Can</a></p>
+                                <p>Copyright © 2020. All Rights Reserved By <a href="#">{{App\Models\Setting::siteName()}}</a></p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12 d-flex justify-content-end travula-content-center">

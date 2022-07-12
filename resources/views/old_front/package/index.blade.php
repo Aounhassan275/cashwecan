@@ -1,7 +1,7 @@
 @extends('front.layout.index')
 @section('meta')
     
-<title>PACKAGES | CASH WE CAN</title>
+<title>PACKAGES | {{App\Models\Setting::siteName()}}</title>
 <meta name="description" content="Multipurpose HTML template.">
 @endsection
 
@@ -15,7 +15,7 @@
                     <div class="section-text">
                         <h5 class="section-subtitle">INVESTMENT OFFER</h5>
                         <h2 class="section-title">Our Investment Plans</h2>
-                        <p class="section-description">Cash We Can provides a straightforward and transparent mechanism to attract investments and make more profits.</p>
+                        <p class="section-description">{{App\Models\Setting::siteName()}} provides a straightforward and transparent mechanism to attract investments and make more profits.</p>
                     </div>
                 </div>
             </div>

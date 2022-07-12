@@ -351,21 +351,19 @@ DASHBOARD
             data: {
 
                 labels: [
-                    "Direct Income({{Auth::user()->directIncome->sum('price')}})", 
-                    "Direct Team Income({{Auth::user()->directTeamIncome->sum('price')}})", 
-                    "Upline Income({{Auth::user()->uplineIncome->sum('price')}})", 
-                    "Downline Income({{Auth::user()->downlineIncome->sum('price')}})", 
-                    "Upline Placement Income({{Auth::user()->uplinePlacementIncome->sum('price')}})", 
-                    "Downline Placement Income({{Auth::user()->downlinePlacementIncome->sum('price')}})",
-                    "Trade Income({{Auth::user()->tradeIncome->sum('price')}})",
-                    "Ranking Income({{Auth::user()->rankingIncome->sum('price')}})",
-                    "Associated Income({{Auth::user()->associatedIncome->sum('price')}})"
+                    "Direct({{Auth::user()->directIncome->sum('price')}})", 
+                    "Direct Team({{Auth::user()->directTeamIncome->sum('price')}})", 
+                    "Upline({{Auth::user()->uplineIncome->sum('price')}})", 
+                    "Downline({{Auth::user()->downlineIncome->sum('price')}})", 
+                    "Upline Placement({{Auth::user()->uplinePlacementIncome->sum('price')}})", 
+                    "Downline Placement({{Auth::user()->downlinePlacementIncome->sum('price')}})",
+                    "Trade({{Auth::user()->tradeIncome->sum('price')}})",
+                    "Ranking({{Auth::user()->rankingIncome->sum('price')}})",
+                    "Associated({{Auth::user()->associatedIncome->sum('price')}})"
                     ],
-
                 datasets: [{
 
                     label: "Earning",
-
                     backgroundColor: ["#990099","#109618","#ff9900", "#dc3912", "#3366cc","#33C4FF","#0C3343","#EC7063","#49BA98"],
 
                     data: [

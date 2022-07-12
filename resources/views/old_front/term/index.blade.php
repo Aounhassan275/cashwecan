@@ -9,7 +9,7 @@
 	<meta name="author" content="Bootlab">
 
 
-    <title>TERMS & CONDITIONS | CASH WE CAN</title>   
+    <title>TERMS & CONDITIONS | {{App\Models\Setting::siteName()}}</title>   
 
 	<link rel="preconnect" href="{{asset('//fonts.gstatic.com/')}}'" crossorigin="">
 
@@ -49,7 +49,7 @@
                     <div class="d-table-cell align-middle">
     
                         <div class="text-center mt-4">
-                            <h1 class="h2">TERMS & CONDITIONS, CASH WE CAN</h1>
+                            <h1 class="h2">TERMS & CONDITIONS, {{App\Models\Setting::siteName()}}</h1>
                             <p>You must read, agree with and accept all of the policies and terms below (the "Rules") to join Payearncash.com. "You" or "you" means the party listed on the account. You must have the authority to agree to these Rules for that party. "www.Payearncash.com" means Pay Earn Cash. By creating an account, you accept and acknowledge the following rules.</p><br>
 
                             <p>Pay Earn Cash may modify or terminate the following rules of use at any time for any reason.</p>

@@ -1,7 +1,7 @@
 @extends('front.layout.index')
 @section('meta')
     
-<title>HOME | CASH WE CAN</title>
+<title>HOME | {{App\Models\Setting::siteName()}}</title>
 <meta name="description" content="Multipurpose HTML template.">
 @endsection
 

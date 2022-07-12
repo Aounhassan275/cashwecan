@@ -5,9 +5,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1,">
-    <meta name="description" content="CASH WE CAN | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
+    <meta name="description" content="{{App\Models\Setting::siteName()}} | BEST ONLINE EARNING SITE | No. 1 Marketing Forum to Earn Online.">
 	<meta name="author" content="Bootlab">
-    <title>ADMIN PANEL | CASH WE CAN</title> 
+    <title>ADMIN PANEL | {{App\Models\Setting::siteName()}}</title> 
 	<link rel="shortcut icon" type="image/png" href="{{asset('front/image/favicon.png')}}">	
 
 	<link rel="preconnect" href="{{asset('//fonts.gstatic.com/')}}" crossorigin="">
@@ -35,7 +35,7 @@
 			<div class="sidebar-content ">
 				<a class="sidebar-brand" href="{{url('/')}}">
           			<i class="align-middle" data-feather="box"></i>
-          			<span class="align-middle"> CASH WE CAN</span>
+          			<span class="align-middle"> {{App\Models\Setting::siteName()}}</span>
         		</a>
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
@@ -205,7 +205,7 @@
 					<div class="media">
 						<img class="rounded-circle mr-3" src="{{asset('img\avatars\avatar.jpg')}}" alt="Chris Wood" width="40" height="40">
 						<div class="media-body">
-							<h5 class="mb-1"> CASH WE CAN</h5>
+							<h5 class="mb-1"> {{App\Models\Setting::siteName()}}</h5>
 							<div>
 								<i class="fas fa-circle text-success"></i> Online
 							</div>
@@ -267,7 +267,7 @@
 						</div>
 						<div class="col-6 text-right">
 							<p class="mb-0">
-								&copy; 2020 - <a href="{{url('/')}}" class="text-muted">CASH WE CAN</a>
+								&copy; 2020 - <a href="{{url('/')}}" class="text-muted">{{App\Models\Setting::siteName()}}</a>
 							</p>
 						</div>
 					</div>

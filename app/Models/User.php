@@ -408,7 +408,7 @@ class User extends Authenticatable
     }
     public function checkLimitForProducts()
     {
-        if($this->package->max_limit > $this->products->count())
+        if($this->package->product_limit > $this->products->count())
         {
             return true;
         }else{

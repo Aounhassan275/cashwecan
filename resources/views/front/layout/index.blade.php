@@ -43,11 +43,11 @@
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="{{url(App\Models\Setting::facebook())}}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="{{url(App\Models\Setting::twitter())}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="{{url(App\Models\Setting::linkedin())}}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="{{url(App\Models\Setting::youtube())}}" target="_blank"><i class="fa fa-youtube"></i></a></li>
+								<li><a href="{{url(App\Models\Setting::instagram())}}" target="_blank"><i class="fa fa-instagram"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -60,7 +60,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="{{url('/')}}"><img src="{{asset('front/images/home/logo.png')}}" alt="" /></a>
+							<a href="{{url('/')}}"><img src="{{asset('buy_logo.png')}}" alt="" style="width: 236px;" /></a>
 						</div>
 					</div>
 					<div class="col-md-8 clearfix">

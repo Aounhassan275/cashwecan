@@ -10,8 +10,8 @@ Add Products to Store
         <div class="alert alert-danger border-0 alert-dismissible">
             <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
             <span class="font-weight-semibold">Oh!</span> 
-            Your Limit For Adding Products / Stocks is Completed.You only allow to have {{Auth::user()->package->max_limit}}.
-            Please upgrade <a href="{{route('user.package.index')}}" class="alert-link">package</a>.
+            Your Limit For Adding Products / Stocks is Completed.You only allow to have {{Auth::user()->package->product_limit}}.
+            Please upgrade <a href="{{route('user.package.index')}}" class="alert-link">package</a> Or Pay Product Fee which is {{App\Models\Setting::productFee()}} USD Dollar deducted from your cash wallet.
         </div>
     </div>
 </div>
@@ -84,7 +84,11 @@ Add Products to Store
                         </div>
                     </div>
                    <div class="row">
-                        <div class="form-group col-12">
+                        <div class="form-group col-6">
+                            <label class="form-label">Product Stocks</label>
+                            <input type="number" name="stock" class="form-control"  required>
+                        </div>
+                        <div class="form-group col-6">
                             <label class="form-label">Product Images</label>
                             <input type="file" name="images[]" class="form-control" multiple  required>
                         </div>
@@ -93,11 +97,9 @@ Add Products to Store
                             <textarea name="description" class="form-control" required id="" rows="2"></textarea>
                         </div>
                    </div>
-                   @if(Auth::user()->checkLimitForProducts())
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-                    @endif
                 </form>
             </div>
         </div>
@@ -110,7 +112,7 @@ Add Products to Store
             <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
             <span class="font-weight-semibold">Oh!</span> 
             You dont purchase package till now.
-            Please purchase <a href="{{route('user.package.index')}}" class="alert-link">package</a>.
+            Please purchase <a href="{{route('user.package.index')}}" class="alert-link">package</a>  Or Pay Product Fee which is {{App\Models\Setting::productFee()}} USD Dollar deducted from your cash wallet..
         </div>
     </div>
 </div>

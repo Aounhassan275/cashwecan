@@ -277,6 +277,36 @@ class UserSeeder extends Seeder
             'value' => 'buyebazar.com',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()],
+            [ 
+            'name' => 'Product Fee',
+            'value' => '2',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()],
+            [ 
+            'name' => 'Facebook',
+            'value' => 'facebook.com',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()],
+            [ 
+            'name' => 'Twitter',
+            'value' => 'twiiter.com',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()],
+            [ 
+            'name' => 'Linkedin',
+            'value' => 'Linkedin.com',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()],
+            [ 
+            'name' => 'Youtube',
+            'value' => 'Youtube.com',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()],
+            [ 
+            'name' => 'Instagram',
+            'value' => 'Instagram.com',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()],
         ]);
 
 

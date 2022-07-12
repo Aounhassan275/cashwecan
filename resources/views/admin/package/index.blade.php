@@ -18,19 +18,12 @@
                         <th style="width:auto;">Sr#</th>
                         <th style="width:auto;">Package Name</th>
                         <th style="width:auto;">Package Price</th>
-                        {{-- <th style="width:auto;">Direct Income</th>
-                        <th style="width:auto;">Direct Team Income</th>
-                        <th style="width:auto;">Upline Income</th>
-                        <th style="width:auto;">Down Line Income</th>
-                        <th style="width:auto;">Upline Placement Income</th>
-                        <th style="width:auto;">Down Line Placement Income</th>
-                        <th style="width:auto;">Trade Income</th>
-                        <th style="width:auto;">Company Income</th> --}}
                         <th style="width:auto;">Image</th>
                         <th style="width:auto;">Max Limit</th>
                         <th style="width:auto;">Min Limit</th>
                         <th style="width:auto;">Withdraw Limit</th>
                         <th style="width:auto;">Fund Limit</th>
+                        <th style="width:auto;">Product Limit</th>
                         <th style="width:auto;">Action</th>
                         <th style="width:auto;">Action</th>
                     </tr>
@@ -42,18 +35,11 @@
                         <td>{{$package->name}}</td>
                         <td>{{$package->price}}</td>
                         <td><a href="{{asset($package->image)}}"><i class="feather text-info" data-feather="eye"></i></a></td>
-                        {{-- <td>{{$package->direct_income}}</td>
-                        <td>{{$package->direct_team_income}}</td>
-                        <td>{{$package->upline_income}}</td>
-                        <td>{{$package->down_line_income}}</td>
-                        <td>{{$package->upline_placement_income}}</td>
-                        <td>{{$package->down_line_placement_income}}</td>
-                        <td>{{$package->trade_income}}</td>
-                        <td>{{$package->company_income}}</td> --}}
                         <td>{{$package->max_limit}}</td>
                         <td>{{$package->min_limit}}</td>
                         <td>{{$package->withdraw_limit}}</td>
                         <td>{{$package->fund_limit}}</td>
+                        <td>{{$package->product_limit}}</td>
                         <td class="table-action">
                             <a href="{{route('admin.package.edit',$package->id)}}"><i class="align-middle" data-feather="edit-2"></i></a>
                         </td>

@@ -247,6 +247,7 @@
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{Request::is('user/product*')?'display:block':''}}">
 								<li class="nav-item"><a href="{{route('user.product.create')}}" class="nav-link {{Request::is('user/product.create')?'active':''}}">Add Products</a></li>
 								<li class="nav-item"><a href="{{route('user.product.index')}}" class="nav-link {{Request::is('user/product')?'active':''}}">Manage</a></li>
+								<li class="nav-item"><a href="{{route('user.order.orders')}}" class="nav-link {{Request::is('user/orders')?'active':''}}">Your Orders</a></li>
 							</ul>
 						</li>
 						<li class="nav-item">

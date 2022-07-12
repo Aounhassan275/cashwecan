@@ -19,6 +19,7 @@
                         <th style="width:auto;">Product Name</th>
                         <th style="width:auto;">Product Price</th>
                         <th style="width:auto;">User Name</th>
+                        <th style="width:auto;">User Email</th>
                         <th style="width:auto;">User Address</th>
                         <th style="width:auto;">Product Owner</th>
                         <th style="width:auto;">Delivery Status</th>
@@ -33,13 +34,16 @@
                         <td>{{$key+1}}</td>
                         <td>{{$order->product->name}}</td>
                         <td>$ {{$order->product->price}}</td>
-                        <td>{{@$order->user->name}}</td>
+                        <td><a href="{{route('admin.user.detail',$order->user->id)}}"> {{@$order->user->name}} </a></td>
+                        <td>{{@$order->user->email}}</td>
                         <td>{{@$order->address}}</td>
                         <td>
                             @if(@$order->owner->id == Auth::user()->id)
                                 Your Product
                             @else 
-                                {{@$order->owner->name}}
+                                @if($order->owner_id)
+                                    <a href="{{route('product.user',$order->owner->id)}}">  {{@$order->owner->name}}</a>
+                                @endif
                             @endif
                         </td>
                         <td>

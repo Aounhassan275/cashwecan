@@ -44,11 +44,15 @@
                         </div>
                    </div>
                    <div class="row">
-                        <div class="form-group col-4">
+                        <div class="form-group col-6">
                             <label class="form-label">Contact Number</label>
                             <input type="text" class="form-control" required name="phone"  placeholder="Contact Number" value="{{@$product->phone}}">
                         </div>
-                        <div class="form-group col-4">
+                        <div class="form-group col-6">
+                            <label class="form-label">Total Stock</label>
+                            <input type="number" class="form-control" required name="stock"  placeholder="Total Stock" value="{{@$product->stock}}">
+                        </div>
+                        <div class="form-group col-6">
                             <label class="form-label">Country</label>
                             <select name="country_id" id="country_id" class="form-control select2" required>
                                 <option selected disabled>Select</option>
@@ -57,7 +61,7 @@
                                 @endforeach
                             </select>                        
                         </div>
-                        <div class="form-group col-4">
+                        <div class="form-group col-6">
                             <label class="form-label">Cities</label>
                             <select name="city_id" id="city_id" class="form-control select2" required>
                                 <option selected disabled>Select</option>

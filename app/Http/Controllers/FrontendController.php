@@ -72,4 +72,20 @@ class FrontendController extends Controller
         $user = User::find($id);
         return view('front.product.user',compact('user'));
     }
+    public function showProductLike($id)
+    {
+        $product = Product::find($id);
+        $product->update([
+            'like' => $product->like + 1
+        ]);
+        return back();
+    }
+    public function showProductDisLike($id)
+    {
+        $product = Product::find($id);
+        $product->update([
+            'dislike' => $product->dislike + 1
+        ]);
+        return back();
+    }
 }

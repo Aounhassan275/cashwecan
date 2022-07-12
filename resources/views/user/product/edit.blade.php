@@ -25,7 +25,7 @@ Edit {{$product->name}} Product
                    <div class="row">
                         <div class="form-group col-3">
                             <label class="form-label">Product Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="Product Name" value="{{@$product->name}}">
+                            <input type="text" name="name" class="form-control" readonly placeholder="Product Name" value="{{@$product->name}}">
                         </div>
                         <div class="form-group col-3">
                             <label class="form-label">Product Price</label>

@@ -72,7 +72,24 @@
 								<p><b>Brand:</b> {{@$product->brand->name}}</p>
 								<p><b>Country:</b> {{@$product->country->name}}</p>
 								<p><b>City:</b> {{@$product->city->name}}</p>
-								<a href="{{route('user.product.order',$product->id)}}" class="btn btn-success" style="width:250px;">Purchase</a>
+								@if($product->stock > 0)
+									<p><b>Stock For Sale:</b> {{@$product->stock}}</p>
+									<a href="{{route('user.product.order',$product->id)}}" class="btn btn-success" style="width:250px;">Purchase</a>
+								@else 
+								<p style="color:red;"><b>Out of Stock</b></p>
+								@endif
+								<div class="col-sm-6" style="margin-top:5px;">
+									<form action="{{route('product.like',$product->id)}}" method="GET">
+										@csrf
+										<button class="btn btn-success" >Like ({{$product->like}})</button>
+									</form>
+								</div>
+                                <div class="col-sm-6" style="margin-top:5px;">
+									<form action="{{route('product.dislike',$product->id)}}" method="GET">
+										@csrf
+										<button class="btn btn-danger" >Disike ({{$product->dislike}})</button>
+									</form>
+								</div>
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->

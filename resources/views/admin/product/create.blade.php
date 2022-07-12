@@ -47,8 +47,8 @@
                             <input type="text" class="form-control" required name="phone"  placeholder="Contact Number" value="">
                         </div>
                         <div class="form-group col-6">
-                            <label class="form-label">City</label>
-                            <input type="text" class="form-control" required name="city"  placeholder="City" value="">
+                            <label class="form-label">Total Stocks</label>
+                            <input type="number" class="form-control" required name="stock"  placeholder="Total Stocks" value="">
                         </div>
                     </div>
                    <div class="row">

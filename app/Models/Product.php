@@ -8,7 +8,7 @@ class Product extends Model
 {
     protected $fillable = [
         'name','category_id','brand_id','user_id','price','phone','description','city_id','country_id',
-        'display_order'
+        'display_order','like','dislike','stock'
     ];
     public function category()
     {

@@ -11,6 +11,7 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">Manage Company Account</h5>
+                <a href="{{url('cronjob/payment_distrubtion_of_trade_income')}}" class="btn btn-info float-right">Transfer Trade Income To Users</a>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{route('admin.company_account.transfer')}}" enctype="multipart/form-data" >

@@ -19,4 +19,19 @@ class Setting extends Model
     public static function siteEmail(){
         return (new static)::where('name','Site Email Slug')->first()->value;
     }
+    public static function facebook(){
+        return (new static)::where('name','Facebook')->first()->value;
+    }
+    public static function twitter(){
+        return (new static)::where('name','Twitter')->first()->value;
+    }
+    public static function linkedin(){
+        return (new static)::where('name','Linkedin')->first()->value;
+    }
+    public static function youtube(){
+        return (new static)::where('name','Youtube')->first()->value;
+    }
+    public static function instagram(){
+        return (new static)::where('name','Instagram')->first()->value;
+    }
 }

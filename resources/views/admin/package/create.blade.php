@@ -84,8 +84,12 @@
                             <input type="number" class="form-control" name="fund_limit"  placeholder="Fund Limit" value="">
                         </div>
                    </div>
-                   <div class="row">
-                        <div class="form-group col-12">
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label class="form-label">Product Limit</label>
+                            <input type="number" class="form-control" name="product_limit"  placeholder="Product Limit" value="">
+                        </div>
+                        <div class="form-group col-6">
                             <label class="form-label">Image</label>
                             <input type="file" class="form-control" name="image" >
                         </div>

@@ -86,7 +86,11 @@
                     </div>
                </div>
                    <div class="row">
-                        <div class="form-group col-12">
+                        <div class="form-group col-6">
+                            <label class="form-label">Product Limit</label>
+                            <input type="number" class="form-control" name="product_limit"  placeholder="Product Limit" value="{{$package->product_limit}}">
+                        </div>
+                        <div class="form-group col-6">
                             <label class="form-label">Image</label>
                             <input type="file" class="form-control" name="image"  >
                         </div>

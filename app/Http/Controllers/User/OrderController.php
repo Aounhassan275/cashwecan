@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,6 +47,10 @@ class OrderController extends Controller
             'cash_wallet' => Auth::user()->cash_wallet -= $request->price
         ]);
         Order::create($request->all());
+        $product = Product::find($request->product_id);
+        $product->update([
+            'stock' => $product->stock - 1
+        ]);
         toastr()->warning('Order Created Successfully!');
         return redirect(route('user.order.index'));
     }

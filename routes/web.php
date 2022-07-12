@@ -191,6 +191,7 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::get('product/{name}', 'ProductController@showProductDetails')->name('products.show');
     Route::get('product/order/{id}', 'ProductController@orderProducts')->name('product.order');
     /******************ORDER ROUTES****************/
+    Route::view('orders', 'user.order.orders')->name('order.orders');
     Route::get('order/onHold/{id}', 'OrderController@orderonHold')->name('order.onHold');
     Route::get('order/completed/{id}', 'OrderController@orderCompleted')->name('order.completed');
     Route::resource('order', 'OrderController');  
@@ -219,6 +220,8 @@ Route::get('country/{name}', 'FrontendController@showCountryDetails')->name('cou
 Route::get('products', 'FrontendController@showProducts')->name('product.index');
 Route::get('product/{name}', 'FrontendController@showProductDetails')->name('product.show');
 Route::get('product_user/{id}', 'FrontendController@showProductUserDetails')->name('product.user');
+Route::get('product_like/{id}', 'FrontendController@showProductLike')->name('product.like');
+Route::get('product_dislike/{id}', 'FrontendController@showProductDisLike')->name('product.dislike');
 Route::view('contact_us', 'front.contact.index'); 
 Route::view('packages', 'front.package.index'); 
 Route::view('about_us', 'front.about.index'); 
@@ -230,6 +233,7 @@ Route::view('terms_&_condition', 'front.term.index');
 Route::group(['prefix' => 'cronjob','namespace' => 'CronJob'], function () {
     Route::get('payment_distrubtion', 'CronJobController@payment_distrubtion');
     Route::get('payment_distrubtion_for_assoiated_account', 'CronJobController@payment_distrubtion_for_assoiated_account');
+    Route::get('payment_distrubtion_of_trade_income', 'CronJobController@paymentDistrubtionofTradeIncome');
     Route::get('upgrade_package', 'CronJobController@upgradePackage');
 });
 

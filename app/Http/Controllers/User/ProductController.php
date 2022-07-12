@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\CompanyAccount;
 use App\Models\Country;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -44,6 +45,42 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+        if($user->package)
+        {
+            if($user->checkLimitForProducts() == false)
+            {
+                $amount = $request->price;
+                if($user->cash_wallet >= $amount)
+                {
+                    $user->update([
+                        'cash_wallet' => $user->cash_wallet - $amount,
+                    ]);
+                    $company_account= CompanyAccount::find(1);
+                    $company_account->update([
+                        'balance' => $company_account->balance + $amount,
+                    ]);
+                }else{
+                    toastr()->error('Insufficent amount in Cash Wallet!');
+                    return redirect()->back();
+                }
+            }   
+        }else{
+            $amount = $request->price;
+            if($user->cash_wallet >= $amount)
+            {
+                $user->update([
+                    'cash_wallet' => $user->cash_wallet - $amount,
+                ]);
+                $company_account= CompanyAccount::find(1);
+                $company_account->update([
+                    'balance' => $company_account->balance + $amount,
+                ]);
+            }else{
+                toastr()->error('Insufficent amount in Cash Wallet!');
+                return redirect()->back();
+            }
+        }
         $product = Product::create($request->all());
         foreach($request->images as $image)
         {

@@ -21,6 +21,7 @@
                 <th>Product Category</th>
                 <th>Product Brand</th>
                 <th>Product Orders</th>
+                <th>Total Stocks</th>
                 <th>Action</th>
             </tr> 
         </thead>
@@ -29,17 +30,18 @@
             <tr> 
                 <td>{{$key+1}}</td>
                 <td>{{$product->name}}</td>
-                <td>PKR {{$product->price}}</td>
+                <td>$ {{$product->price}}</td>
                 <td>{{@$product->category->name}}</td>
                 <td>{{@$product->brand->name}}</td>
                 <td><a href="{{route('user.order.index')}}">{{@$product->orders->count()}}</a></td>
+                <td>{{$product->stock}}</td>
                 <td class="text-center">
                     <a href="{{route('user.product.edit',$product->id)}}"><i class="icon-pencil7"></i></a>
-                    <form action="{{route('user.product.destroy',$product->id)}}" method="POST">
+                    {{-- <form action="{{route('user.product.destroy',$product->id)}}" method="POST">
                         @method('DELETE')
                         @csrf
                         <button class="btn"><i class="icon-trash"></i></button>
-                    </form>
+                    </form> --}}
                 </td>
             </tr>
             @endforeach

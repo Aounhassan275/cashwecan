@@ -22,6 +22,7 @@
                         <th style="width:auto;">Product Brand</th>
                         <th style="width:auto;">Product Orders</th>
                         <th style="width:auto;">Product Owner</th>
+                        <th style="width:auto;">Total Stock</th>
                         <th style="width:auto;">Action</th>
                         <th style="width:auto;">Action</th>
                     </tr>
@@ -48,6 +49,7 @@
                                 Admin
                             @endif
                         </td>
+                        <td>{{$product->stock}}</td>
                         <td class="table-action">
                             <a href="{{route('admin.product.edit',$product->id)}}"><i class="align-middle" data-feather="edit-2"></i></a>
                         </td>

@@ -22,7 +22,7 @@
                         </div>
                         <div class="form-group col-6">
                             <label class="form-label">Account Number</label>
-                            <input type="number" name="number" class="form-control" placeholder="Enter Account Number" required>
+                            <input type="text" name="number" class="form-control" placeholder="Enter Account Number" required>
                         </div>
                     </div>   
                     <div class="row">
@@ -43,7 +43,7 @@
                      <div class="row">
                         <div class="form-group col-6">
                             <label class="form-label">Receiver Number</label>
-                            <input type="number" name="bnumber" class="form-control" placeholder="Enter Receiver Number">
+                            <input type="text" name="bnumber" class="form-control" placeholder="Enter Receiver Number">
                         </div>
                         <div class="form-group col-6">
                             <label class="form-label">Image</label>

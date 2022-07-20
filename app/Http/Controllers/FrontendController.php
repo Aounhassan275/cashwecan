@@ -13,9 +13,15 @@ use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
-    public function showCategory()
+    public function showCategory(Request $request)
     {
-        $categories = Category::paginate(120);
+        if($request->keyword)
+        {
+            $categories = Category::where('name', 'LIKE', '%'.$request->keyword.'%')->paginate(20);
+        }
+        else{
+            $categories = Category::paginate(120);
+        }
         return view('front.category.index',compact('categories'));
     }
     public function showCategoryDetails($name)
@@ -24,9 +30,15 @@ class FrontendController extends Controller
         $brands = Brand::where('category_id',$category->id)->paginate(20);
         return view('front.category.show',compact('category','brands'));
     }
-    public function showBrands()
+    public function showBrands(Request $request)
     {
-        $brands = Brand::paginate(120);
+        if($request->keyword)
+        {
+            $brands = Brand::where('name', 'LIKE', '%'.$request->keyword.'%')->paginate(20);
+        }
+        else{
+            $brands = Brand::paginate(120);
+        }
         return view('front.brand.index',compact('brands'));
     }
     public function showBrandDetails($name)
@@ -35,9 +47,15 @@ class FrontendController extends Controller
         $products = Product::where('brand_id',$brand->id)->paginate(20);
         return view('front.brand.show',compact('brand','products'));
     }
-    public function showCities()
-    {
-        $cities = City::paginate(120);
+    public function showCities(Request $request)
+    {   
+        if($request->keyword)
+        {
+            $cities = City::where('name', 'LIKE', '%'.$request->keyword.'%')->paginate(20);
+        }
+        else{
+            $cities = City::paginate(120);
+        }
         return view('front.city.index',compact('cities'));
     }
     public function showCityDetails($name)
@@ -46,9 +64,15 @@ class FrontendController extends Controller
         $products = Product::where('city_id',$city->id)->paginate(20);
         return view('front.city.show',compact('city','products'));
     }
-    public function showCountries()
+    public function showCountries(Request $request)
     {
-        $countries = Country::paginate(120);
+        if($request->keyword)
+        {
+            $countries = Country::where('name', 'LIKE', '%'.$request->keyword.'%')->paginate(20);
+        }
+        else{
+            $countries = Country::paginate(120);
+        }
         return view('front.country.index',compact('countries'));
     }
     public function showCountryDetails($name)
@@ -57,9 +81,15 @@ class FrontendController extends Controller
         $cities = City::where('country_id',$country->id)->paginate(20);
         return view('front.country.show',compact('country','cities'));
     }
-    public function showProducts()
+    public function showProducts(Request $request)
     {
-        $products = Product::paginate(30);
+        if($request->keyword)
+        {
+            $products = Product::where('name', 'LIKE', '%'.$request->keyword.'%')->paginate(20);
+        }
+        else{
+            $products = Product::paginate(30);
+        }
         return view('front.product.index',compact('products'));
     }
     public function showProductDetails($name)

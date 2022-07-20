@@ -3,7 +3,7 @@
 
 <div class="row mb-2 mb-xl-4">
     <div class="col-auto d-none d-sm-block">
-    <h3>{{$product->name}} PRODUCT ORDERS | {{App\Models\Setting::siteName()}}</h3>
+    <h3>PRODUCT ORDERS | {{App\Models\Setting::siteName()}}</h3>
     </div>
 </div>
 <div class="col-12 ">
@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($product->orders as $key => $order)
+                    @foreach (App\Models\Order::whereNot('user_id')->get() as $key => $order)
                     <tr> 
                         <td>{{$key+1}}</td>
                         <td>{{$order->product->name}}</td>

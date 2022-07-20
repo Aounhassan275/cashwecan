@@ -21,6 +21,27 @@ DASHBOARD
 
 
 @section('contents')
+
+
+<div class="row">
+    <div class="col-md-12">
+            <div class="card card-body">
+                <div class="media mb-0">
+                    <div class="media-body">
+                        <h6 class="font-weight-semibold mb-0">
+                            <marquee class="blink">
+                                @foreach (App\Models\Ticker::all() as $ticker)
+                                        {!! $ticker->message !!} .
+                                @endforeach
+                            </marquee>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-6">
         <div class="card">

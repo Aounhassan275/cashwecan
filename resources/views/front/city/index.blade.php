@@ -11,6 +11,19 @@
 		<div class="container">
 			<div class="row">
 				
+				<div class="col-sm-8"></div>
+				<div class="col-sm-4">
+					<div class="signup-form"><!--sign up form-->
+						<form method="GET"class="form-inline">
+							<div class="col-sm-9">
+								<input type="text" value="{{@request()->keyword}}" placeholder="Search any Keyword" name="keyword"/>
+							</div>
+							<div class="col-sm-3">
+								<button type="submit" class="btn btn-default">Search</button>
+							</div>
+						</form>
+					</div><!--/sign up form-->
+				</div>
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">CITIES</h2>

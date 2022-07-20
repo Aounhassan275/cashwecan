@@ -7,8 +7,8 @@
     <div class="col-md-12">
         <div class="alert bg-info text-white alert-styled-right alert-dismissible">
             <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-            <span class="font-weight-semibold">Alert!</span>Your Purcashing product name {{$product->name}} which price is $ {{$product->price}}.This 
-                amount will deduct from your cash wallet including delivery Charges $ 150.So,you must have $ {{$product->price + 150}} in your cash wallet to purchase this product.
+            <span class="font-weight-semibold">Alert!</span>Your Purcashing product name {{$product->name}} which price is $ {{$product->price}}.
+            So,you must have $ {{$product->price}} in your cash wallet to purchase this product.
         </div>
     </div>
 </div>
@@ -37,7 +37,7 @@
                             @if($product->user_id)
                             <input type="hidden" name="owner_id" value="{{@$product->user_id}}">
                             @endif
-                            <input type="hidden" name="price" value="{{@$product->price+150}}">
+                            <input type="hidden" name="price" value="{{@$product->price}}">
                             <input type="text" name="address" class="form-control" placeholder="Enter Your Address">
                         </div>
                    </div>

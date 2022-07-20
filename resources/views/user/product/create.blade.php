@@ -16,6 +16,19 @@ Add Products to Store
     </div>
 </div>
 @endif
+@else
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-danger border-0 alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+            <span class="font-weight-semibold">Oh!</span> 
+            You dont purchase package till now.
+            Please purchase <a href="{{route('user.package.index')}}" class="alert-link">package</a>  Or Pay Product Fee which is {{App\Models\Setting::productFee()}} USD Dollar deducted from your cash wallet..
+        </div>
+    </div>
+</div>
+@endif
+
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -105,19 +118,6 @@ Add Products to Store
         </div>
     </div>
 </div>
-@else
-<div class="row">
-    <div class="col-lg-12">
-        <div class="alert alert-danger border-0 alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-            <span class="font-weight-semibold">Oh!</span> 
-            You dont purchase package till now.
-            Please purchase <a href="{{route('user.package.index')}}" class="alert-link">package</a>  Or Pay Product Fee which is {{App\Models\Setting::productFee()}} USD Dollar deducted from your cash wallet..
-        </div>
-    </div>
-</div>
-@endif
-
 @endsection
 @section('scripts')
 <script>

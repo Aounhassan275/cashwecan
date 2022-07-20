@@ -103,7 +103,7 @@ UPDATE YOUR OWN PROFILE
                         </div>
                         <div class="form-group col-md-12">
                             <label>Description</label>
-                            <textarea class="form-control summernote"   name="description"></textarea>
+                            <textarea class="form-control summernote"   name="description">{{Auth::user()->description}}</textarea>
                         </div>
                    </div>
                     

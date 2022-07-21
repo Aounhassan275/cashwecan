@@ -60,7 +60,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="{{url('/')}}"><img src="{{asset('buy_logo.png')}}" alt="" style="width: 236px;" /></a>
+							<a href="{{url('/')}}"><img src="{{asset('buylogo.png')}}" alt="" style="width: 236px;" /></a>
 						</div>
 					</div>
 					<div class="col-md-8 clearfix">

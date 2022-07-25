@@ -16,7 +16,6 @@ class AddSocialLinksToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('snack_video')->nullable();
             $table->string('tiktok')->nullable();
-            $table->string('twitter')->nullable();
         });
     }
 

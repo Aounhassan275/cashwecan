@@ -50,6 +50,18 @@
                                 <div class="col-sm-3" style="margin-top:5px;">
                                     <a href="{{@$user->instagram}}" class="btn btn-warning">Instagram</a>
                                 </div>
+                                <div class="col-sm-3">
+                                    <a href="{{@$user->twitter}}" class="btn btn-info">Twitter</a>
+                                </div>
+                                <div class="col-sm-3" style="margin-top:5px;">
+                                    <a href="{{@$user->snack_video}}" class="btn btn-success">Snack Video</a>
+                                </div>
+                                <div class="col-sm-3" style="margin-top:5px;">
+                                    <a href="{{@$user->linkedin}}" class="btn btn-danger">Linkedin </a>
+                                </div>
+                                <div class="col-sm-3" style="margin-top:5px;">
+                                    <a href="{{@$user->tiktok}}" class="btn btn-warning">Tiktok</a>
+                                </div>
 							</div><!--/product-information-->
                             
 						</div>

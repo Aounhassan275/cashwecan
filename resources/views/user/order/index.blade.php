@@ -65,7 +65,8 @@
                 <td class="text-center">
                     @if(@$order->owner_id == Auth::user()->id)
                     <a href="{{route('user.order.onHold',$order->id)}}" data-toggle="tooltip" data-placement="top" title="On Hold"><i class="icon-pencil7"></i></a>
-                    <a href="{{route('user.order.completed',$order->id)}}" data-toggle="tooltip" data-placement="top" title="Completed"><i class="icon-check"></i></a>
+                     @else 
+                     <a href="{{route('user.order.completed',$order->id)}}" data-toggle="tooltip" data-placement="top" title="Completed"><i class="icon-check"></i></a>
                      @endif
                 </td>
             </tr>

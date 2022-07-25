@@ -70,7 +70,7 @@
 								<li><a href="{{url('user/dashboard')}}"><i class="fa fa-lock"></i> Dashboard</a></li>
 								<li><a href="{{url('user/logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
 								@else
-									<li><a href="{{url('user/register')}}"><i class="fa fa-user"></i> Register</a></li>
+									<li><a href="{{App\Models\Setting::companyReferralLink()}}"><i class="fa fa-user"></i> Register</a></li>
 									<li><a href="{{url('user/login')}}"><i class="fa fa-lock"></i> Login</a></li>
 								@endif
 							</ul>

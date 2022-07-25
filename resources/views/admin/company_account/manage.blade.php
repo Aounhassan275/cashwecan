@@ -11,7 +11,23 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">Manage Company Account</h5>
-                <a href="{{url('cronjob/payment_distrubtion_of_trade_income')}}" class="btn btn-info float-right">Transfer Trade Income To Users</a>
+                <div class="row">
+                    <div class="col-4">
+                        <a href="{{url('cronjob/payment_distrubtion_of_trade_income')}}" class="btn btn-info " style="margin-top:10px;">Transfer Trade Income To Users</a>
+                    </div>
+                    <div class="col-4">
+                        <a href="{{url('admin/upgrade_package')}}" class="btn btn-primary " style="margin-top:10px;">Upgrade Package</a>
+                    </div>
+                    <div class="col-4">
+                        <a href="{{url('admin/payment_distrubtion')}}" class="btn btn-success " style="margin-top:10px;">Payment Distrubtion</a>
+                    </div>
+                    <div class="col-4">
+                        <a href="{{url('admin/payment_distrubtion_for_assoiated_account')}}" class="btn btn-warning " style="margin-top:10px;">Payment Distrubtion For Assoiated Account</a>
+                    </div>
+                    <div class="col-4">
+                        <a href="{{url('admin/payment_distrubtion_for_associated_Users')}}" class="btn btn-danger" style="margin-top:10px;">Payment Distrubtion For Associated Users</a>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{route('admin.company_account.transfer')}}" enctype="multipart/form-data" >

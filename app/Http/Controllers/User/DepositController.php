@@ -93,7 +93,7 @@ class DepositController extends Controller
                 'package_id' => $package->id,
                 'cash_wallet' => $user->cash_wallet -= $package->price,    
             ]);
-            if($package->price > 10)
+            if($package->price > 5)
             {
                 ReferralIncome::referral($user);
             }else

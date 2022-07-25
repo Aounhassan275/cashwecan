@@ -244,11 +244,11 @@
                                 <div class="form-group col-md-6">
                                     <input type="hidden" name="id" value="{{$user->id}}">
                                     <label for="inputFirstName">User name</label>
-                                    <input type="text" class="form-control" name="name" id="inputFirstName" value="{{$user->name}}" readonly>
+                                    <input type="text" class="form-control" name="name" id="inputFirstName" value="{{$user->name}}" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Phone#</label>
-                                    <input type="number" class="form-control" name="phone"  value="{{$user->phone}}" readonly >
+                                    <input type="number" class="form-control" name="phone"  value="{{$user->phone}}"  >
                                 </div>  
                             </div>
                             <div class="form-row">

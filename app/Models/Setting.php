@@ -37,4 +37,7 @@ class Setting extends Model
     public static function instagram(){
         return (new static)::where('name','Instagram')->first()->value;
     }
+    public static function companyReferralLink(){
+        return (new static)::where('name','Company Referral Link')->first()->value;
+    }
 }

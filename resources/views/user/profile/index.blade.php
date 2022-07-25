@@ -69,6 +69,14 @@ UPDATE YOUR OWN PROFILE
                             <label class="form-label">Twitter</label>
                             <input type="text" name="twitter" class="form-control" value="{{Auth::user()->twitter}}" >
                         </div>
+                        <div class="form-group col-6">
+                            <label class="form-label">Tiktok</label>
+                            <input type="text" name="tiktok" class="form-control" value="{{Auth::user()->tiktok}}" >
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="form-label">Snack Video</label>
+                            <input type="text" name="snack_video" class="form-control" value="{{Auth::user()->snack_video}}" >
+                        </div>
                         <p><strong>Personal Informations:</strong></p>
                         <div class="form-group col-12">  
                             <label class="form-label">

@@ -44,9 +44,9 @@ class WithdrawController extends Controller
             toastr()->warning('Must Need 2 Referral');
             return redirect()->back();
         } 
-        if($request->payment < 25)
+        if($request->payment < 5)
         {
-            toastr()->error('Balance must be 25 in a cash wallet to get Withdraw');
+            toastr()->error('Balance must be 5 in a cash wallet to get Withdraw');
             return redirect()->back();
         }
         if($request->payment > $user->cash_wallet){

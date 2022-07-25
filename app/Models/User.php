@@ -24,7 +24,7 @@ class User extends Authenticatable
         'address','cash_wallet','total_income','community_pool','package_id', 'a_date','image', 
         'verification','referral','code','type','email_verified','investment_amount','associated_with',
         'temp_password','last_login','sale_reward',
-        'facebook','instagram','whatsapp','youtube','linkedin','twitter',
+        'facebook','instagram','whatsapp','youtube','linkedin','twitter','snack_video','tiktok',
         'description'
 
     ];

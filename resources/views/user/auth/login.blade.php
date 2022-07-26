@@ -77,9 +77,9 @@
 							<p  class="text-center">Want To Register with Company?</p>
 							<a href="{{App\Models\Setting::companyReferralLink()}}"><button type="button" class="btn btn-primary btn-block">Register Now <i class="icon-circle-right2 ml-2"></i></button></a>
 						
-							<p  class="text-center">Dont Received Account Verification Email?</p>
+							{{-- <p  class="text-center">Dont Received Account Verification Email?</p>
 							
-							<a href="{{route('user.resend_email')}}"><button type="button" class="btn btn-primary btn-block">Resend Email <i class="icon-circle-right2 ml-2"></i></button></a>
+							<a href="{{route('user.resend_email')}}"><button type="button" class="btn btn-primary btn-block">Resend Email <i class="icon-circle-right2 ml-2"></i></button></a> --}}
 						</div>
 					</div>
 				</form>

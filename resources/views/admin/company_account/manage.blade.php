@@ -13,7 +13,7 @@
                 <h5 class="card-title">Manage Company Account</h5>
                 <div class="row">
                     <div class="col-4">
-                        <a href="{{url('cronjob/payment_distrubtion_of_trade_income')}}" class="btn btn-info " style="margin-top:10px;">Transfer Trade Income To Users</a>
+                        <a href="{{url('admin/payment_distrubtion_of_trade_income')}}" class="btn btn-info " style="margin-top:10px;">Transfer Trade Income To Users</a>
                     </div>
                     <div class="col-4">
                         <a href="{{url('admin/upgrade_package')}}" class="btn btn-primary " style="margin-top:10px;">Upgrade Package</a>

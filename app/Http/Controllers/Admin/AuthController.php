@@ -250,4 +250,39 @@ class AuthController extends Controller
 		}
 		info("Payment Distrubtion CRONJOB END AT " . date("d-M-Y h:i a"));
 	}
+    public function paymentDistrubtionofTradeIncome() {
+		info("Payment Distrubtion of Trade Income CRONJOB CALLED AT " . date("d-M-Y h:i a"));
+        $users = User::where('refer_by','!=',null)
+                ->where('type','!=','fake')
+                ->get();
+        $trade_income= CompanyAccount::where('name','Trade Income')->first();
+		if ($users) {
+            $total_users = $users->count();
+            $trade_balance = $trade_income->balance;
+            $amount = round($trade_balance/$total_users,2);
+            info("Payment Distrubtion of Trade Income CRONJOB Total Users : $total_users");
+            foreach($users as $user)
+            {
+                info("Payment Distrubtion of Trade Income CRONJOB User : $user->name");
+                Earning::create([
+                    'price' => $amount,
+                    'user_id' => $user->id,
+                    'type' => 'trade_income'
+                ]);
+                
+                $user->update([
+                    'total_income' => $user->total_income + $amount
+                ]);
+                info("Payment Distrubtion of Trade Income CRONJOB For User $user->name : Amount $amount Added to flush company Account");  
+            }
+            $trade_income->update([
+                'balance' => $trade_income->balance -= $trade_balance 
+            ]);
+		} else {
+			info("Payment Distrubtion of Trade Income CRONJOB: Users not found. ");
+		}
+		info("Payment Distrubtion of Trade Income CRONJOB END AT " . date("d-M-Y h:i a"));
+        toastr()->success('Payment Distribution of Trade Income Done Successfully');
+        return back();
+	}
 }

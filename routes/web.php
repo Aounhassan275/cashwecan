@@ -24,6 +24,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
     Route::get('payment_distrubtion_for_assoiated_account', 'AuthController@payment_distrubtion_for_assoiated_account');
     Route::get('upgrade_package', 'AuthController@upgradePackage');
     Route::get('payment_distrubtion_for_associated_Users', 'AuthController@payment_distrubtionforassociatedUsers');
+    Route::get('payment_distrubtion_of_trade_income', 'AuthController@paymentDistrubtionofTradeIncome');
      /******************MESSAGE ROUTES****************/
      Route::resource('message', 'MessageController');
     Route::group(['middleware' => 'auth:admin'], function () { 
@@ -228,14 +229,6 @@ Route::view('about_us', 'front.about.index');
 Route::view('videos', 'front.video.index'); 
 Route::view('withdraw', 'front.withdraw.index'); 
 Route::view('terms_&_condition', 'front.term.index'); 
-
-//CronJobs
-Route::group(['prefix' => 'cronjob','namespace' => 'CronJob'], function () {
-    Route::get('payment_distrubtion', 'CronJobController@payment_distrubtion');
-    Route::get('payment_distrubtion_for_assoiated_account', 'CronJobController@payment_distrubtion_for_assoiated_account');
-    Route::get('payment_distrubtion_of_trade_income', 'CronJobController@paymentDistrubtionofTradeIncome');
-    Route::get('upgrade_package', 'CronJobController@upgradePackage');
-});
 
 /******************FUNCTIONALITY ROUTES****************/
 Route::get('/cd', function() {
